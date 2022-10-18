@@ -1,6 +1,8 @@
+import './Landing.css';
+
 function Landing () {
     return (
-        <div className="container container--landing">
+        <div className="landing landing--div">
             <div>
                 <h1 className="landing landing--h1">Job Hunt Tracker</h1>
 
@@ -15,9 +17,7 @@ function Landing () {
                 <button className="button button--landing">
                 Sign up
                 </button>
-            </div>
-
-            
+            </div> 
         </div>
     )
 }
