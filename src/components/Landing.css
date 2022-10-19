@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.landing {
+    text-align: center;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: #F0F0F1;
+}
+
+.landing--div {
+    background-image: url("../assets/layered-peaks-haikei.svg");
+    background-position: bottom;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing--h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.button--landing {
+    height: 4rem;
+    width: 13rem;
+    margin: 5px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: #484D52;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+}
