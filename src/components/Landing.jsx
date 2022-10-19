@@ -42,7 +42,7 @@ function Landing() {
         </button>
       </div>
       {showModalLogin && <LoginModal setShowModalLogin={setShowModalLogin} />}
-      {showModalSignup && <SignupModal setShowModal={setShowModalSignup} />}
+      {showModalSignup && <SignupModal setShowModalSignup={setShowModalSignup} />}
     </div>
   );
 }
