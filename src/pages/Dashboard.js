@@ -55,15 +55,6 @@ const Dashboard = () => {
                             <p className='dashboard_job-card_text'>{job.item}</p>
                         </div>  
                     ))};
-                    {/* <div className='dashboard_job-card_item basis-2/6 border-2 m-4'>
-                        <p className='dashboard_job-card_text'>Job Card #1</p>
-                    </div>
-                    <div className='dashboard_job-card_item basis-2/6 border-2 m-4'>
-                        <p className='dashboard_job-card_text'>Job Card #2</p>
-                    </div>
-                    <div className='dashboard_job-card_item basis-2/6 border-2 m-4'>
-                        <p className='dashboard_job-card_text'>Job Card #3</p>
-                    </div> */}
                 </div>
             </div>
             <div className='dashboard_job-tracker  grid grid-rows-4 mx-6'>
