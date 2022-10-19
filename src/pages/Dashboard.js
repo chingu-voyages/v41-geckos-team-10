@@ -45,7 +45,7 @@ const Dashboard = () => {
                         >
                             <p className='dashboard_tracker_text'>{track.item}</p>
                         </div> 
-                    ))};
+                    ))}
                 </div>
             </div>
             <div className='dashboard_job-card grid grid-rows-4 mx-6'>
@@ -60,7 +60,7 @@ const Dashboard = () => {
                         >
                             <p className='dashboard_job-card_text'>{job.item}</p>
                         </div>  
-                    ))};
+                    ))}
                 </div>
             </div>
             <div className='dashboard_job-tracker  grid grid-rows-4 mx-6'>
