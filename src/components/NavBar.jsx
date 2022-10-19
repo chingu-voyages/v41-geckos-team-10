@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = ()=> {
  return (
-    <div>
+    <div class="bg-lt-green">
         <nav>
             <ul>
                 <li>

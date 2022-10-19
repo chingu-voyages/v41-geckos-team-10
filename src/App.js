@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div>
       <NavBar />
-      <Landing />
+      {/* <Landing /> */}
       <Outlet />
       
     </div>
