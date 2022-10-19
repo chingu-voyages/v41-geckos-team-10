@@ -1,9 +1,10 @@
-import Header from "./components/Header";
+import './App.css';
+import Landing from './components/Landing'
 
 function App() {
   return (
     <div>
-      <Header />
+      <Landing />
     </div>
   );
 }
