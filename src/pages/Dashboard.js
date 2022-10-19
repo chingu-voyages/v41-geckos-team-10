@@ -40,7 +40,7 @@ const Dashboard = () => {
                 <div className='dashboard_tracker_container row-span-3 flex flex-column'>
                     {trackerItems.map((track) => (
                         <div 
-                            className='dashboard_tracker basis-2/6 border-2 m-2 rounded-3xl' 
+                            className='dashboard_tracker bg-lt-green basis-2/6 border-2 m-2 rounded-3xl' 
                             key={nanoid()}
                         >
                             <p className='dashboard_tracker_text  text-center'>{track.item}</p>
@@ -52,10 +52,10 @@ const Dashboard = () => {
                 <p className='dashboard_job-card_text self-end ml-8 text-xl'>
                     Most Recent Applications
                 </p>
-                <div className='dashboard_job-card_container row-span-3 flex flex-column'>
+                <div className='dashboard_job-card_container row-span-3 flex flex-column mx-12'>
                     {jobCards.map((job) => (
                         <div 
-                            className='dashboard_job-card_item basis-2/6 border-2 m-4 rounded-3xl' 
+                            className='dashboard_job-card_item bg-lt-green basis-2/6 border-2 m-4 rounded-3xl' 
                             key={nanoid()}
                         >
                             <p className='dashboard_job-card_text text-center'>{job.item}</p>
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <p className='dashboard_job-tracker_text self-end ml-8 text-xl'>
                     Weekly Job Application Tracker
                 </p>
-                <div className='dashboard_job-tracker_graph border-2 row-span-3 m-6 rounded-3xl  text-center'>
+                <div className='dashboard_job-tracker_graph bg-lt-green border-2 row-span-3 m-6 rounded-3xl  text-center'>
                     Graph Goes Here
                 </div>
             </div>
