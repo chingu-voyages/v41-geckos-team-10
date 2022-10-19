@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import WeeklyAppGraph from '../components/WeeklyAppGraph';
 
 const Dashboard = () => {
     
@@ -68,7 +69,7 @@ const Dashboard = () => {
                     Weekly Job Application Tracker
                 </p>
                 <div className='dashboard_job-tracker_graph bg-lt-green border-2 row-span-3 m-6 rounded-3xl  text-center'>
-                    Graph Goes Here
+                    <WeeklyAppGraph />
                 </div>
             </div>
         </div>
