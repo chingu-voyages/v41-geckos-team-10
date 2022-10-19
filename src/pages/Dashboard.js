@@ -1,14 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Dashboard = () => {
+    
+    const [memberName, setMemberName] = useState("Elliot Erickson")
+    const [profilePic, setProfilePic] = useState("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Uwo-kkvTH_pEjCu0O4z7oQAAAA%26pid%3DApi&f=1&ipt=05ed7a42f68098e6fac9bfc7fd61e9576b8082bdb45f0bc2adacca5b37256e03&ipo=images")
+    
     return(
-        <div className='dashboard grid grid-rows-4'>
-            <div className='dashboard_user-profile flex flex-column border-2 m-3'>
-                <div className='dashboard-user-profile_pic basis-1/6 border-2 m-2'>
-                    User Profile Pic
+        <div className='dashboard grid grid-rows-4 bg-bg-blue text-white'>
+            <div className='dashboard_user-profile flex flex-column m-3'>
+                <div className='dashboard-user-profile_pic basis-1/6 m-2'>
+                    <Link to='/profile'>
+                        <img src={profilePic} alt='Profile'/>
+                    </Link>
                 </div>
-                <p className='dashboard_user-profile_text self-center border-2 m-2 text-4xl '>
-                    Hello, Member Name!!
+                <p className='dashboard_user-profile_text self-center m-2 text-4xl '>
+                    Hello, {memberName}!!
                 </p>
             </div>
             <div className='dashboard_tracker-dashboard flex flex-column border-2 m-6'>
@@ -40,7 +49,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Dashboard
