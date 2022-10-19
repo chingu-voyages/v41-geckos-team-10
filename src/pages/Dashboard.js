@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { nanoid } from 'nanoid';
 
 const Dashboard = () => {
     
@@ -39,7 +39,10 @@ const Dashboard = () => {
                 </p>
                 <div className='dashboard_tracker_container row-span-3 flex flex-column'>
                     {trackerItems.map((track) => (
-                        <div className='dashboard_tracker basis-2/6 border-2 m-2'>
+                        <div 
+                            className='dashboard_tracker basis-2/6 border-2 m-2' 
+                            key={nanoid()}
+                        >
                             <p className='dashboard_tracker_text'>{track.item}</p>
                         </div> 
                     ))};
@@ -51,7 +54,10 @@ const Dashboard = () => {
                 </p>
                 <div className='dashboard_job-card_container row-span-3 flex flex-column'>
                     {jobCards.map((job) => (
-                        <div className='dashboard_job-card_item basis-2/6 border-2 m-4'>
+                        <div 
+                            className='dashboard_job-card_item basis-2/6 border-2 m-4' 
+                            key={nanoid()}
+                        >
                             <p className='dashboard_job-card_text'>{job.item}</p>
                         </div>  
                     ))};
