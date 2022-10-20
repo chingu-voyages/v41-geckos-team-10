@@ -64,7 +64,7 @@ const Dashboard = () => {
                     ))}
                 </div>
             </div>
-            <div className='dashboard_job-tracker row-span-2 grid grid-rows-4 mx-6 w-800 h-400'>
+            <div className='dashboard_job-tracker row-span-2 grid grid-rows-4 mx-6'>
                 <p className='dashboard_job-tracker_text self-end ml-8 text-xl'>
                     Weekly Job Application Tracker
                 </p>
