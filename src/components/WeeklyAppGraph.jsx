@@ -4,7 +4,7 @@ import { useState } from "react";
 function WeeklyAppGraph() {
 
     const [weeklyAppGraph, setWeeklyAppGraph] = useState([
-        {day: "Mond", value: 0},
+        {day: "Mon", value: 0},
         {day: "Tues", value: 0},
         {day: "Wed", value: 0},
         {day: "Thur", value: 0},
@@ -15,14 +15,9 @@ function WeeklyAppGraph() {
 
 
     return (
-        <div className='graph'>
-            <div className='graph_container'>
-                <p>Graph Goes Here</p>
-                <div className='graph_content bg-bg-blue'>
-                    Lines Go Here
-                    <div className='graph_line'>
-                        
-                    </div>
+        <div className='graph bg-white relative text-black w-full h-full rounded-3xl'>
+            <div className='graph_container relative w-full h-full'>
+                <div className='graph_line absolute top-0 bottom-0 left-10 w-1 bg-black'>  
                 </div>
             </div>
         </div>

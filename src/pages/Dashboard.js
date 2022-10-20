@@ -22,7 +22,7 @@ const Dashboard = () => {
         ]);
     
     return(
-        <div className='dashboard grid grid-rows-4 bg-bg-blue text-white'>
+        <div className='dashboard grid grid-rows-5 bg-bg-blue text-white'>
             <div className='dashboard_user-profile flex flex-column m-3'>
                 
                 <div className='dashboard-user-profile_pic basis-1/6 m-2'>
@@ -64,11 +64,11 @@ const Dashboard = () => {
                     ))}
                 </div>
             </div>
-            <div className='dashboard_job-tracker  grid grid-rows-4 mx-6'>
+            <div className='dashboard_job-tracker row-span-2 grid grid-rows-4 mx-6 w-800 h-400'>
                 <p className='dashboard_job-tracker_text self-end ml-8 text-xl'>
                     Weekly Job Application Tracker
                 </p>
-                <div className='dashboard_job-tracker_graph bg-lt-green border-2 row-span-3 m-6 rounded-3xl  text-center'>
+                <div className='dashboard_job-tracker_graph bg-lt-green border-2 row-span-3 m-6 rounded-3xl text-center '>
                     <WeeklyAppGraph />
                 </div>
             </div>
