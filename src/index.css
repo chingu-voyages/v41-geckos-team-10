@@ -10,4 +10,13 @@
         height: 1px;
         background: black;
     }
+    .graph_bar {
+        position: absolute;
+        width: 15%;
+        bottom: 12.5%;
+        /* height: 30%; */
+        background: #e05b42;
+        border: 1px solid #222;
+    }
 }
+
