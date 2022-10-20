@@ -22,12 +22,12 @@ const Dashboard = () => {
         ]);
     
     return(
-        <div className='dashboard grid grid-rows-5 bg-bg-blue text-white'>
+        <div className='dashboard grid grid-rows-5 bg-bg-blue text-white h-screen'>
             <div className='dashboard_user-profile flex flex-column m-3'>
                 
                 <div className='dashboard-user-profile_pic basis-1/6 m-2'>
                     <Link to='/profile'>
-                        <img src={profilePic} alt='Profile'/>
+                        <img src={profilePic} alt='Profile' className='w-7/8'/>
                     </Link>
                 </div>
                 <p className='dashboard_user-profile_text self-center m-2 text-4xl '>

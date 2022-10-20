@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .graph_line {
+        position: absolute;
+        right: 0; 
+        left: 0; 
+        height: 1px;
+        background: black;
+    }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "../index.css"
 
 function WeeklyAppGraph() {
 
@@ -13,12 +14,30 @@ function WeeklyAppGraph() {
         {day: "Sun", value: 0},
     ])
 
+    // const Line = ( bottom ) => {
+    //     return (
+    //         <div className='graph_line'
+    //             style={ bottom: `{bottom}` } 
+    //         />
+    //     )
+    // };
 
     return (
-        <div className='graph bg-white relative text-black w-full h-full rounded-3xl'>
+        <div className='graph bg-white text-black w-full h-full rounded-3xl'>
             <div className='graph_container relative w-full h-full'>
-                <div className='graph_line absolute top-0 bottom-0 left-10 w-1 bg-black'>  
+                <div className='graph_text'>
+
                 </div>
+                <div className='graph_line_container'>
+                    <div className='graph_line bottom-1/8' />  
+                    <div className='graph_line bottom-1/4' />  
+                    <div className='graph_line bottom-3/8' />
+                    <div className='graph_line bottom-1/2' />  
+                    <div className='graph_line bottom-5/8' />
+                    <div className='graph_line bottom-3/4' />  
+                    <div className='graph_line bottom-7/8' />
+                </div>
+
             </div>
         </div>
     );
