@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import '../index.css'
-import '../style/dashboard.css'
 
 const Line = ({spacing}) => {
     return (

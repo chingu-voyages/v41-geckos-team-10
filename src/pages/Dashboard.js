@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import WeeklyAppGraph from '../components/WeeklyAppGraph';
-import '../style/dashboard.css'
+
 
 const Dashboard = () => {
     
