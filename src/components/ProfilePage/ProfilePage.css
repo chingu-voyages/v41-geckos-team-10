@@ -1,0 +1,15 @@
+.profile-page {
+  @apply bg-gray-100;
+}
+
+.profile-page__form {
+  @apply w-10/12 p-5 md:p-10;
+}
+
+.profile-page__name-inputs {
+  @apply flex space-x-10;
+}
+
+.profile-page__button-group {
+  @apply space-x-2 md:space-x-5;
+}
