@@ -13,9 +13,15 @@
     .graph_bar {
         position: absolute;
         width: 10%;
-        bottom: 12.5%;
+        bottom: 0;
         background: #e05b42;
         border: 1px solid #222;
     }
+    .graph_text {
+        position: absolute;
+        width: 10%;
+        bottom: 0;
+    }
+    
 }
 
