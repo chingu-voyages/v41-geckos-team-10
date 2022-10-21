@@ -1,5 +1,7 @@
 import React from "react";
 import classnames from "classnames";
+import '../index.css'
+import '../style/dashboard.css'
 
 const Line = ({spacing}) => {
     return (
@@ -10,9 +12,9 @@ const Line = ({spacing}) => {
 
 //why doesn't the bottom-spacing property work?
 
-const Bar = ({percent}) => {
+const Bar = ({percent, spacing}) => {
     return (
-        <div className={classnames('graph_bar', [`h-${percent}`])} />
+        <div className={classnames('graph_bar', [`h-${percent}`], [`left-${spacing}`])} />
     )
 }; 
 
