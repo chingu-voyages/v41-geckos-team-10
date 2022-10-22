@@ -18,8 +18,7 @@ function LoginForm() {
     axios
       .post("/login", body)
       .then((response) => {
-       if( response.status === 200 )
-       setErrMsg(response.data);
+        if (response.status === 200) setErrMsg(response.data);
       })
       .catch((error) => {
         console.error(error.response.data);
