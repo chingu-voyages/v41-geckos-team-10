@@ -10,9 +10,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/Dashboard" element={<Dashboard />} />
-        </Route>
+        <Route path="/" element={<App />} />
         <Route path="/loginform" element={<LoginForm />} />
       </Routes>
     </BrowserRouter>
