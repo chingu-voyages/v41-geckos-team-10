@@ -1,19 +1,27 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
-const crypto = require("crypto");
 const cors = require("cors");
 const routes = require("./routes/index");
 const bodyParser = require("body-parser");
 
+//https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/
+
 const app = express();
 
 const path = require("path");
-app.use(express.static(path.join(__dirname, 'build'))); //this is the path to the build folder
 
+// Serve static files from the React app
+//You will need to serve the static files from the React app in production.
+/*app.use(express.static(path.join(__dirname, 'build'))); //this is the path to the build folder
 app.get('/', function (req, res) {  //this is the path to the build folder, main entry point shows landing page
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+}); */
+
+
+//Backend Root Route. If you see this In the browser, you know the server is running
+app.get('/', (req, res) => { 
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
 
 app.use(bodyParser.json()); // support json encoded bodies
