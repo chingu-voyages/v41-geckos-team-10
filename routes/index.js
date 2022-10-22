@@ -2,6 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const passwordUtil = require("../lib/passwordUtil");
 const User = require("../config/database");
+const isAuth = require("../routes/auth").isAuth;
 
 /*You won't be able to redirect React client javascript with server redirects.
 Try this on client:
@@ -16,12 +17,8 @@ axios.post('/register', body)
 
 //Post Routes
 router.post("/register", (req, res) => {
-  console.log("register route");
   const { username, password } = req.body; //destructuring the body of the request
   const { hash, salt } = passwordUtil.genPassword(password); //generate a hash and salt for the password
-
-  console.log(username);
-
   const newUser = new User({
     username: username,
     hash: hash,
@@ -33,8 +30,6 @@ router.post("/register", (req, res) => {
     .save()
     .then((user) => console.log(user))
     .catch((err) => console.log(err));
-
-  console.log("user saved");
 });
 
 //req.body includes the email and password
@@ -72,20 +67,10 @@ router.get("/register", (req, res, next) => {
 /**
  * Lookup how to authenticate users on routes with Local Strategy
  * Google Search: "How to use Express Passport Local Strategy"
- *
  * Also, look up what behaviour express session has without a maxage set
  */
-router.get("/protected-route", (req, res, next) => {
-  // This is how you check if a user is authenticated and protect a route.  You could turn this into a custom middleware to make it less redundant
-  if (req.isAuthenticated()) {
-    res.send(
-      '<h1>You are authenticated</h1><p><a href="/logout">Logout and reload</a></p>'
-    );
-  } else {
-    res.send(
-      '<h1>You are not authenticated</h1><p><a href="/login">Login</a></p>'
-    );
-  }
+router.get("/protected-route", isAuth, (req, res, next) => {
+  res.send("You have reached the protected route");
 });
 
 // Visiting this route logs the user out
