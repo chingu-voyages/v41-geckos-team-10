@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [errMsg, setErrMsg] = useState("");
+
+  const navigate = useNavigate();
 
   const loginUser = async (e) => {
     setErrMsg("");
@@ -14,17 +17,23 @@ function LoginForm() {
       password: e.currentTarget.password.value,
     };
 
-    //axios post call to login and if successful, redirect to home
     axios
-      .post("/login", body)
+      .post("http://localhost:4000/login", body) //post call to backend login route
       .then((response) => {
         if (response.status === 200) setErrMsg(response.data);
+        return navigate("/loginform"); //currently will navigate to loginform page regardless of login success
       })
       .catch((error) => {
         console.error(error.response.data);
         setErrMsg("Invalid username or password");
       });
   };
+
+  //https://reactrouter.com/en/main/fetch/redirecting
+  //Redirecting after login using react router v6
+  //It's recommended to use redirect in loaders and actions rather than useNavigate
+  //in your components when the redirect is in response to data.
+  //https://www.makeuseof.com/redirect-user-after-login-react/
 
   return (
     <form onSubmit={(e) => loginUser(e)} className="form-container">
