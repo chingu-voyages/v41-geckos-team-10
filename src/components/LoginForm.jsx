@@ -17,17 +17,13 @@ function LoginForm() {
       password: e.currentTarget.password.value,
     };
 
-    axios
-      .post("http://localhost:4000/login", body) //post call to backend login route
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) setErrMsg(response.data);
-        return navigate("/profile-page"); //currently will navigate to profile page regardless of login success
-      })
-      .catch((error) => {
-        console.error(error.response.data);
-        setErrMsg("Invalid username or password");
-      });
+    const response = await axios.post("http://localhost:4000/login", body);
+    if (response.status === 200) {
+      console.log(response)
+      navigate("/profile-page");
+    } else {
+      setErrMsg("User does not exist");
+    }
   };
 
   //https://reactrouter.com/en/main/fetch/redirecting

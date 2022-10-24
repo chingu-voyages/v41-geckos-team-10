@@ -18,7 +18,7 @@ function RegisterForm() {
 
   const validatePassword = (e) => {
     const password = e.target.value;
-    if(password.length < 6) {
+    if (password.length < 6) {
       setErrMsg("Password must be at least 6 characters long");
     } else {
       setErrMsg("");
@@ -41,19 +41,15 @@ function RegisterForm() {
       password: e.currentTarget.password.value,
     };
 
-    axios
-      .post("http://localhost:4000/register", body)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error(error.response.data);
-      });
+    const response = await axios.post("http://localhost:4000/register", body);
+
+    if (response.status === 200) {
+      setSuccessMsg(response.data);
+    } else {
+      setErrMsg("User already exists");
+    }
 
     e.target.reset();
-    setSuccessMsg("User registered successfully");
   };
 
   return (
