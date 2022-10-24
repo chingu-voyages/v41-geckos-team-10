@@ -1,0 +1,11 @@
+.profile-resume {
+  @apply flex flex-col items-center;
+}
+
+.profile-resume__image {
+  @apply w-10 h-10 md:w-20 md:h-20;
+}
+
+.profile-resume__name {
+  @apply text-sm;
+}

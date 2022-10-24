@@ -2,16 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import LoginForm from "./components/LoginForm";
+import Dashboard from "./pages/Dashboard";
 import "./index.css";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/loginform" element={<LoginForm />} />
+        <Route path="/" element={<App />}>
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/profile-page" element={<ProfilePage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
