@@ -8,7 +8,7 @@ const ProfileImageUpload = () => {
 
   useEffect(() => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, []);
+  }, [files]);
   return (
     <div className="profile-image-upload">
       {files.map((file) => (
