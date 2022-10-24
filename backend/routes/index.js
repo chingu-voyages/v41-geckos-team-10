@@ -8,6 +8,7 @@ const isAuth = require("./auth").isAuth;
 router.post("/register", (req, res) => {
   const { email, password } = req.body;
   const { hash, salt } = passwordUtil.genPassword(password);
+
   const newUser = new User({
     email: email,
     hash: hash,
@@ -27,26 +28,6 @@ router.post("/login", (req, res, next) => {
     failureRedirect: "/login-failure",
     successRedirect: "/login-success",
   })(req, res, next);
-});
-
-//Get Routes
-router.get("/login", (req, res, next) => {
-  const form =
-    '<h1>Login Page</h1><form method="POST" action="/login">\
-    Enter Username:<br><input type="text" name="username">\
-    <br>Enter Password:<br><input type="password" name="password">\
-    <br><br><input type="submit" value="Submit"></form>';
-  res.send(form);
-});
-
-router.get("/register", (req, res, next) => {
-  const form =
-    '<h1>Register Page</h1><form method="post" action="register">\
-                    Enter Username:<br><input type="text" name="username">\
-                    <br>Enter Password:<br><input type="password" name="password">\
-                    <br><br><input type="submit" value="Submit"></form>';
-
-  res.send(form);
 });
 
 router.get("/logout", (req, res, next) => {
