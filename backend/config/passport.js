@@ -5,7 +5,7 @@ const validPassword = require("../lib/passwordUtil").validPassword;
 
 passport.use(
   new LocalStrategy((email, password, done) => { //done is a callback function
-    User.findOne({ email: email }, (err, user) => {   //check to see if the username exists
+    User.findOne({ email: email }, (err, user) => {   //check to see if the email exists
       if (err) { 
         return done(err);
       }
@@ -14,6 +14,7 @@ passport.use(
       }
       const isValid = validPassword(password, user.hash, user.salt); //compare the password the user entered with the hash stored in the database
       if (isValid) {
+        console.log("User is valid");
         return done(null, user);
       } else {
         return done(null, false);
