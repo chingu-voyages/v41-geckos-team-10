@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
-const routes = require("./routes/index");
+const routes = require("./backend/routes/index");
 const bodyParser = require("body-parser");
 
 //https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/
@@ -54,7 +54,7 @@ app.use(
 );
 
 //Passport Authentication
-require("./config/passport"); //Passport configuration
+require("./backend/config/passport"); //Passport configuration
 //need to realize the passport middleware if a user refreshes the page or closes the browser and opens it again
 app.use(passport.initialize()); //initialize passport
 app.use(passport.session()); //use passport to manage the session

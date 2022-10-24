@@ -2,7 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 const passwordUtil = require("../lib/passwordUtil");
 const User = require("../config/database");
-const isAuth = require("../routes/auth").isAuth;
+const isAuth = require("./auth").isAuth;
 
 /*You won't be able to redirect React client javascript with server redirects.
 Try this on client:

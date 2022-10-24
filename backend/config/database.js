@@ -5,7 +5,7 @@ require("dotenv").config();
 // Connect to MongoDB
 mongoose
   .connect(
-    process.env.DB_PASSWORD,
+    "mongodb+srv://cody:testchingu@cluster0.ssijp8i.mongodb.net/jobtracker?retryWrites=true&w=majority",
     { useNewUrlParser: true }
   )
   .then(() => console.log("MongoDB Connected"))
