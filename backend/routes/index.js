@@ -9,16 +9,26 @@ router.post("/register", (req, res) => {
   const { email, password } = req.body;
   const { hash, salt } = passwordUtil.genPassword(password);
 
-  const newUser = new User({
-    email: email,
-    hash: hash,
-    salt: salt,
-  });
+  User.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.log(err);
+    } else if (user) {
+      res.status(409);
+    } else {
+      const newUser = new User({
+        email: email,
+        hash: hash,
+        salt: salt,
+      });
 
-  newUser
-    .save()
-    .then((user) => console.log(user))
-    .catch((err) => console.log(err));
+      newUser
+        .save()
+        .then((user) => console.log(user))
+        .catch((err) => console.log(err));
+
+      res.send("Registration successful, please login");
+    }
+  });
 });
 
 //req.body includes the email and password
@@ -30,24 +40,22 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
+//Get Routes
+router.get("/login-success", (req, res, next) => {
+  res.status(200).send("Login successful");
+});
+
+router.get("/login-failure", (req, res, next) => {
+  res.sendStatus(401);
+});
+
 router.get("/logout", (req, res, next) => {
-  //logout the user
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
     res.redirect("/"); //redirect to the home page
   });
-});
-
-router.get("/login-success", (req, res, next) => {
-  //if the user is authenticated, redirect to the protected route
-  res.send("You have successfully logged in.");
-});
-
-router.get("/login-failure", (req, res, next) => {
-  //if the user is not authenticated, redirect to the login page
-  res.send("You entered the wrong password.");
 });
 
 module.exports = router;
