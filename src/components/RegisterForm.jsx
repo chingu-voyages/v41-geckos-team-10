@@ -6,6 +6,25 @@ function RegisterForm() {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
+  const validateEmail = (e) => {
+    const email = e.target.value;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(email)) {
+      setErrMsg("Please enter a valid email address");
+    } else {
+      setErrMsg("");
+    }
+  };
+
+  const validatePassword = (e) => {
+    const password = e.target.value;
+    if(password.length < 6) {
+      setErrMsg("Password must be at least 6 characters long");
+    } else {
+      setErrMsg("");
+    }
+  };
+
   const registerUser = async (e) => {
     e.preventDefault();
 
@@ -33,15 +52,21 @@ function RegisterForm() {
         console.error(error.response.data);
       });
 
-      e.target.reset();
-      setSuccessMsg("User registered successfully");
+    e.target.reset();
+    setSuccessMsg("User registered successfully");
   };
 
   return (
     <form onSubmit={(e) => registerUser(e)} className="form-container">
       <label>
         <span className="form--span">Email</span>
-        <input type="text" name="email" className="form--input" required />
+        <input
+          type="text"
+          name="email"
+          onChange={validateEmail}
+          className="form--input"
+          required
+        />
       </label>
       <label>
         <span className="form--span">Password</span>
@@ -49,6 +74,7 @@ function RegisterForm() {
           type="password"
           name="password"
           className="form--input"
+          onChange={validatePassword}
           required
         />
       </label>
