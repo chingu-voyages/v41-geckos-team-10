@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 
 function RegisterForm() {
+  const [errMsg, setErrMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
+
   const registerUser = async (e) => {
     e.preventDefault();
+
+    setErrMsg("");
+    setSuccessMsg("");
+
+    if (e.target.password.value !== e.target.confirmPassword.value) {
+      setErrMsg("Passwords do not match");
+      return;
+    }
+
     const body = {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
     };
-    console.log(e);
 
-    //axios post call to register and if successful, redirect to login
     axios
       .post("http://localhost:4000/register", body)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
-          console.log("User registered");
+          console.log(response.data);
         }
       })
       .catch((error) => {
         console.error(error.response.data);
       });
+      setSuccessMsg("User registered successfully");
   };
 
   return (
@@ -44,7 +54,7 @@ function RegisterForm() {
         <span className="form--span">Repeat password</span>
         <input
           type="password"
-          name="rpassword"
+          name="confirmPassword"
           className="form--input"
           required
         />
@@ -55,6 +65,8 @@ function RegisterForm() {
           Sign up
         </button>
       </div>
+      {errMsg && <p className="error">{errMsg}</p>}
+      {successMsg && <p className="success">{successMsg}</p>}
     </form>
   );
 }

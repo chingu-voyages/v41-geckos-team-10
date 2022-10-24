@@ -39,3 +39,13 @@
     background-color: #484D52;
     color: white;
 }
+
+.error {
+    color: red;
+    font-size: 0.75rem;
+}
+
+.success {
+    color: green;
+    font-size: 0.75rem;
+}
