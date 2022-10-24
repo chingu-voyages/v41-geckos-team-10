@@ -4,28 +4,16 @@ const passwordUtil = require("../lib/passwordUtil");
 const User = require("../models/userModel");
 const isAuth = require("./auth").isAuth;
 
-/*You won't be able to redirect React client javascript with server redirects.
-Try this on client:
-
-axios.post('/register', body)
-.then( (res) => {
-  if (res.status === 200) { 
-    window.location.href="/thankyou"; 
-    // or <Navigate to="/thankyou" /> if you are using react-router / Navigate is for v6 and above
-  }
-}) */
-
 //Post Routes
 router.post("/register", (req, res) => {
-  const { email, password } = req.body; //destructuring the body of the request
-  const { hash, salt } = passwordUtil.genPassword(password); //generate a hash and salt for the password
+  const { email, password } = req.body;
+  const { hash, salt } = passwordUtil.genPassword(password);
   const newUser = new User({
     email: email,
     hash: hash,
     salt: salt,
   });
 
-  //save the user to the database
   newUser
     .save()
     .then((user) => console.log(user))
@@ -42,8 +30,6 @@ router.post("/login", (req, res, next) => {
 });
 
 //Get Routes
-
-// When you visit http://localhost:4000/login, you will see "Login Page"
 router.get("/login", (req, res, next) => {
   const form =
     '<h1>Login Page</h1><form method="POST" action="/login">\
@@ -53,7 +39,6 @@ router.get("/login", (req, res, next) => {
   res.send(form);
 });
 
-// When you visit http://localhost:4000/register, you will see "Register Page"
 router.get("/register", (req, res, next) => {
   const form =
     '<h1>Register Page</h1><form method="post" action="register">\
@@ -64,16 +49,6 @@ router.get("/register", (req, res, next) => {
   res.send(form);
 });
 
-/**
- * Lookup how to authenticate users on routes with Local Strategy
- * Google Search: "How to use Express Passport Local Strategy"
- * Also, look up what behaviour express session has without a maxage set
- */
-router.get("/protected-route", isAuth, (req, res, next) => {
-  res.send("You have reached the protected route");
-});
-
-// Visiting this route logs the user out
 router.get("/logout", (req, res, next) => {
   //logout the user
   req.logout(function (err) {
