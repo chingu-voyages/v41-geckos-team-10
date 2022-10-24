@@ -3,6 +3,9 @@ import axios from "axios";
 import "./Form.css";
 import { useNavigate } from "react-router-dom";
 
+//https://stackoverflow.com/questions/64627649/express-session-is-not-setting-cookies-in-browser
+// help with setting cookies
+
 function LoginForm() {
   const [errMsg, setErrMsg] = useState("");
 
@@ -17,20 +20,16 @@ function LoginForm() {
       password: e.currentTarget.password.value,
     };
 
-    const response = await axios.post("http://localhost:4000/login", body);
+    const response = await axios.post("http://localhost:4000/login", body, {
+      withCredentials: true, //with credentials is set to true to allow cookies to be set in the browser client side
+    });
     if (response.status === 200) {
-      console.log(response)
+      console.log(response);
       navigate("/profile-page");
     } else {
       setErrMsg("User does not exist");
     }
   };
-
-  //https://reactrouter.com/en/main/fetch/redirecting
-  //Redirecting after login using react router v6
-  //It's recommended to use redirect in loaders and actions rather than useNavigate
-  //in your components when the redirect is in response to data.
-  //https://www.makeuseof.com/redirect-user-after-login-react/
 
   return (
     <form onSubmit={(e) => loginUser(e)} className="form-container">
