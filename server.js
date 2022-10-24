@@ -5,22 +5,13 @@ const cors = require("cors");
 const routes = require("./backend/routes/index");
 const bodyParser = require("body-parser");
 const connectDb = require("./backend/config/database");
+const passportConfig = require("./backend/config/passport");
 
 //https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/
 
 connectDb();
 
 const app = express();
-
-//const path = require("path");
-
-// Serve static files from the React app
-//You will need to serve the static files from the React app in production.
-/*app.use(express.static(path.join(__dirname, 'build'))); //this is the path to the build folder
-app.get('/', function (req, res) {  //this is the path to the build folder, main entry point shows landing page
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-}); */
-
 
 //Backend Root Route. If you see this In the browser, you know the server is running
 app.get('/', (req, res) => { 
@@ -47,6 +38,7 @@ require("dotenv").config();
 app.use(
   session({
     secret: process.env.SECRET_KEY, // Change this to your own secret in the environment variables
+    resave: false,
     resave: true,
     saveUninitialized: true,
     cookie: {
@@ -57,7 +49,6 @@ app.use(
 );
 
 //Passport Authentication
-require("./backend/config/passport"); //Passport configuration
 //need to realize the passport middleware if a user refreshes the page or closes the browser and opens it again
 app.use(passport.initialize()); //initialize passport
 app.use(passport.session()); //use passport to manage the session
@@ -65,7 +56,6 @@ app.use(passport.session()); //use passport to manage the session
 //Custom middleware for bug fixing
 app.use((req, res, next) => {
     console.log(req.session);
-    console.log(req.user);
     next();
 });
 
