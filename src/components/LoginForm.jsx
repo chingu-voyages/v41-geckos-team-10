@@ -13,15 +13,16 @@ function LoginForm() {
 
     e.preventDefault();
     const body = {
-      username: e.currentTarget.username.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
     };
 
     axios
       .post("http://localhost:4000/login", body) //post call to backend login route
       .then((response) => {
+        console.log(response);
         if (response.status === 200) setErrMsg(response.data);
-        return navigate("/loginform"); //currently will navigate to loginform page regardless of login success
+        return navigate("/profile-page"); //currently will navigate to profile page regardless of login success
       })
       .catch((error) => {
         console.error(error.response.data);
@@ -39,7 +40,7 @@ function LoginForm() {
     <form onSubmit={(e) => loginUser(e)} className="form-container">
       <label>
         <span className="form--span">Email</span>
-        <input type="text" name="username" className="form--input" required />
+        <input type="text" name="email" className="form--input" required />
       </label>
       <label>
         <span className="form--span">Password</span>

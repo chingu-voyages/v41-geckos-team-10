@@ -6,7 +6,7 @@ function RegisterForm() {
   const registerUser = async (e) => {
     e.preventDefault();
     const body = {
-      username: e.currentTarget.username.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value,
     };
     console.log(e);
@@ -29,7 +29,7 @@ function RegisterForm() {
     <form onSubmit={(e) => registerUser(e)} className="form-container">
       <label>
         <span className="form--span">Email</span>
-        <input type="text" name="username" className="form--input" required />
+        <input type="text" name="email" className="form--input" required />
       </label>
       <label>
         <span className="form--span">Password</span>

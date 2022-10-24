@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 const passwordUtil = require("../lib/passwordUtil");
-const User = require("../config/database");
+const User = require("../models/userModel");
 const isAuth = require("./auth").isAuth;
 
 /*You won't be able to redirect React client javascript with server redirects.
@@ -17,10 +17,10 @@ axios.post('/register', body)
 
 //Post Routes
 router.post("/register", (req, res) => {
-  const { username, password } = req.body; //destructuring the body of the request
+  const { email, password } = req.body; //destructuring the body of the request
   const { hash, salt } = passwordUtil.genPassword(password); //generate a hash and salt for the password
   const newUser = new User({
-    username: username,
+    email: email,
     hash: hash,
     salt: salt,
   });

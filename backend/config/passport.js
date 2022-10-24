@@ -4,8 +4,8 @@ const User = require("../config/database");
 const validPassword = require("../lib/passwordUtil").validPassword;
 
 passport.use(
-  new LocalStrategy((username, password, done) => { //done is a callback function
-    User.findOne({ username: username }, (err, user) => {   //check to see if the username exists
+  new LocalStrategy((email, password, done) => { //done is a callback function
+    User.findOne({ email: email }, (err, user) => {   //check to see if the username exists
       if (err) { 
         return done(err);
       }
