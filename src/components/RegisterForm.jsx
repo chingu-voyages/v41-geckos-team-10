@@ -32,6 +32,8 @@ function RegisterForm() {
       .catch((error) => {
         console.error(error.response.data);
       });
+
+      e.target.reset();
       setSuccessMsg("User registered successfully");
   };
 
