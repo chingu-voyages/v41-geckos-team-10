@@ -4,12 +4,15 @@ const passport = require("passport");
 const cors = require("cors");
 const routes = require("./backend/routes/index");
 const bodyParser = require("body-parser");
+const connectDb = require("./backend/config/database");
 
 //https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/
 
+connectDb();
+
 const app = express();
 
-const path = require("path");
+//const path = require("path");
 
 // Serve static files from the React app
 //You will need to serve the static files from the React app in production.
