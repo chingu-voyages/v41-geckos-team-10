@@ -1,35 +1,40 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../config/database");
+const User = require("../models/userModel");
 const validPassword = require("../lib/passwordUtil").validPassword;
 
-passport.use(
-  new LocalStrategy((email, password, done) => { //done is a callback function
-    User.findOne({ email: email }, (err, user) => {   //check to see if the email exists
-      if (err) { 
-        return done(err);
+const customFields = {
+  usernameField: "email",
+  passwordField: "password",
+};
+
+const strategy = new LocalStrategy(customFields, (email, password, done) => {
+  User.findOne({ email: email })
+    .then((user) => {
+      if (!user) {
+        return done(null, false, { message: "Incorrect email" });
       }
-      if (!user) {  //if the user is not found
-        return done(null, false);
-      }
-      const isValid = validPassword(password, user.hash, user.salt); //compare the password the user entered with the hash stored in the database
+      const isValid = validPassword(password, user.hash, user.salt);
       if (isValid) {
-        console.log("User is valid");
         return done(null, user);
       } else {
-        return done(null, false);
+        return done(null, false, { message: "Incorrect password" });
       }
-    });
-  })
-);
+    })
+    .catch((err) => done(err));
+});
+
+passport.use(strategy);
 
 //Puts the user in the session
 passport.serializeUser((user, done) => {
+    console.log(`"serializing user: " ${user}`);
     done(null, user.id); // put the user id in the session
     });
 
 //Gets the user from the session
 passport.deserializeUser((id, done) => { // get the user id from the session
+  console.log(`"deserializing user: " ${id}`);
     User.findById(id, function (err, user) { // find the user by id
         done(err, user); // return the user
     });
