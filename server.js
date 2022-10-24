@@ -4,8 +4,10 @@ const passport = require("passport");
 const cors = require("cors");
 const routes = require("./backend/routes/index");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const connectDb = require("./backend/config/database");
 const passportConfig = require("./backend/config/passport");
+const MongoStore = require("connect-mongo");
 
 //https://www.section.io/engineering-education/how-to-setup-nodejs-express-for-react/
 
@@ -24,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //setup cors to allow us to accept requests from our client
 app.use(
   cors({
-    origin: "*", // allow to server to accept request from different origin
+    origin: "http://localhost:3000" , // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })
@@ -34,16 +36,16 @@ app.use(
 //Give accces to the dotenv file to get the environment variables access the variables using process.env.VARIABLE_NAME
 require("dotenv").config();
 
-// Express Session
+app.use(cookieParser());
+
 app.use(
   session({
-    secret: process.env.SECRET_KEY, // Change this to your own secret in the environment variables
+    secret: process.env.SECRET_KEY,
     resave: false,
-    resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_PASSWORD }),
     cookie: {
-      //Sends the cookie in every request header and the cookie is given to the browser
-      maxAge: 1000 * 60 * 60 * 24, // 24 hours expiry
+      maxAge: 1000 * 60 * 60 * 24, // 24 hours
     },
   })
 );
