@@ -13,7 +13,7 @@ function RegisterForm() {
 
     //axios post call to register and if successful, redirect to login
     axios
-      .post("/register", body)
+      .post("http://localhost:4000/register", body)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
