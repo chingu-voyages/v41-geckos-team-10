@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const connectDb = async () => {
   try {
-    const conn = await mongoose.connect("mongodb+srv://cody:testchingu@cluster0.ssijp8i.mongodb.net/jobtracker?retryWrites=true&w=majority", {
+    const conn = await mongoose.connect(process.env.DB_PASSWORD, {
       useNewUrlParser: true,
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
