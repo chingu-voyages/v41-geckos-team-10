@@ -33,7 +33,9 @@ const ProfileImageUpload = () => {
           );
         }}
         multiple={false}
-        accept="image/*"
+        accept={{
+          "image/*": [".png", ".jpeg", ".jpg", ".svg"],
+        }}
       >
         {({ getRootProps, getInputProps }) => (
           <section>

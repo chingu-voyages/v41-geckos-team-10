@@ -1,0 +1,11 @@
+.dashboard_tracker_container {
+    @apply row-span-3 flex flex-row;
+}
+
+.dashboard_tracker_item {
+    @apply bg-lt-green basis-2/6 border-2 m-2 rounded-3xl;
+}
+
+.dashboard_tracker_item_text {
+    @apply text-center;
+}
