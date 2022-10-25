@@ -1,0 +1,4 @@
+.profile-location-select {
+  @apply flex flex-col w-72 md:w-96;
+  font-family: "Inter";
+}
