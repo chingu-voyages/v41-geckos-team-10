@@ -40,8 +40,7 @@
     border-radius: 50%;
     border: 5px solid #C8BFBF;
     box-shadow: 0 5px 5px; */
-    @apply box-border h-48 w-48 border-4 rounded-full
-    drop-shadow-xl -mb-10
+    @apply box-border h-48 w-48 border-4 rounded-full drop-shadow-xl mb-10;
     
 }
 
@@ -50,9 +49,7 @@
     align-items: center;
     padding: 12px;
     transition: 0.5s; */
-    @apply flex flex-row pt-5 
-    drop-shadow-xl-d -mb-96
-    ;
+    @apply flex flex-row pt-5 drop-shadow-xl mb-96;
     
 }
 
