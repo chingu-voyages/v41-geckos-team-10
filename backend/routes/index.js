@@ -42,7 +42,7 @@ router.post("/login", (req, res, next) => {
 
 //Get Routes
 router.get("/login-success", (req, res, next) => {
-  res.status(200).send("Login successful");
+  res.status(200).send(`Welcome ${req.user.email}`);
 });
 
 router.get("/login-failure", (req, res, next) => {
