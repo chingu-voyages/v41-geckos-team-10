@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [errMsg, setErrMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,11 +25,12 @@ function LoginForm() {
       withCredentials: true, //with credentials is set to true to allow cookies to be set in the browser client side
     });
     if (response.status === 200) {
-      console.log(response);
+      setSuccessMsg(response.data);
       navigate("/profile-page");
     } else {
       setErrMsg("User does not exist");
     }
+    e.target.reset();
   };
 
   return (
@@ -53,6 +55,7 @@ function LoginForm() {
         </button>
       </div>
       {errMsg && <span className="error">{errMsg}</span>}
+      {successMsg && <span className="success">{successMsg}</span>}
     </form>
   );
 }
