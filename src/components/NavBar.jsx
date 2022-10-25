@@ -33,7 +33,7 @@ const NavBar = ()=> {
                 <li className="navbar--button--div">
                     <button className="navbar navbar--button">Add Task +</button>
                 </li>
-                <li className="navbar navbar--list_item navbar--icon navbar--logout">
+                <li className="navbar navbar--logout">
                     <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
                     <Link className="navbar--text_logout" to=''>Logout</Link>
                 </li>
