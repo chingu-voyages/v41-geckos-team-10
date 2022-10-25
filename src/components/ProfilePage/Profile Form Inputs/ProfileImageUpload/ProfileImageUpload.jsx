@@ -8,7 +8,8 @@ const ProfileImageUpload = () => {
 
   useEffect(() => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, []);
+  }, [files]);
+
   return (
     <div className="profile-image-upload">
       {files.map((file) => (
@@ -33,7 +34,9 @@ const ProfileImageUpload = () => {
           );
         }}
         multiple={false}
-        accept="image/*"
+        accept={{
+          "image/*": [".png", ".jpeg", ".jpg", ".svg"],
+        }}
       >
         {({ getRootProps, getInputProps }) => (
           <section>
