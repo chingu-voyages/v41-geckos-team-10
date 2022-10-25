@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -45,7 +43,10 @@ module.exports = {
         '81/100':'81%','83/100':'83%','85/100':'85%','87/100':'87%','89/100':'89%',
         '91/100':'91%','93/100':'93%','95/100':'95%','97/100':'97%','99/100':'99%',
       }
+      fontFamily: {
+        display: ["Inter", "Arial", "Helvetica", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
+};
