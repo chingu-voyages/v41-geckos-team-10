@@ -1,7 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { Line, Bar } from './GraphUtilities';
-import '../index.css'
+import '../../index.css'
 
 // How to Build a Bar Graph With React https://dzuz14.medium.com/how-to-build-a-bar-graph-with-react-458a19ef0ba0//
 
