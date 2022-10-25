@@ -18,6 +18,18 @@ const profileSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  timezone: {
+    type: String,
+    required: true,
+  },
+  avatar: {
+    type: String,
+    required: true,
+  },
+  resumesUploaded: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
