@@ -68,19 +68,19 @@
     ;
 }
 
-.navbar--text {
-    /* @apply self-center px-10 text-lg  */
+/* .navbar--text {
+    @apply self-center px-10 text-lg 
 }
 
 .navbar--text_logout {
-    /* @apply text-sm; */
+    @apply text-sm;
 }
 
 .navbar--button--div {
-    /* @apply 
-        relative flex mt-20 ml-10 */
+    @apply 
+        relative flex mt-20 ml-10
 
-}
+} */
 
 .navbar--button {
     position: absolute;
@@ -118,9 +118,9 @@
         ; */
 }
 
-.navbar--text_logout {
-    /* @apply text-sm; */
-}
+/* .navbar--text_logout {
+    @apply text-sm;
+} */
 
 .navbar--icon_logout {
     height: 1.2rem;
