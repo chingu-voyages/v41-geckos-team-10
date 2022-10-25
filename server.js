@@ -32,7 +32,6 @@ app.use(
   })
 );
 
-
 //Give accces to the dotenv file to get the environment variables access the variables using process.env.VARIABLE_NAME
 require("dotenv").config();
 
