@@ -5,7 +5,6 @@ import App from './App';
 import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing';
 import ProfilePage from "./components/ProfilePage/ProfilePage";
-import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

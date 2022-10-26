@@ -1,5 +1,5 @@
 import React from 'react'
-import Signup from './Signup'
+import RegisterForm from './RegisterForm'
 
 function SignupModal({setShowModalSignup}) {
   return (
@@ -9,7 +9,7 @@ function SignupModal({setShowModalSignup}) {
     aria-hidden="true"
     className="justify-center flex-col items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-gray-600 bg-opacity-50"
   >
-    <Signup />
+    <RegisterForm />
     <button onClick={() => setShowModalSignup(false)}>Close</button>
   </div>
   )
