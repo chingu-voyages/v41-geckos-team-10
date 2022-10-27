@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import {nanoid } from 'nanoid';
 import './AddJob.css';
 
 
@@ -24,13 +25,16 @@ const AddJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(addJobTracker)
+        console.log(addJobTracker)
     }
 
     
     return(
         <div className='add-job border w-96 h-screen flex flex-col justify-between bg-blue-100'>
-            <form className='add-job_opportunity-detail_form'>
+            <form 
+                className='add-job_opportunity-detail_form'
+                onSubmit={handleSubmit}
+                >
            <div className='add-job_header border'>
                 <div className='add-job_header_close'>
                     <button className='add-job_header_close_button'>x</button>
@@ -47,6 +51,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='companyName'
+                                    key={nanoid}
                                     value={addJobTracker.companyName}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -59,6 +64,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='listingLink'
+                                    key={nanoid}
                                     value={addJobTracker.listingLink}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -72,6 +78,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='companyLocation'
+                                    key={nanoid}
                                     value={addJobTracker.companyLocation}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -85,6 +92,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactName'
+                                    key={nanoid}
                                     value={addJobTracker.contactName}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -98,6 +106,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactEmail'
+                                    key={nanoid}
                                     value={addJobTracker.contactEmail}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -111,6 +120,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactPhone'
+                                    key={nanoid}
                                     value={addJobTracker.contactPhone}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -128,6 +138,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input bg-white'
                                     type='menu'
                                     name='trackerStatus'
+                                    key={nanoid}
                                     value={addJobTracker.trackerStatus}
                                     onChange={handleAddJobTracker}
                                     >
@@ -144,6 +155,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input'
                                     type='date'
                                     name='dateApplied'
+                                    key={nanoid}
                                     value={addJobTracker.dateApplied}
                                     onChange={handleAddJobTracker}
                                     />    
@@ -157,6 +169,7 @@ const AddJob = () => {
                                     className='add-job_opportunity-detail_input bg-white'
                                     type='menu'
                                     name='trackerResume'
+                                    key={nanoid}
                                     value={addJobTracker.trackerResume}
                                     onChange={handleAddJobTracker}>
                                     {resumeUploadedArr.map((item) =>
@@ -176,8 +189,8 @@ const AddJob = () => {
                         type='submit'
                         name='trackerTimeStamp'
                         value={now}
-                        onChange={handleAddJobTracker}
-                        onSubmit={handleSubmit}
+                        onClick={handleAddJobTracker}
+                
                     >
                         Submit
                     </button>
