@@ -1,9 +1,9 @@
 .navbar {
     text-align: left;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
+    z-index: 99;
     /* @apply top-0 box-border h-full  */
-    ;
-    
+    ;    
 }
 
 .navbar--div {
