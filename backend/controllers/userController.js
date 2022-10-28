@@ -39,12 +39,11 @@ const registerUser = (req, res) => {
 const loginUser = (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No user exists");
+    if (!user) res.status(401).send("No user exists");
     else {
-      req.logIn(user, err => {
+      req.logIn(user, (err) => {
         if (err) throw err;
         res.send("Successfully Authenticated");
-        console.log(req.user);
       });
     }
   })(req, res, next);
@@ -61,13 +60,12 @@ const dashboard = (req, res) => {
 //@desc Logout
 //@route GET /logout
 //@access Public
-const logoutUser = (req, res) => {
+const logoutUser = (req, res, next) => {
   req.logout(function (err) {
-    if (err) {
-      console.log( err);
-    } else {
-      res.redirect(CLIENT_URL);
-    }
+    if(err) {
+      console.log(err);
+    } 
+    res.send("Successfully logged out");
   });
 };
 
