@@ -7,7 +7,7 @@ import submitEdit from '../../assets/submit-edit.svg';
 
 //Company, Job Title, Job Status , follow up, location, contact name, contact email, contact phone, resume sent, salary, job description link, date applied, time stamp updated
 
-const AddJob = () => {
+const AddJob = (props) => {
     
     const now = new Date()
     
@@ -27,6 +27,7 @@ const AddJob = () => {
         e.preventDefault();
         console.log(addJobTracker);
         setAddJobTracker('');
+        props.handleOpenTrackerDrawer();
   
     }
 
@@ -47,7 +48,7 @@ const AddJob = () => {
                 </div>
                 <div className='add-job_container flex flex-col flex-1 place-content-around'>
                     <p>* Required Fields</p>
-                    <div className='add-job_opportunity-detail flex flex-col'>
+                    <div className='add-job_opportunity-detail flex flex-col items-center'>
                         <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                 * Company Name
@@ -162,7 +163,6 @@ const AddJob = () => {
                                         type='menu'
                                         name='trackerStatus'
                                         value={addJobTracker.trackerStatus || ''}
-                                        defaultValue=""
                                         onChange={handleAddJobTracker}
                                         >
                                         <option value='' disabled>
@@ -194,7 +194,6 @@ const AddJob = () => {
                                         type='menu'
                                         name='trackerResume'
                                         value={addJobTracker.trackerResume || ''}
-                                        defaultValue=''
                                         onChange={handleAddJobTracker}>
                                         <option value='' disabled>
                                             -- select an option --
