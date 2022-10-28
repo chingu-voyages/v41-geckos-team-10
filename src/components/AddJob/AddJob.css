@@ -7,3 +7,15 @@
     margin:1rem;
     padding:1rem;
 }
+
+.add-job__field {
+    padding:.2rem;
+}
+
+.add-job_opportunity-detail {
+    border: solid;
+}
+
+.add-job_status-detail {
+    border: solid;
+}
