@@ -6,8 +6,8 @@ import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
 
-
 const NavBar = ()=> {
+
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
