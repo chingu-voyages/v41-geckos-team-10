@@ -33,7 +33,7 @@ const AddJob = (props) => {
 
     
     return(
-        <div className='add-job border w-96 bg-blue-100 p-5 flex h-screen'>
+        <div className='add-job border w-96 bg-blue-100 p-3 flex h-screen'>
             <form 
                 className='add-job_opportunity-detail_form flex flex-col flex-1'
                 onSubmit={handleSubmit}
@@ -41,14 +41,17 @@ const AddJob = (props) => {
                 
                 <div className='add-job_header border'>
                     <div className='add-job_header_close'>
-                        <button className='add-job_header_close_button'>
+                        <button 
+                            className='add-job_header_close_button'
+                            onClick={props.handleOpenTrackerDrawer}
+                            >
                             <img src={closePane} alt='Close Pane'/>
                         </button>
                     </div>
                 </div>
                 <div className='add-job_container flex flex-col flex-1 place-content-around'>
                     <p>* Required Fields</p>
-                    <div className='add-job_opportunity-detail flex flex-col items-center'>
+                    <div className='add-job_opportunity-detail flex flex-col'>
                         <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                 * Company Name
