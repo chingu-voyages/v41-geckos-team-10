@@ -5,6 +5,7 @@ import App from './App';
 import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing';
 import ProfilePage from "./components/ProfilePage/ProfilePage";
+import Tracker from './components/Tracker/Tracker'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,7 @@ root.render(
           <Route path='/' element={<Landing />} />
           <Route path='/Dashboard' element={<Dashboard />} />
           <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path='/Tracker' element={<Tracker />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
