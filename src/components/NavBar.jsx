@@ -38,7 +38,7 @@ const NavBar = ()=> {
                 </li>
                 <li className="navbar">
                     <div className="navbar--button--div">
-                        <button className="navbar navbar--button">Add Task +</button>
+                        <button className="navbar navbar--button"><p>Add Task +</p></button>
                     </div>
                 </li>
                 <li className="navbar navbar--logout">

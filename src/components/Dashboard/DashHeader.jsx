@@ -11,12 +11,6 @@ const DashHeader = () => {
     return (
         <div className='dashboard_user-profile'>
                 
-            <div className='dashboard-user-profile_pic'>
-                <Link to='/profile' className=''>
-                    <img src={profilePic} alt='Profile' className='profile-pic'/>
-                </Link>
-            </div>
-
             <p className='dashboard_user-profile_text self-center m-2 text-4xl '>
                 Hello, {memberName}!!
             </p>
