@@ -4,15 +4,12 @@ import './AddJob.css';
 import closePane from '../../assets/close-pane.svg';
 import submitEdit from '../../assets/submit-edit.svg';
 
-
 //Button from navbar? Strict field validation? Resume State? Make location required
 
 const AddJob = (props) => {
     
     const now = new Date()
-    
     const trackerStatusArr =['Applied', 'Contacted', 'Interview Scheduled', 'Interview Held', 'Offer Made', 'Archived']
-
     const resumeUploadedArr = ['coding_resume', 'pm_resume', 'somm_resume']
 
     const [addJobTracker, setAddJobTracker] = useState({});
