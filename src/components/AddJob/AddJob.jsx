@@ -33,16 +33,16 @@ const AddJob = (props) => {
 
     
     return(
-        <div className='add-job w-96 p-3 flex h-screen'>
+        <div className='add-job '>
             <form 
-                className='add-job_opportunity-detail_form flex flex-col flex-1'
+                className='add-job_opportunity-detail_form'
                 onSubmit={handleSubmit}
                 >
                 
-                <div className='add-job_header flex flex-col'>
+                <div className='add-job_header'>
                     <div className='add-job_header_close '>
                         <button 
-                            className='add-job_header_button hover:bg-slate-50 flex items-center text-lg font-bold content-between'
+                            className='add-job_header_button'
                             onClick={props.handleOpenTrackerDrawer}
                             >
                             <img src={closePane} alt='Close Pane'/>
@@ -51,7 +51,7 @@ const AddJob = (props) => {
                     </div>
                   
                 </div>
-                <div className='add-job_container flex flex-col flex-1 place-content-around'>
+                <div className='add-job_container'>
                     <p>* Required Fields</p>
                     <div className='add-job_opportunity-detail'>
                         <div className='add-job__field'>
@@ -158,7 +158,7 @@ const AddJob = (props) => {
                             
                         </div>
                     </div>
-                    <div className='add-job_status-detail flex flex-col gap-5 m-5'>
+                    <div className='add-job_status-detail'>
                         <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                     * Opportunity Status
@@ -213,7 +213,7 @@ const AddJob = (props) => {
                 <div className='add-job_footer'>
                     <div className='add-job_footer_edit'>
                         <button 
-                            className='add-job_footer_button hover:bg-slate-50 flex items-center'
+                            className='add-job_footer_button'
                             type='submit'
                             name='trackerTimeStamp'
                             value={now}
