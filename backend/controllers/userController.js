@@ -24,9 +24,10 @@ const registerUser = (req, res) => {
       newUser
         .save()
         .then((user) => console.log(user))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
 
-      res.send("Registration successful, please login");
+      // res.send("Success! Please login");
+      // res.redirect("/login");
     }
   });
 };
@@ -61,7 +62,7 @@ const loginFailure = (req, res) => {
 const logout = (req, res) => {
   req.logout(function (err) {
     if (err) {
-      return next(err);
+      return (err);
     }
     res.redirect("/");
   });
