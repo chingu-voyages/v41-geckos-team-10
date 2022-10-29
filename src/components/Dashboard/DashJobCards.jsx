@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import './DashJobCards.css';
 import '../../index.css'
 
 
@@ -13,13 +14,13 @@ const DashJobCards = () => {
         ]);
 
     return (
-    <div className='dashboard_job-card_container row-span-3 flex flex-column mx-12'>
+    <div className='dashboard_job-card_container'>
         {dashJobCards.map((job) => (
             <div 
-                className='dashboard_job-card_item bg-lt-green basis-2/6 border-2 m-4 rounded-3xl' 
+                className='dashboard_job-card_item' 
                 key={nanoid()}
             >
-                <p className='dashboard_job-card_text text-center'>{job.item}</p>
+                <p className='dashboard_job-card_text'>{job.item}</p>
             </div> 
         ))}
     </div>)

@@ -17,36 +17,31 @@ const Dashboard = () => {
 //     setOpen(true);
 //     };
     return(
-          <div className='dashboard '>
-  {/* <ButtonToolbar>
-    <Button onClick={() => handleOpen('left')}>Open</Button>
-  </ButtonToolbar>
-
-  <Drawer placement={placement} open={open} onClose={() => setOpen(false)}>
-    <Drawer.Body>
-    <NavBar />
-    </Drawer.Body>
-  </Drawer>  */}
-    <NavBar />
-    <DashHeader />
-            <div className='dashboard_tracker'>
-                <p className='dashboard_tracker_text'>
-                    Most Active Goals and Achievments
-                </p>
-                <DashGoalItems />
-            </div>
-            <div className='dashboard_job-card'>
-                <p className='dashboard_job-card_text'>
-                    Most Recent Applications
-                </p>
-                <DashJobCards />
-            </div>
-            <div className='dashboard_job-tracker'>
-                <p className='dashboard_job-tracker_text'>
-                    Weekly Job Application Tracker
-                </p>
-                <div className='dashboard_job-tracker_graph'>
-                <DashWeeklyAppGraph />
+        <div className='dashboard '>
+        <NavBar />
+            <div className='dashboard--div'>
+                <DashHeader />
+                    <div className='objectives-div'>
+                        <div className='dashboard_tracker'> 
+                            <p className='dashboard_tracker_text'>
+                                Most Active Goals and Achievments
+                            </p>
+                        <DashGoalItems />
+                        </div>
+                        <div className='dashboard_job-card'>
+                            <p className='dashboard_job-card_text'>
+                                Most Recent Applications
+                            </p>
+                            <DashJobCards />
+                        </div>
+                    </div>
+                <div className='dashboard_job-tracker'>
+                    <p className='dashboard_job-tracker_text'>
+                        Weekly Job Application Tracker
+                    </p>
+                    <div className='dashboard_job-tracker_graph'>
+                        <DashWeeklyAppGraph />
+                    </div>
                 </div>
             </div>
         </div>

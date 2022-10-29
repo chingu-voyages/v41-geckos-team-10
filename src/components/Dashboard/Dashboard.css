@@ -1,31 +1,43 @@
 .dashboard {
-    @apply grid grid-rows-5 bg-bg-blue text-white h-screen;
+    @apply h-screen w-screen text-white
+    bg-bg-blue ;
+}
+
+.dashboard--div {
+    @apply grid justify-center items-center 
+    h-90/100 w-4/5 ml-80 pt-6
+
+}
+
+.objectives-div {
+    @apply grid grid-cols-2 gap-14
 }
 
 .dashboard_tracker {
-    @apply grid grid-rows-4 mx-6;
+    @apply flex flex-col mt-5;
 }
 
 .dashboard_tracker_text {
-    @apply self-end ml-8 text-xl;
+    @apply self-end text-xl;
 }
 
 .dashboard_job-card {
-    @apply grid grid-rows-4 mx-6;
+    
 }
 
 .dashboard_job-card_text {
-    @apply self-end ml-8 text-xl;
+   @apply text-right text-xl
 }
 
 .dashboard_job-tracker {
-    @apply row-span-2 grid grid-rows-4 mx-6;
+    @apply flex flex-col mx-6  mt-12;
 }
 
 .dashboard_job-tracker_text {
-    @apply self-end ml-8 text-xl;
+    @apply flex justify-end text-xl;
 }
 
 .dashboard_job-tracker_graph {
-    @apply bg-lt-green border-2 row-span-3 m-6 rounded-3xl text-center;
+    @apply relative h-80
+    ;
 }

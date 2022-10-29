@@ -1,0 +1,10 @@
+.dashboard_job-card_container {
+    
+}
+
+.dashboard_job-card_item {
+    @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center;
+}
+
+.dashboard_job-card_text {
+}

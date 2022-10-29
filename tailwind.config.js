@@ -7,6 +7,10 @@ module.exports = {
       colors: {
         'lt-green': '#8a9d8e',
         'bg-blue': '#27253e',
+        'br-green': '#B1D199',
+        'lt-purple':'#AA9AFF',
+        'lt-blue': '#63B4FF',
+        
       },
       spacing: {
         '1/8':'12.5%',
