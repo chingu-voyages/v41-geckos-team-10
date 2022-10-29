@@ -1,7 +1,7 @@
 .navbar {
     /* text-align: left;
     font-family: 'Inter', Arial, Helvetica, sans-serif; */
-    @apply top-0 box-border h-full 
+    @apply top-0 box-border h-full
     ;
     
 }
@@ -12,7 +12,7 @@
     height: 100vh;
     position: absolute;
     background-color: white; */
-    @apply absolute h-full w-80 text-gray-500 bg-white flex flex-col items-center 
+    @apply absolute w-80 h-screen text-gray-500 bg-white flex flex-col
     /* bg-gradient-to-r from-cyan-500 to-blue-50  */
     ;
 
@@ -21,14 +21,19 @@
 .navbar--list {
     /* font-size: 0.75rem;
     color: #C8BFBF; */
-    @apply flex flex-col gap-32 
+    @apply flex flex-col gap-12 p-10
+    
 }
 
 .navbar--logo {
     /* display: flex;
     justify-content: center;
     padding: 8px; */
-    @apply -mb-96
+    @apply flex justify-center
+}
+
+.profile--picture--div {
+    
 }
 
 .navbar--profile_picture {
@@ -40,8 +45,10 @@
     border-radius: 50%;
     border: 5px solid #C8BFBF;
     box-shadow: 0 5px 5px; */
-    @apply box-border h-48 w-48 border-4 rounded-full
-    drop-shadow-xl -mb-10
+    @apply 
+    h-48 w-48 border-4 rounded-full
+    drop-shadow-xl 
+
     
 }
 
@@ -50,24 +57,22 @@
     align-items: center;
     padding: 12px;
     transition: 0.5s; */
-    @apply flex flex-row pt-5 
-    drop-shadow-xl-d -mb-96
+    @apply flex flex-row p-5
+    drop-shadow-xl-d 
+    transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300
     ;
-    
 }
 
 .navbar--list_item:hover {
     /* color: #424B54;
     font-size: .9rem; */
-    
+    @apply text-black 
 }
 
 .navbar--icon {
     /* height: 2rem;
     padding-right: 25px; */
-    @apply 
-    h-8
-    drop-shadow-lg
+    @apply h-6 drop-shadow-lg 
     ;
 }
 
@@ -81,7 +86,8 @@
 
 .navbar--button--div {
     @apply 
-        relative flex mt-20 ml-10
+        relative flex justify-center
+        
 
 }
 
@@ -104,6 +110,7 @@
         text-white
         rounded-full drop-shadow-2xl
         h-10 w-32 p-2 text-base
+        transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300 
     ;
 }
 
@@ -114,18 +121,22 @@
 
 .navbar--logout {
     /* position: absolute;
-    bottom: 0%; */
-    @apply
-        h-4 w-4 flex mt-20
-        shadow-xl justify-self-end mb-20
-        ;
+    bottom: 0%; */ 
+    
+}
+
+.div--logout {
+     @apply flex flex-row
+     justify-end 
+     
 }
 
 .navbar--text_logout {
-    @apply text-sm;
+    @apply text-sm ;
 }
 
 .navbar--icon_logout {
     /* height: 1.2rem;
     margin: 7px 12px; */
+    @apply h-4 w-4 
 }

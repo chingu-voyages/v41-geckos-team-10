@@ -16,7 +16,9 @@ const NavBar = ()=> {
                     <img className="logo" alt="app logo"/>
                 </li>
                 <li className="navbar navbar--profile_picture">
-                    <img src={profile_picture_holder} className="navbar navbar--profile_picture" alt="profile"/>
+                    <div className="profile--picture--div">
+                        <img src={profile_picture_holder} className="navbar navbar--profile_picture" alt="profile"/>
+                    </div>
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/>
@@ -30,12 +32,16 @@ const NavBar = ()=> {
                     <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
                     <Link to='/Profile' className="navbar navbar--text">Profile</Link>
                 </li>
-                <li className="navbar--button--div">
-                    <button className="navbar navbar--button">Add Task +</button>
+                <li className="navbar">
+                    <div className="navbar--button--div">
+                        <button className="navbar navbar--button">Add Task +</button>
+                    </div>
                 </li>
                 <li className="navbar navbar--logout">
-                    <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
-                    <Link className="navbar--text_logout" to=''>Logout</Link>
+                    <div className={"div--logout"}>
+                        <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
+                        <Link className="navbar--text_logout" to=''>Logout</Link>
+                    </div>
                 </li>
             </ul>
         </nav>
