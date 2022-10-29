@@ -5,9 +5,13 @@ import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
-
+import Dashboard from './Dashboard/Dashboard';
+import Tracker from './Tracker/Tracker';
+import Landing from './Landing';
+import ProfilePage from "./ProfilePage/ProfilePage";
 
 const NavBar = ()=> {
+
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
@@ -22,11 +26,11 @@ const NavBar = ()=> {
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/>
-                    <Link to='/Dashboard' className="navbar navbar--text">Dashboard</Link>
+                    <Link to={"/Dashboard"} className="navbar navbar--text">Dashboard</Link>
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
-                    <Link to='/Profile' className="navbar navbar--text">Profile</Link>
+                    <Link to={"/profile-page"} className="navbar navbar--text">Profile</Link>
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>

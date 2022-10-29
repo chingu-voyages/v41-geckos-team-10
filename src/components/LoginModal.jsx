@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login";
+import LoginForm from "./LoginForm";
 
 function LoginModal({ setShowModalLogin }) {
   return (
@@ -9,7 +9,7 @@ function LoginModal({ setShowModalLogin }) {
       aria-hidden="true"
       className="justify-center flex-col items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-gray-600 bg-opacity-50"
     >
-      <Login />
+      <LoginForm />
       <button onClick={() => setShowModalLogin(false)}>Close</button>
     </div>
   );

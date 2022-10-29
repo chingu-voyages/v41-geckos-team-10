@@ -4,10 +4,12 @@ import ProfileResumeUpload from "./Profile Form Inputs/ProfileResumeUpload/Profi
 import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileTextInput";
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
+import { NavBar } from "../NavBar";
 
 const ProfilePage = () => {
   return (
     <div className="profile-page">
+      <NavBar />
       <form className="profile-page__form">
         <div className="profile-page__name-inputs">
           <ProfileTextInput name="first-name" />
