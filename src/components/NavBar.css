@@ -39,7 +39,7 @@
 }
 
 .profile--picture--div {
-    
+    @apply flex justify-center 
 }
 
 .navbar--profile_picture {

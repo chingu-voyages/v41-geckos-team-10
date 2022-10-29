@@ -15,7 +15,7 @@ const NavBar = ()=> {
                 <li className="navbar navbar--logo">
                     <img className="logo" alt="app logo"/>
                 </li>
-                <li className="navbar navbar--profile_picture">
+                <li className="navbar navbar--list_item">
                     <div className="profile--picture-div">
                         <img src={profile_picture_holder} className="navbar navbar--profile_picture" alt="profile"/>
                     </div>
