@@ -5,7 +5,7 @@ import closePane from '../../assets/close-pane.svg';
 import submitEdit from '../../assets/submit-edit.svg';
 
 
-//Company, Job Title, Job Status , follow up, location, contact name, contact email, contact phone, resume sent, salary, job description link, date applied, time stamp updated
+//Button from navbar? Strict field validation? Resume State? Make location required
 
 const AddJob = (props) => {
     
@@ -69,10 +69,11 @@ const AddJob = (props) => {
                         </div>
                         <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
-                                Job Opening Title
+                                * Job Opening Title
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
+                                    required
                                     name='jobTitle'
                                     value={addJobTracker.jobTitle || ''}
                                     onChange={handleAddJobTracker}
@@ -107,10 +108,11 @@ const AddJob = (props) => {
                         </div>
                         <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
-                                Company Location
+                                * Company Location
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
+                                    required
                                     name='companyLocation'
                                     value={addJobTracker.companyLocation || ''}
                                     onChange={handleAddJobTracker}

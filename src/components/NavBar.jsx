@@ -4,10 +4,13 @@ import dashboard_icon from "../assets/dashboardicon.svg"
 import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
-import logout_icon from "../assets/logouticon.svg"
+import logout_icon from "../assets/logouticon.svg";
+import { useNavigate } from 'react-router-dom';
 
 
 const NavBar = ()=> {
+
+    const navigate = useNavigate();
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
@@ -31,7 +34,12 @@ const NavBar = ()=> {
                     <Link to='/Tracker' className="navbar navbar--text">Tracker</Link>
                 </li>
                 <li className="navbar--button--div">
-                    <button className="navbar navbar--button">Add Task +</button>
+                    <button 
+                        className="navbar navbar--button"
+                        onClick={() => navigate('/tracker')}
+                        >
+                        Add Task +
+                    </button>
                 </li>
                 <li className="navbar navbar--logout">
                     <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
