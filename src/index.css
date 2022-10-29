@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .graph_line {
+        position: absolute;
+        right: 0; 
+        left: 0; 
+        height: 1px;
+        background: black;
+    }
+    .graph_bar {
+        position: absolute;
+        width: 10%;
+        bottom: 0;
+        background: #e05b42;
+        border: 1px solid #222;
+    }
+    .graph_text {
+        position: absolute;
+        width: 10%;
+        bottom: 0;
+    }
+    
+}
+

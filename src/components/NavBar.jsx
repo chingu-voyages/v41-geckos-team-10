@@ -25,6 +25,10 @@ const NavBar = ()=> {
                     <Link to='/Dashboard' className="navbar navbar--text">Dashboard</Link>
                 </li>
                 <li className="navbar navbar--list_item">
+                    <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
+                    <Link to='/Profile' className="navbar navbar--text">Profile</Link>
+                </li>
+                <li className="navbar navbar--list_item">
                     <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>
                     <Link to='/Tracker' className="navbar navbar--text">Tracker</Link>
                 </li>
