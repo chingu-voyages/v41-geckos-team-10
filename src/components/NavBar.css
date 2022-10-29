@@ -1,22 +1,32 @@
 .navbar {
     text-align: left;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
+    z-index: 99;
     /* @apply top-0 box-border h-full  */
-    ;
-    
+    ;    
 }
 
 .navbar--div {
     padding: 2px;
-    width: fit-content;
+    width: 210px;
     height: 100vh;
+    left: -195px;
+    transition: 0.5s;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     position: absolute;
     background-color: white;
     /* @apply absolute h-full w-80 text-gray-500 bg-white flex flex-col items-center 
     bg-gradient-to-r from-cyan-500 to-blue-50  */
-    ;
-
 }
+
+.navbar--div:hover {
+    left: 0%;
+    /* @apply absolute h-full w-80 text-gray-500 bg-white flex flex-col items-center 
+    bg-gradient-to-r from-cyan-500 to-blue-50  */
+}
+   
 
 .navbar--list {
     font-size: 0.75rem;
