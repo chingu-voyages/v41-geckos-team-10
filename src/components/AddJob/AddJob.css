@@ -1,5 +1,12 @@
+.add-job {
+    background-color:#B1D199;
+    border: solid 2px #FF7561;
+}
+
 .add-job_opportunity-detail_input {
     margin-left:1rem;
+    border: solid 2px #FF7561;
+
 
 }
 
@@ -10,12 +17,4 @@
 
 .add-job__field {
     padding:.2rem;
-}
-
-.add-job_opportunity-detail {
-    border: solid;
-}
-
-.add-job_status-detail {
-    border: solid;
 }
