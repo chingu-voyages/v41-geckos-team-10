@@ -30,6 +30,12 @@
     justify-content: center;
     padding: 8px; */
     @apply flex justify-center
+    
+}
+
+.logo {
+    @apply 
+        -mt-5
 }
 
 .profile--picture--div {
@@ -57,7 +63,7 @@
     align-items: center;
     padding: 12px;
     transition: 0.5s; */
-    @apply flex flex-row p-5
+    @apply flex flex-row p-4
     drop-shadow-xl-d 
     transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300
     ;
