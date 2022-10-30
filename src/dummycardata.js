@@ -1,7 +1,7 @@
 // Statuses
 // Applied, Interview, Offer, Upcoming, Archived
 
-const JOBS = [
+export const JOBS = [
   {
     id: 1,
     title: "Software Engineer",
@@ -18,28 +18,28 @@ const JOBS = [
   },
   {
     id: 3,
-    title: "Software Engineer",
+    title: "Software Developer",
     company: "Amazon",
     location: "Seattle, WA",
     status: "Archived",
   },
   {
     id: 4,
-    title: "Software Engineer",
+    title: "Full-Stack Engineer",
     company: "Apple",
     location: "Cupertino, CA",
     status: "Upcoming",
   },
   {
     id: 5,
-    title: "Software Engineer",
+    title: "Front End Developer",
     company: "Microsoft",
     location: "Redmond, WA",
     status: "Applied",
   },
   {
     id: 6,
-    title: "Software Engineer",
+    title: "Full Stack Developer - Infrastructure",
     company: "Tesla",
     location: "Palo Alto, CA",
     status: "Applied",
