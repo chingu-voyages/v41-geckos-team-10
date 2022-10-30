@@ -26,7 +26,7 @@ function LoginForm() {
     });
     if (response.status === 200) {
       setSuccessMsg(response.data);
-      navigate("/profile-page");
+      navigate("/dashboard");
     } else {
       setErrMsg("User does not exist");
     }
@@ -50,7 +50,7 @@ function LoginForm() {
       </label>
 
       <div className="submit">
-        <button type="submit" className="form--button">
+        <button  type="submit" className="form--button">
           Log in
         </button>
       </div>
