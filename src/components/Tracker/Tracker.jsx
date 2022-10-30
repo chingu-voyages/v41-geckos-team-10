@@ -20,8 +20,11 @@ const Tracker = () => {
     return(
         <div className="tracker-page">
             <NavBar />
-            <SortJobs />
-            {jobList}
+            <div className="tracker-div">
+                <SortJobs />
+                {jobList}
+            </div>
+            
         </div>
     );
 };
