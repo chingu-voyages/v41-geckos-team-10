@@ -12,7 +12,7 @@
 }
 
 .profile-page__form {
-  @apply w-10/12 p-5 md:p-10;
+  @apply w-10/12 p-5 md:p-10 ml-64;
 }
 
 .profile-page__name-inputs {
