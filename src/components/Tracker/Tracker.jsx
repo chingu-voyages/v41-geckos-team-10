@@ -5,6 +5,7 @@ import SortJobs from './SortJobs';
 import { JOBS } from '../../dummycardata';
 import TrackerFilter from './TrackerFilter'
 import JobList from './JobList'
+import AddJob from '../AddJob/AddJob';
 import { useState } from 'react';
 
 const Tracker = () => {
@@ -20,15 +21,27 @@ const Tracker = () => {
 
 
 
+    const [openTrackerDrawer, setOpenTrackerDrawer ] = useState({isClosed: true});
+
+    const handleOpenTrackerDrawer = () => {
+        setOpenTrackerDrawer({ isClosed: !openTrackerDrawer.isClosed});
+    }
+
+    const style = {visibility: openTrackerDrawer.isClosed ? 'hidden' : 'visible'};
+
     return(
         <div className="tracker-page">
             <NavBar />
             <TrackerFilter filterHandler={filterHandler}/>
-            <div className="tracker-div">
+            <button onClick={handleOpenTrackerDrawer}> Create Tracker </button>
+            <div className='tracker flex-col justify-end'>
                 <SortJobs />
                 <JobList jobs={data}/>
-            </div>
-        </div>
+                <div className='tracker_drawer' style={style}>
+                    <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer}/>
+                </div>
+            </div> 
+        </div> 
     );
 };
 
