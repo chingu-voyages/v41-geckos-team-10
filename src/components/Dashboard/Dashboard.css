@@ -1,5 +1,5 @@
 .dashboard {
-    @apply grid grid-rows-5 bg-bg-blue text-white h-screen;
+    @apply grid grid-rows-5 bg-bg-blue text-white h-screen w-4/5;
 }
 
 .dashboard_tracker {

@@ -1,4 +1,4 @@
-.tracker-page {
-  width: 85%;
-  margin: auto;
+.tracker-div {
+  width: 90%;
+  @apply m-auto p-7;
 }
