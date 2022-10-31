@@ -6,7 +6,6 @@ const statusClass = {
   Upcoming: "upcoming-interview",
   Archived: "archived",
   Interviewed: "interviewed",
-  "Offer Made": "offer-made",
 };
 
 const EditJobPanel = ({
@@ -131,7 +130,6 @@ const EditJobPanel = ({
                 <option value="Applied">Applied</option>
                 <option value="Upcoming">Upcoming Interview</option>
                 <option value="Interviewed">Interviewed</option>
-                <option value="Offer Made">Offer Made</option>
                 <option value="Archived">Archived</option>
               </select>
             </div>

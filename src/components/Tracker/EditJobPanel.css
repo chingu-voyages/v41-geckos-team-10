@@ -56,10 +56,6 @@
   @apply bg-violet-400;
 }
 
-.edit-job-panel_info--main_status--offer-made {
-  @apply bg-blue-600;
-}
-
 .edit-job-panel_info--main_follow-up {
   @apply mt-5 space-x-3;
 }
