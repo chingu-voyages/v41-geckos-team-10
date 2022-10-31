@@ -26,7 +26,18 @@ const EditJobPanel = ({
     contactInfo,
     resume,
     salary,
-  } = state[focusId];
+  } =
+    state.length !== 0
+      ? state[focusId]
+      : {
+          id: 0,
+          dateApplied: "2022-10-31",
+          followUpSent: true,
+          jobListing: "LinkedIn",
+          contactInfo: "0123456789",
+          resume: "Resume.pdf",
+          salary: "50,000 USD",
+        };
 
   let [inEditMode, setInEditMode] = useState(false);
 
@@ -46,7 +57,12 @@ const EditJobPanel = ({
     setCompanyValue(company);
     setStatusValue(status);
     setDateAppliedValue(dateApplied);
-  }, [focusId]);
+    setJobListingValue(jobListing);
+    setLocationValue(location);
+    setContactInfoValue(contactInfo);
+    setResumeValue(resume);
+    setSalaryValue(salary);
+  }, [focusId, state]);
 
   const handleClose = (e) => {
     e.preventDefault();
