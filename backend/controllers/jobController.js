@@ -28,39 +28,42 @@ const getJobById = async (req, res) => {
 //@route POST /jobs
 //@access Private
 const createJob = async (req, res) => {
+
   const {
-    title,
-    company,
-    status,
-    dateApplied,
-    followUp,
-    jobLink,
-    location,
-    contact,
-    resumeSent,
+    companyName,
+    jobTitle,
     salary,
-    timestamp,
+    listingLink,
+    companyLocation,
+    contactName,
+    contactEmail,
+    contactPhone,
+    trackerStatus,
+    dateApplied,
+    trackerResume,
+    trackerTimestamp,
   } = req.body;
 
   try {
     const newJob = new Job({
-      title,
-      company,
-      status,
-      dateApplied,
-      followUp,
-      jobLink,
-      location,
-      contact,
-      resumeSent,
-      salary,
-      timestamp,
+      companyName: companyName,
+      jobTitle: jobTitle,
+      salary: salary,
+      listingLink: listingLink,
+      companyLocation: companyLocation,
+      contactName: contactName,
+      contactEmail: contactEmail,
+      contactPhone: contactPhone,
+      trackerStatus: trackerStatus,
+      dateApplied: dateApplied,
+      trackerResume: trackerResume,
+      trackerTimestamp: trackerTimestamp,
     });
 
     const job = await newJob.save();
-    res.status(201).send(job);
+    res.status(200).send(job);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(404).send("Error creating job");
   }
 };
 
