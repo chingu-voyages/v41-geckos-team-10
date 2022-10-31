@@ -3,25 +3,31 @@ import './Tracker.css'
 import { NavBar } from '../NavBar';
 import SortJobs from './SortJobs';
 import { JOBS } from '../../dummycardata';
-import JobCard from './JobCard';
+import TrackerFilter from './TrackerFilter'
+import JobList from './JobList'
+import { useState } from 'react';
 
 const Tracker = () => {
-    
-    // Iterates through array and sends data for each job to JobCard component.
-    const jobList = JOBS.map((data) => { 
-        return (
-            <JobCard 
-                className="tracker-page__card" 
-                jobDetails={data} 
-            /> 
-        )
-    })
+    const [ data, setData ] = useState(JOBS)
+
+    const filterHandler = (selected) => {
+        if(selected.toLowerCase() === "all") {
+            setData(JOBS)
+        } else {
+            setData(JOBS.filter(job => job.status.toLowerCase() === selected.toLowerCase()))
+        }
+    }
+
+
 
     return(
         <div className="tracker-page">
             <NavBar />
-            <SortJobs />
-            {jobList}
+            <TrackerFilter filterHandler={filterHandler}/>
+            <div className="tracker-div">
+                <SortJobs />
+                <JobList jobs={data}/>
+            </div>
         </div>
     );
 };
