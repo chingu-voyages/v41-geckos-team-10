@@ -29,24 +29,26 @@ const Dashboard = () => {
   </Drawer>  */}
     <NavBar />
     <DashHeader />
-            <div className='dashboard_tracker'>
-                <p className='dashboard_tracker_text'>
-                    Most Active Goals and Achievments
-                </p>
-                <DashGoalItems />
-            </div>
-            <div className='dashboard_job-card'>
-                <p className='dashboard_job-card_text'>
-                    Most Recent Applications
-                </p>
-                <DashJobCards />
-            </div>
-            <div className='dashboard_job-tracker'>
-                <p className='dashboard_job-tracker_text'>
-                    Weekly Job Application Tracker
-                </p>
-                <div className='dashboard_job-tracker_graph'>
-                <DashWeeklyAppGraph />
+            <div className='dashboard_div'>
+                <div className='dashboard_tracker'>
+                    <p className='dashboard_tracker_text'>
+                        Most Active Goals and Achievments
+                    </p>
+                    <DashGoalItems />
+                </div>
+                <div className='dashboard_job-card'>
+                    <p className='dashboard_job-card_text'>
+                        Most Recent Applications
+                    </p>
+                    <DashJobCards />
+                </div>
+                <div className='dashboard_job-tracker'>
+                    <p className='dashboard_job-tracker_text'>
+                        Weekly Job Application Tracker
+                    </p>
+                    <div className='dashboard_job-tracker_graph'>
+                    <DashWeeklyAppGraph />
+                    </div>
                 </div>
             </div>
         </div>
