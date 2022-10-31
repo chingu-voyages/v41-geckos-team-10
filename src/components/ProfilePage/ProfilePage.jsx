@@ -10,6 +10,7 @@ const ProfilePage = () => {
   return (
     <div className="profile-page">
       <NavBar />
+      <div className='profile-page--div'>
       <form className="profile-page__form">
         <div className="profile-page__name-inputs">
           <ProfileTextInput name="first-name" />
@@ -26,6 +27,7 @@ const ProfilePage = () => {
           <ProfilePageButton buttonText="Save" />
         </div>
       </form>
+      </div>
     </div>
   );
 };

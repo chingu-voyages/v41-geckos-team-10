@@ -1,0 +1,25 @@
+.graph {
+    @apply bg-white text-black h-full w-full rounded-3xl
+    
+}
+
+.graph_container {
+   @apply h-96 w-full flex flex-row justify-center
+}
+
+.graph_text_container {
+    @apply absolute
+    w-full h-full bottom-0 bg-lt-purple rounded-3xl 
+}
+
+.graph_text {
+    @apply p-4 text-center
+}
+
+.graph_line_container {
+    @apply  absolute w-full h-7/8 bg-zinc-300 rounded-t-3xl
+}
+
+.graph_bar {
+    @apply flex ml-2 justify-center items-center bg-lt-blue
+}
