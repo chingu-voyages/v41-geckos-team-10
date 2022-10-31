@@ -25,7 +25,10 @@ const Tracker = () => {
             <NavBar />
             <TrackerFilter filterHandler={filterHandler}/>
             <div className="tracker-div">
-                <SortJobs />
+                <SortJobs 
+                    jobs={data}
+                    setData={setData}
+                />
                 <JobList jobs={data}/>
             </div>
         </div>
