@@ -7,7 +7,7 @@ const SortJobs = () => {
     }
 
     return (
-        <div className='tracker '>
+        <div className='tracker_sort-jobs'>
            <label for="sort-jobs">Sort by:</label>
             <select name="pets" id="sort-jobs" onChange={sortJobs}>
                 <option value="newest">Newest first</option>

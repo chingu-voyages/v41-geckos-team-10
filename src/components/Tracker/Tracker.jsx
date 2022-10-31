@@ -9,6 +9,7 @@ import AddJob from '../AddJob/AddJob';
 import { useState } from 'react';
 
 const Tracker = () => {
+    
     const [ data, setData ] = useState(JOBS)
 
     const filterHandler = (selected) => {
@@ -18,29 +19,36 @@ const Tracker = () => {
             setData(JOBS.filter(job => job.status.toLowerCase() === selected.toLowerCase()))
         }
     }
-
-
-
-    const [openTrackerDrawer, setOpenTrackerDrawer ] = useState({isClosed: true});
+    
+    const [openTrackerDrawer, setOpenTrackerDrawer ] = useState('hidden');
 
     const handleOpenTrackerDrawer = () => {
-        setOpenTrackerDrawer({ isClosed: !openTrackerDrawer.isClosed});
+       ( openTrackerDrawer === 'hidden') ? setOpenTrackerDrawer('visible') : setOpenTrackerDrawer('hidden')
     }
 
     const style = {visibility: openTrackerDrawer.isClosed ? 'hidden' : 'visible'};
 
     return(
-        <div className="tracker-page">
+        <div className="tracker-div">
             <NavBar />
-            <TrackerFilter filterHandler={filterHandler}/>
-            <button onClick={handleOpenTrackerDrawer}> Create Tracker </button>
-            <div className='tracker flex-col justify-end'>
-                <SortJobs />
-                <JobList jobs={data}/>
-                <div className='tracker_drawer' style={style}>
-                    <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer}/>
+            
+            <div className='tracker-content'>
+                <TrackerFilter filterHandler={filterHandler}/>
+                <div className='tracker-control'>
+                    <SortJobs />
+                    <button
+                        className='tracker-button' 
+                        onClick={handleOpenTrackerDrawer}> Create Tracker </button>
                 </div>
-            </div> 
+                <div>
+                <JobList jobs={data}/>
+                </div>
+                
+            </div>
+
+            <div className={`tracker_drawer ${openTrackerDrawer}`}>
+                <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer}/>
+            </div>
         </div> 
     );
 };
