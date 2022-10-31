@@ -37,6 +37,18 @@ function reducer(state, action) {
 const Tracker = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [focusId, setFocusId] = useState(0);
+  const [openEditTrackerDrawer, setOpenEditTrackerDrawer] = useState({
+    isClosed: true,
+  });
+
+  const handleOpenEditTrackerDrawer = () => {
+    console.log(openEditTrackerDrawer);
+    setOpenEditTrackerDrawer({ isClosed: !openEditTrackerDrawer.isClosed });
+  };
+
+  const style = {
+    visibility: openEditTrackerDrawer.isClosed ? "hidden" : "visible",
+  };
 
   const handleToggle = (id) => {
     setFocusId(id - 1);
@@ -47,13 +59,15 @@ const Tracker = () => {
       <div
         onClick={() => {
           handleToggle(data.id);
+          if (openEditTrackerDrawer.isClosed) {
+            handleOpenEditTrackerDrawer();
+          }
         }}
       >
         <JobCard
           className="tracker-page__card"
           jobDetails={data}
           key={data.id}
-          onClick={() => {}}
         />
       </div>
     );
@@ -64,7 +78,14 @@ const Tracker = () => {
       <NavBar />
       <SortJobs />
       {jobList}
-      <EditJobPanel state={state} dispatch={dispatch} focusId={focusId} />
+      <div style={style}>
+        <EditJobPanel
+          state={state}
+          dispatch={dispatch}
+          focusId={focusId}
+          handleOpenTrackerDrawer={handleOpenEditTrackerDrawer}
+        />
+      </div>
     </div>
   );
 };

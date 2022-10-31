@@ -9,7 +9,12 @@ const statusClass = {
   "Offer Made": "offer-made",
 };
 
-const EditJobPanel = ({ state, dispatch, focusId }) => {
+const EditJobPanel = ({
+  state,
+  dispatch,
+  focusId,
+  handleOpenTrackerDrawer,
+}) => {
   let {
     id,
     title,
@@ -83,7 +88,11 @@ const EditJobPanel = ({ state, dispatch, focusId }) => {
   return (
     <div className="edit-job-panel">
       <button className="edit-job-panel_close-button" onClick={handleClose}>
-        <img src="/icons/close-panel-icon.svg" alt="close" />
+        <img
+          src="/icons/close-panel-icon.svg"
+          alt="close"
+          onClick={handleOpenTrackerDrawer}
+        />
       </button>
       {inEditMode ? (
         <form className="edit-job-panel_info--edit">
