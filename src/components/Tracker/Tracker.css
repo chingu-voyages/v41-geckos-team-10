@@ -1,0 +1,4 @@
+.tracker-div {
+    width: 70%;
+    @apply m-auto p-7
+}

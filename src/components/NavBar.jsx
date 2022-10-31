@@ -7,6 +7,10 @@ import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg";
+import Dashboard from './Dashboard/Dashboard';
+import Tracker from './Tracker/Tracker';
+import Landing from './Landing';
+import ProfilePage from "./ProfilePage/ProfilePage";
 
 const NavBar = () => {
   const navigate = useNavigate();

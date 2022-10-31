@@ -26,9 +26,10 @@ const registerUser = (req, res) => {
       newUser
         .save()
         .then((user) => console.log(user))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
 
-      res.send("Registration successful, please login");
+      // res.send("Success! Please login");
+      // res.redirect("/login");
     }
   });
 };
@@ -62,10 +63,10 @@ const dashboard = (req, res) => {
 //@access Public
 const logoutUser = (req, res, next) => {
   req.logout(function (err) {
-    if(err) {
-      console.log(err);
-    } 
-    res.send("Successfully logged out");
+    if (err) {
+      return (err);
+    }
+    res.redirect("/");
   });
 };
 

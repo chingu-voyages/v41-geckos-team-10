@@ -45,6 +45,10 @@ const jobSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  favorite: { // for displaying and sorting favorite jobs
+    type: Boolean,
+    default: false
+  }
 });
 
 const Job = mongoose.model("Job", jobSchema);

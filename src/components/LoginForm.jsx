@@ -50,7 +50,7 @@ function LoginForm() {
       </label>
 
       <div className="submit">
-        <button type="submit" className="form--button">
+        <button  type="submit" className="form--button">
           Log in
         </button>
       </div>

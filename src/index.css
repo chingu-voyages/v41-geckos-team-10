@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #F8F8F8;
+}
+
 @layer utilities {
     .graph_line {
         position: absolute;
