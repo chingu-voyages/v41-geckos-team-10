@@ -2,29 +2,38 @@ import React from 'react';
 import './TrackerFilter.css';
 import favoritestar from '../../assets/favoritestar.svg'
 
-const TrackerFilter = () => {
+const TrackerFilter = ({filterHandler}) => {
+
+    const handleClick = (value) => {
+        filterHandler(value) 
+    }
 
     return(
         <div className="trackerFilter--div">
             <li className="trackerFilter--list">
                 <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-all">All</button>
+                    <button className="trackerFilter--button button-all"
+                        onClick={() => handleClick("all")}>All</button>
                 </ul>
                 <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-applied">Applied</button>
+                    <button className="trackerFilter--button button-applied"
+                        onClick={() => handleClick("Applied")}>Applied</button>
                 </ul>
                 <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-upcomingInterview">Upcoming Interview</button>
+                    <button className="trackerFilter--button button-upcomingInterview"
+                        onClick={() => handleClick("Upcoming")}>Upcoming Interview</button>
                 </ul>
                 <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-interviewed">Interviewed</button>
+                    <button className="trackerFilter--button button-interviewed"
+                        onClick={() => handleClick("Interviewed")}>Interviewed</button>
                 </ul>
                 <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-archived">Archived</button>
+                    <button className="trackerFilter--button button-archived"
+                        onClick={() => handleClick("Archived")}>Archived</button>
                 </ul>
-                <ul className="trackerFilter--list_item">
+                {/* <ul className="trackerFilter--list_item">
                     <button className="trackerFilter--button button-favorite"><img src={favoritestar} alt="favorite" className='favorite-icon' /></button>
-                </ul>
+                </ul> */}
             </li>
         </div>
     );

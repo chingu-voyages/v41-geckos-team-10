@@ -1,5 +1,5 @@
 .trackerFilter--div {
-    
+    @apply ml-44
 }
 
 .trackerFilter--list {
