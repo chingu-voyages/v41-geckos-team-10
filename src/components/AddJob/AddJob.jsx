@@ -1,201 +1,228 @@
 import React from 'react';
 import { useState } from 'react';
-import {nanoid } from 'nanoid';
 import './AddJob.css';
+import closePane from '../../assets/close-pane.svg';
+import submitEdit from '../../assets/submit-edit.svg';
 
+//Button from navbar? Strict field validation? Resume State? Make location required
 
-//Company, Job Title, Job Status , follow up, location, contact name, contact email, contact phone, resume sent, salary, job description link, date applied, time stamp updated
-
-const AddJob = () => {
+const AddJob = (props) => {
     
     const now = new Date()
-    console.log(now)
-    
-    const trackerStatusArr =['', 'Applied', 'Contacted', 'Interview Scheduled', 'Interview Held', 'Offer Made', 'Archived']
-
-    const resumeUploadedArr = ['', 'coding_resume', 'pm_resume', 'somm_resume']
+    const trackerStatusArr =['Applied', 'Contacted', 'Interview Scheduled', 'Interview Held', 'Offer Made', 'Archived']
+    const resumeUploadedArr = ['coding_resume', 'pm_resume', 'somm_resume']
 
     const [addJobTracker, setAddJobTracker] = useState({});
 
     const handleAddJobTracker = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setAddJobTracker(values =>( {...values, [name]: value}))
+        setAddJobTracker(values =>( {...values, [name]: value}));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(addJobTracker)
+        console.log(addJobTracker);
+        setAddJobTracker('');
+        props.handleOpenTrackerDrawer();
+  
     }
 
     
     return(
-        <div className='add-job border w-96 h-screen flex flex-col justify-between bg-blue-100'>
+        <div className='add-job '>
             <form 
                 className='add-job_opportunity-detail_form'
                 onSubmit={handleSubmit}
                 >
-           <div className='add-job_header border'>
-                <div className='add-job_header_close'>
-                    <button className='add-job_header_close_button'>x</button>
+                
+                <div className='add-job_header'>
+                    <div className='add-job_header_close '>
+                        <button 
+                            className='add-job_header_button'
+                            onClick={props.handleOpenTrackerDrawer}
+                            >
+                            <img src={closePane} alt='Close Pane'/>
+                            <p>Create Job Tracker</p>
+                        </button>
+                    </div>
+                  
                 </div>
-           </div>
-           <div className='add-job_container'>
-           <div className='add-job_opportunity-detail m-5'>
-           
-                    
-                        <div className='add-job_opportunity-detail_company-name'>
+                <div className='add-job_container'>
+                    <p>* Required Fields</p>
+                    <div className='add-job_opportunity-detail'>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
-                                Company Name
+                                * Company Name
                                 <input 
                                     className='add-job_opportunity-detail_input'
+                                    required
                                     type='text'
                                     name='companyName'
-                                    key={nanoid}
-                                    value={addJobTracker.companyName}
+                                    value={addJobTracker.companyName || ''}
                                     onChange={handleAddJobTracker}
                                     />    
                             </label> 
                         </div>
-                        <div className='add-job_opportunity-detail_listing'>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
-                                Job Listing Link
+                                * Job Opening Title
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
-                                    name='listingLink'
-                                    key={nanoid}
-                                    value={addJobTracker.listingLink}
+                                    required
+                                    name='jobTitle'
+                                    value={addJobTracker.jobTitle || ''}
                                     onChange={handleAddJobTracker}
                                     />    
-                            </label>
-                           
+                            </label> 
                         </div>
-                        <div className='add-job_opportunity-detail_company-location'>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
-                                Company Location
+                                Salary Offered
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
-                                    name='companyLocation'
-                                    key={nanoid}
-                                    value={addJobTracker.companyLocation}
+                                    name='salary'
+                                    value={addJobTracker.salary || ''}
+                                    onChange={handleAddJobTracker}
+                                    />    
+                            </label> 
+                        </div>
+                        <div className='add-job__field'>
+                            <label className='add-job_opportunity-detail_label'>
+                                * Job Listing Link
+                                <input 
+                                    className='add-job_opportunity-detail_input'
+                                    required
+                                    type='text'
+                                    name='listingLink'
+                                    value={addJobTracker.listingLink || ''}
                                     onChange={handleAddJobTracker}
                                     />    
                             </label>
                             
                         </div>
-                        <div className='add-job_opportunity-detail_contact-name'>
+                        <div className='add-job__field'>
+                            <label className='add-job_opportunity-detail_label'>
+                                * Company Location
+                                <input 
+                                    className='add-job_opportunity-detail_input'
+                                    type='text'
+                                    required
+                                    name='companyLocation'
+                                    value={addJobTracker.companyLocation || ''}
+                                    onChange={handleAddJobTracker}
+                                    />    
+                            </label>
+                            
+                        </div>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                 Contact Name
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactName'
-                                    key={nanoid}
-                                    value={addJobTracker.contactName}
+                                    value={addJobTracker.contactName || ''}
                                     onChange={handleAddJobTracker}
                                     />    
                             </label>
-                           
+                            
                         </div>
-                        <div className='add-job_opportunity-detail_contact-email'>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                 Contact Email
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactEmail'
-                                    key={nanoid}
-                                    value={addJobTracker.contactEmail}
+                                    value={addJobTracker.contactEmail || ''}
                                     onChange={handleAddJobTracker}
                                     />    
                             </label>
                             
                         </div>
-                        <div className='add-job_opportunity-detail_contact-phone'>
+                        <div className='add-job__field'>
                             <label className='add-job_opportunity-detail_label'>
                                 Contact Phone #
                                 <input 
                                     className='add-job_opportunity-detail_input'
                                     type='text'
                                     name='contactPhone'
-                                    key={nanoid}
-                                    value={addJobTracker.contactPhone}
+                                    value={addJobTracker.contactPhone || ''}
                                     onChange={handleAddJobTracker}
                                     />    
                             </label>
                             
                         </div>
-                    
-                </div>
-
-                <div className='add-job_status-detail m-5'>
-                    <div className='add-job_status-detail_menu'>
-                        <label className='add-job_opportunity-detail_label'>
-                                Opportunity Status
-                                <select 
-                                    className='add-job_opportunity-detail_input bg-white'
-                                    type='menu'
-                                    name='trackerStatus'
-                                    key={nanoid}
-                                    value={addJobTracker.trackerStatus}
-                                    onChange={handleAddJobTracker}
-                                    >
-                                    {trackerStatusArr.map((item) =>
-                                    <option value={item}>{item}</option>)}     
-                                </select>    
-                        </label>
-                        
                     </div>
-                    <div className='add-job_status-detail_date-applied'>
-                        <label className='add-job_opportunity-detail_label'>
-                                Date Application Submited
-                                <input 
-                                    className='add-job_opportunity-detail_input'
-                                    type='date'
-                                    name='dateApplied'
-                                    key={nanoid}
-                                    value={addJobTracker.dateApplied}
-                                    onChange={handleAddJobTracker}
-                                    />    
-                        </label>
-                        
+                    <div className='add-job_status-detail'>
+                        <div className='add-job__field'>
+                            <label className='add-job_opportunity-detail_label'>
+                                    * Opportunity Status
+                                    <select 
+                                        className='add-job_opportunity-detail_input required bg-white'
+                                        required
+                                        type='menu'
+                                        name='trackerStatus'
+                                        value={addJobTracker.trackerStatus || ''}
+                                        onChange={handleAddJobTracker}
+                                        >
+                                        <option value='' disabled>
+                                            -- select an option --
+                                        </option>
+                                        {trackerStatusArr.map((item) =>
+                                        <option value={item} key={item.toString()}>{item}</option>)}     
+                                    </select>    
+                            </label>  
+                        </div>
+                        <div className='add-job__field'>
+                            <label className='add-job_opportunity-detail_label'>
+                                    * Date Application Submited
+                                    <input 
+                                        className='add-job_opportunity-detail_input'
+                                        required
+                                        type='date'
+                                        name='dateApplied'
+                                        value={addJobTracker.dateApplied || ''}
+                                        onChange={handleAddJobTracker}
+                                        />    
+                            </label>  
+                        </div>
+                        <div className='add-job__field'>
+                            <label className='add-job_opportunity-detail_label'>
+                                    Resume Applied With
+                                    <select 
+                                        className='add-job_opportunity-detail_input bg-white'
+                                        type='menu'
+                                        name='trackerResume'
+                                        value={addJobTracker.trackerResume || ''}
+                                        onChange={handleAddJobTracker}>
+                                        <option value='' disabled>
+                                            -- select an option --
+                                        </option>
+                                        {resumeUploadedArr.map((item) =>
+                                        <option value={item} key={item.toString()}>{item}</option>)}     
+                                    </select>    
+                            </label>
+                        </div>
                     </div>
-                    <div className='add-job_status-detail_resume-upload'>
-                        <label className='add-job_opportunity-detail_label'>
-                                Resume Applied With
-                                <select 
-                                    className='add-job_opportunity-detail_input bg-white'
-                                    type='menu'
-                                    name='trackerResume'
-                                    key={nanoid}
-                                    value={addJobTracker.trackerResume}
-                                    onChange={handleAddJobTracker}>
-                                    {resumeUploadedArr.map((item) =>
-                                    <option value={item}>{item}</option>)}     
-                                </select>    
-                        </label>
+                </div>
+                <div className='add-job_footer'>
+                    <div className='add-job_footer_edit'>
+                        <button 
+                            className='add-job_footer_button'
+                            type='submit'
+                            name='trackerTimeStamp'
+                            value={now}
+                            onClick={handleAddJobTracker}
+                        >
+                            <img src={submitEdit} alt='Submit Task' />
+                            Submit
+                        </button>
                     </div>
-                   
                 </div>
-                {/* location, contact name, contact email, contact phone, resume sent, salary, job description link, */}
-                
-           </div>
-           <div className='add-job_footer border'>
-                <div className='add-job_footer_edit'>
-                    <button 
-                        className='add-job_footer_button submit'
-                        type='submit'
-                        name='trackerTimeStamp'
-                        value={now}
-                        onClick={handleAddJobTracker}
-                
-                    >
-                        Submit
-                    </button>
-                </div>
-           </div>
            </form>
         </div>
     );

@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg";
+import { useNavigate } from 'react-router-dom';;
 import Dashboard from './Dashboard/Dashboard';
 import Tracker from './Tracker/Tracker';
 import Landing from './Landing';
@@ -26,6 +25,7 @@ const NavBar = () => {
       console.log(error);
     }
   };
+
 
   return (
     <div className="navbar navbar--div">
@@ -68,7 +68,12 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="navbar--button--div">
-            <button className="navbar navbar--button">Add Task +</button>
+            <button 
+                        className="navbar navbar--button"
+                        onClick={() => navigate('/tracker')}
+                        >
+                        Add Task +
+                    </button>
           </li>
           <li className="navbar navbar--logout">
             <img
