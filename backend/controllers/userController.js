@@ -28,8 +28,7 @@ const registerUser = (req, res) => {
         .then((user) => console.log(user))
         .catch((err) => console.log(err))
 
-      // res.send("Success! Please login");
-      // res.redirect("/login");
+      res.send("Success! Please login");
     }
   });
 };
@@ -66,7 +65,7 @@ const logoutUser = (req, res, next) => {
     if (err) {
       return (err);
     }
-    res.redirect("/");
+    res.send("Successfully logged out");
   });
 };
 
