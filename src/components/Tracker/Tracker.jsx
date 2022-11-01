@@ -1,11 +1,5 @@
 import React from 'react';
 import './Tracker.css'
-import { NavBar } from '../NavBar';
-import SortJobs from './SortJobs';
-import { JOBS } from '../../dummycardata';
-import TrackerFilter from './TrackerFilter'
-import JobList from './JobList'
-import { useState } from 'react';
 import AddJob from '../AddJob/AddJob';
 import { NavBar } from '../NavBar';
 import SortJobs from './SortJobs';
@@ -34,7 +28,7 @@ const Tracker = () => {
     const style = {visibility: openTrackerDrawer.isClosed ? 'hidden' : 'visible'};
 
     return(
-        <div className='tracker flex justify-end'>
+        <div className='tracker'>
             <NavBar />
             <TrackerFilter filterHandler={filterHandler}/>
             <div className="tracker-div">
