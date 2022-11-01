@@ -2,6 +2,11 @@
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId, //create a reference to the user
+    required: true, //make sure the user is logged in
+    ref: "User", //reference the user model
+  },
   companyName: {
     type: String,
     required: true,
