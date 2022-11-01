@@ -16,7 +16,6 @@ body {
     sm:bg-[length:300px,_300px,_cover] 
     md:bg-[length:400px,_400px,_cover]
     lg:bg-[length:450px,_450px,_cover]
-    drop-shadow-lg
     overflow-hidden 
     flex 
     flex-col 
@@ -40,5 +39,7 @@ body {
     text-gray-600 
     text-xl 
     font-medium 
-    cursor-pointer;
+    cursor-pointer
+    transition
+    ease-in-out delay-100 hover:scale-105 duration-300;
 }
