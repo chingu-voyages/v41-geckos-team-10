@@ -18,8 +18,6 @@ const Tracker = () => {
         }
     }
 
-
-
     return(
         <div className="tracker-page">
             <NavBar />
