@@ -14,8 +14,8 @@ import AddJob from '../AddJob/AddJob';
 const Tracker = () => {
     
 const [ data, setData ] = useState(JOBS)
-const [state, dispatch] = useReducer(reducer, initialState);
-const [jobs, setJobs] = useState(state);
+
+
 const [filter, setFilter] = useState("all");
 const [focusId, setFocusId] = useState(0);
 const [openTrackerDrawer, setOpenTrackerDrawer ] = useState('hidden');
@@ -50,8 +50,8 @@ function reducer(state, action) {
   }
 }
 
-
- 
+const [state, dispatch] = useReducer(reducer, initialState);
+const [jobs, setJobs] = useState(state);
 
 const filterHandler = (selected) => {
     if (selected.toLowerCase() === "all") {
@@ -71,14 +71,14 @@ const filterHandler = (selected) => {
         setFilter(selected.toLowerCase());
     };
     
-useEffect(() => {
-    if (filter === "all") {
-    setJobs(state);
-    } else {
-    setJobs(
-        state.filter((job) => job.status.toLowerCase() === filter.toLowerCase())
-    );
-    }}, [state]);
+    useEffect(() => {
+        if (filter === "all") {
+        setJobs(state);
+        } else {
+        setJobs(
+            state.filter((job) => job.status.toLowerCase() === filter.toLowerCase())
+        );
+        }}, [state]);
 
     
 
@@ -96,7 +96,7 @@ useEffect(() => {
     const handleToggle = (id) => {
         setFocusId(id);
       };
-      // Iterates through array and sends data for each job to JobCard component.
+    //   Iterates through array and sends data for each job to JobCard component.
       const jobList = jobs.map((data, idx) => {
         return (
           <div
@@ -128,8 +128,8 @@ useEffect(() => {
                         onClick={handleOpenTrackerDrawer}> Create Tracker </button>
                 </div>
                 <div>
-                {/* <JobList jobs={data}/>
-                {jobList} */}
+                <JobList jobs={data}/>
+                {jobList}  
                 </div>
                 
             </div>
