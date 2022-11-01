@@ -12,6 +12,8 @@ const EditJobPanel = ({
   state,
   dispatch,
   focusId,
+  setFocusId,
+  sortSelection,
   handleOpenTrackerDrawer,
 }) => {
   let {
@@ -31,6 +33,7 @@ const EditJobPanel = ({
       ? state[focusId]
       : {
           id: 0,
+          //dummy data
           dateApplied: "2022-10-31",
           followUpSent: true,
           jobListing: "LinkedIn",
@@ -40,7 +43,6 @@ const EditJobPanel = ({
         };
 
   let [inEditMode, setInEditMode] = useState(false);
-
   let [titleValue, setTitleValue] = useState(title);
   let [companyValue, setCompanyValue] = useState(company);
   let [statusValue, setStatusValue] = useState(status);
@@ -91,7 +93,12 @@ const EditJobPanel = ({
         resume: resumeValue,
         salary: salaryValue,
       },
+      sortSelection: sortSelection,
     });
+    if (focusId === state.length - 1) {
+      setFocusId(focusId - 1);
+    }
+    handleOpenTrackerDrawer({ isClosed: true });
     setInEditMode(false);
   };
 
