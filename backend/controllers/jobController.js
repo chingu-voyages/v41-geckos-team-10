@@ -1,11 +1,12 @@
 const Job = require("../models/jobModel");
+const User = require("../models/userModel");
 
 //@desc Get all jobs
 //@route GET /jobs
 //@access Private
 const getJobs = async (req, res) => {
   try {
-    const jobs = await Job.find();
+    const jobs = await Job.find({ user: req.user._id });
     res.status(200).send(jobs);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -29,6 +30,8 @@ const getJobById = async (req, res) => {
 //@access Private
 const createJob = async (req, res) => {
 
+  console.log(req.user)
+
   const {
     companyName,
     jobTitle,
@@ -46,6 +49,7 @@ const createJob = async (req, res) => {
 
   try {
     const newJob = new Job({
+      user: req.user._id,
       companyName: companyName,
       jobTitle: jobTitle,
       salary: salary,
@@ -61,7 +65,7 @@ const createJob = async (req, res) => {
     });
 
     const job = await newJob.save();
-    res.status(200).send(job);
+    res.status(200).send("Job has been tracked");
   } catch (err) {
     res.status(404).send("Error creating job");
   }
@@ -76,6 +80,17 @@ const updateJob = async (req, res) => {
     if (!job) {
       res.status(400).json({ message: "Job not found" });
     }
+
+    const user = await User.findById(req.user._id);
+
+    if(!user){
+      res.status(401).json({ message: "User not found" });
+    } 
+
+    if(Job.user.toString() !== req.user._id.toString()){
+      res.status(401).json({ message: "Not authorized" });
+    }
+
     const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
