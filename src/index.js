@@ -16,7 +16,7 @@ root.render(
         <Route path='/' element={<App />} />
           <Route path='/' element={<Landing />} />
           <Route path='/' element={<NavBar />} />
-          <Route path='/Dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           <Route path="/profile-page" element={<ProfilePage />} />
           <Route path="/tracker" element={<Tracker />} /> 
       </Routes>

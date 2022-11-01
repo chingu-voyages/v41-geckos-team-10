@@ -1,0 +1,7 @@
+.dashboard_user-profile {
+    @apply flex flex-row justify-start mt-3
+}
+
+.profile-pic {
+    @apply h-20 rounded-full
+}

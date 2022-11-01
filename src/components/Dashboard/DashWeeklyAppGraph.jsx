@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../index.css'
+import '../../index.css';
+import './DashWeeklyAppGraph.css'
 
 // How to Build a Bar Graph With React https://dzuz14.medium.com/how-to-build-a-bar-graph-with-react-458a19ef0ba0//
 
@@ -17,19 +18,19 @@ function WeeklyAppGraph() {
     ];
 
     return (
-        <div className='graph bg-white text-black w-full h-full rounded-3xl'>
-            <div className='graph_container relative w-full h-full '>
-                <div className='graph_text_container absolute w-full h-1/8 bottom-0 bg-lt-green rounded-b-3xl'>
+        <div className='graph'>
+            <div className='graph_container'>
+                <div className='graph_text_container '>
                     {graphBarArr.map(bar => {
                         return (
-                        <p className={`graph_text ml-4  left-${bar.spacing}`}>
+                        <p className={`graph_text left-${bar.spacing}`}>
                             {bar.day}
                         </p>
                         )
                     })}
                   
                 </div>
-                <div className='graph_line_container absolute w-full h-7/8 bg-red-100 rounded-t-3xl'>
+                <div className='graph_line_container'>
                     {graphLineSpacingArr.map(line => {
                         return (
                         <div className={`graph_line bottom-${line}`} />
@@ -38,7 +39,7 @@ function WeeklyAppGraph() {
                     
                     {graphBarArr.map(bar => {
                         return (
-                        <div className={`graph_bar ml-4 h-${bar.percent}/100 left-${bar.spacing}`}>
+                        <div className={`graph_bar  h-${bar.percent}/100 left-${bar.spacing}`}>
                             {bar.percent}
                         </div>
                         )

@@ -1,0 +1,8 @@
+.tracker-page__sort-container {
+    @apply flex justify-end items-center text-sm;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.tracker-page__sort-menu {
+    @apply p-1 mx-2;
+}
