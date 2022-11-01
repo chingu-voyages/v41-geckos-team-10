@@ -13,6 +13,7 @@ body {
     bg-[url('../assets/m-adventurer.png'),_url('../assets/f-adventurer.png'),_url('../assets/layered-peaks-haikei.svg')] 
     bg-[position:left_bottom,_right_bottom,_center_bottom] 
     bg-[length:180px,_180px,_cover] 
+    sm:bg-[length:300px,_300px,_cover] 
     md:bg-[length:400px,_400px,_cover]
     lg:bg-[length:450px,_450px,_cover]
     drop-shadow-lg
