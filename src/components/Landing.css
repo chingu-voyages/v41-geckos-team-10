@@ -1,16 +1,26 @@
 body {
-    @apply p-0 m-0;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    @apply p-0 m-0 font-display;
 }
 
 .landing {
-    @apply text-center text-white;
-
+    @apply text-center text-white ;
 }
 
 .landing--div {
-    @apply h-screen bg-bottom bg-cover overflow-hidden flex flex-col items-center justify-center;
-    background-image: url("../assets/layered-peaks-haikei.svg");
+    @apply 
+    h-screen 
+    bg-no-repeat
+    bg-[url('../assets/m-adventurer.png'),_url('../assets/f-adventurer.png'),_url('../assets/layered-peaks-haikei.svg')] 
+    bg-[position:left_bottom,_right_bottom,_center_bottom] 
+    bg-[length:180px,_180px,_cover] 
+    md:bg-[length:400px,_400px,_cover]
+    lg:bg-[length:450px,_450px,_cover]
+    drop-shadow-lg
+    overflow-hidden 
+    flex 
+    flex-col 
+    items-center 
+    justify-center;
 }
 
 .landing--h1 {
@@ -18,5 +28,16 @@ body {
 }
 
 .button--landing {
-    @apply mt-8 mx-2 h-16 w-52 border-none rounded-xl bg-stone-300 text-gray-600 text-xl font-medium cursor-pointer;
+    @apply 
+    mt-5 
+    mx-2 
+    h-16 
+    w-52 
+    border-none 
+    rounded-xl 
+    bg-stone-300 
+    text-gray-600 
+    text-xl 
+    font-medium 
+    cursor-pointer;
 }
