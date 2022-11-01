@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./NavBar.css";
 import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
@@ -6,10 +7,6 @@ import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg";
 import { useNavigate } from 'react-router-dom';;
-import Dashboard from './Dashboard/Dashboard';
-import Tracker from './Tracker/Tracker';
-import Landing from './Landing';
-import ProfilePage from "./ProfilePage/ProfilePage";
 
 const NavBar = () => {
   const navigate = useNavigate();
