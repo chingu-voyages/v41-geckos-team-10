@@ -21,15 +21,15 @@ const NavBar = ()=> {
                     </div>
                 </li>
                 <li className="navbar navbar--list_item">
-                    <img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/>
-                    <Link to={"/dashboard"} className="navbar navbar--text">Dashboard</Link>
+                    <Link to={'/dashboard'}><img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/></Link>
+                    <Link to={'/dashboard'} className="navbar navbar--text">Dashboard</Link>
                 </li>
                 <li className="navbar navbar--list_item">
-                    <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>
+                    <Link to={'/tracker'}><img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/></Link>
                     <Link to={'/tracker'} className="navbar navbar--text">Tracker</Link>
                 </li>
                 <li className="navbar navbar--list_item">
-                    <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
+                    <Link to={'/profile-page'}><img src={profile_icon} className="navbar navbar--icon" alt="profile page"/></Link>
                     <Link to={'/profile-page'} className="navbar navbar--text">Profile</Link>
                 </li>
                 <li className="navbar">
@@ -39,7 +39,7 @@ const NavBar = ()=> {
                 </li>
                 <li className="navbar navbar--logout">
                     <div className={"div--logout"}>
-                        <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
+                        <Link to=""><img src={logout_icon} className= "navbar--icon_logout" alt="logout"/></Link>
                         <Link className="navbar--text_logout" to=''>Logout</Link>
                     </div>
                 </li>
