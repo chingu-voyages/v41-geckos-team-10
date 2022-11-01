@@ -2,11 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+
     extend: {
       colors: {
         'lt-green': '#8a9d8e',
         'bg-blue': '#27253e',
         'br-green': '#B1D199',
+        'lt-purple':'#AA9AFF',
+        'lt-blue': '#63B4FF',
+        
       },
       spacing: {
         '1/8':'12.5%',
@@ -45,7 +49,8 @@ module.exports = {
         '91/100':'91%','93/100':'93%','95/100':'95%','97/100':'97%','99/100':'99%',
       },
       dropShadow: {
-        '2xl' : '14px 18px 12px rgba(99, 150, 200, 0.75)'
+        '2xl' : '6px 12px 10px rgba(99, 180, 255, 0.45)',
+        'xl-d' : '4px 8px 6px rgba(0, 0, 0, 0.5)',
       },
       fontFamily: {
         display: ["Inter", "Arial", "Helvetica", "sans-serif"],

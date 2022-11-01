@@ -5,10 +5,6 @@ import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
-import Dashboard from './Dashboard/Dashboard';
-import Tracker from './Tracker/Tracker';
-import Landing from './Landing';
-import ProfilePage from "./ProfilePage/ProfilePage";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -23,21 +19,20 @@ const NavBar = ()=> {
                 <li className="navbar navbar--logo">
                     <img className="logo" alt="app logo"/>
                 </li>
-                <li className="navbar navbar--profile_picture">
-                    <img src={profile_picture_holder} className="" alt="profile"/>
+                <li className="navbar navbar--list_item">
+                    <div className="profile--picture-div">
+                        <img src={profile_picture_holder} className="navbar navbar--profile_picture" alt="profile"/>
+                    </div>
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/>
-                    <Link to={"/Dashboard"} className="navbar navbar--text">Dashboard</Link>
-                </li>
-                <li className="navbar navbar--list_item">
-                    <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
-                    <Link to={"/profile-page"} className="navbar navbar--text">Profile</Link>
+                    <Link to={"/dashboard"} className="navbar navbar--text">Dashboard</Link>
                 </li>
                 <li className="navbar navbar--list_item">
                     <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>
-                    <Link to='/Tracker' className="navbar navbar--text">Tracker</Link>
+                    <Link to={'/tracker'} className="navbar navbar--text">Tracker</Link>
                 </li>
+<<<<<<< HEAD
                 <li className="navbar--button--div">
                     <button 
                         className="navbar navbar--button"
@@ -45,10 +40,22 @@ const NavBar = ()=> {
                         >
                         Add Task +
                     </button>
+=======
+                <li className="navbar navbar--list_item">
+                    <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
+                    <Link to={'/profile-page'} className="navbar navbar--text">Profile</Link>
+                </li>
+                <li className="navbar">
+                    <div className="navbar--button--div">
+                        <button className="navbar navbar--button"><p>Add Task +</p></button>
+                    </div>
+>>>>>>> 4baf2baadd3e1f2a4bbc95149e27b95f4b14886f
                 </li>
                 <li className="navbar navbar--logout">
-                    <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
-                    <Link className="navbar--text_logout" to=''>Logout</Link>
+                    <div className={"div--logout"}>
+                        <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
+                        <Link className="navbar--text_logout" to=''>Logout</Link>
+                    </div>
                 </li>
             </ul>
         </nav>

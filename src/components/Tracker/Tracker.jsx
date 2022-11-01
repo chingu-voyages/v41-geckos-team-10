@@ -35,7 +35,10 @@ const Tracker = () => {
             <div className='tracker-content'>
                 <TrackerFilter filterHandler={filterHandler}/>
                 <div className='tracker-control'>
-                    <SortJobs />
+                    <SortJobs 
+                        jobs={data}
+                        setData={setData}
+                    />
                     <button
                         className='tracker-button' 
                         onClick={handleOpenTrackerDrawer}> Create Tracker </button>
