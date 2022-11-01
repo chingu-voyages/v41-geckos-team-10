@@ -1,0 +1,98 @@
+.edit-job-panel {
+  @apply w-80 h-screen float-right bg-slate-200 flex flex-col justify-between p-3 z-40 fixed top-0 right-0;
+}
+
+.edit-job-panel_close-button {
+  @apply w-8;
+}
+
+.edit-job-panel_info,
+.edit-job-panel_info--edit {
+  @apply self-center space-y-32 flex flex-col items-center;
+}
+
+.edit-job-panel_info--edit input[type="text"] {
+  @apply px-2;
+}
+
+.edit-job-panel_info--main,
+.edit-job-panel_info--main--edit {
+  @apply -mt-32 flex flex-col items-center;
+}
+
+.edit-job-panel_info--main--edit {
+  @apply relative top-24 space-y-3;
+}
+
+.edit-job-panel_info--main--edit_item {
+  @apply flex flex-col text-center;
+}
+
+.edit-job-panel_info--main--edit_item--checkbox {
+  @apply flex-row space-x-3;
+}
+
+.edit-job-panel_info--main_job-title {
+  @apply text-xl text-center;
+}
+
+.edit-job-panel_info--main_status {
+  @apply mt-5  text-white text-center py-1 px-3 rounded-full;
+}
+
+.edit-job-panel_info--main_status--applied {
+  @apply bg-red-400;
+}
+
+.edit-job-panel_info--main_status--upcoming-interview {
+  @apply bg-lime-500;
+}
+
+.edit-job-panel_info--main_status--archived {
+  @apply bg-gray-600;
+}
+
+.edit-job-panel_info--main_status--interviewed {
+  @apply bg-violet-400;
+}
+
+.edit-job-panel_info--main_follow-up {
+  @apply mt-5 space-x-3;
+}
+
+.edit-job-panel_info--other--edit {
+  @apply relative top-8;
+}
+
+.edit-job-panel_info--other_item,
+.edit-job-panel_info--other_item--edit {
+  @apply flex flex-row justify-between w-56;
+}
+
+.edit-job-panel_info--other_item--edit {
+  @apply w-72 mb-3;
+}
+
+.edit-job-panel_info--other_item--edit input[type="text"] {
+  @apply w-40;
+}
+
+.edit-job-panel_edit-button {
+  @apply flex space-x-3;
+}
+
+.edit-job-panel_info_button-group {
+  @apply w-32 flex justify-between relative bottom-10;
+}
+
+.edit-job-panel_info_button-group_edit-button {
+  @apply bg-slate-300 px-5 rounded-full;
+}
+
+.edit-job-panel_info_button-group_cancel-button {
+  @apply text-sm;
+}
+
+.edit-job-panel_edit-button img {
+  @apply w-7;
+}
