@@ -1,24 +1,24 @@
 .trackerFilter--div {
-    @apply ml-44
+  @apply mb-10;
 }
 
 .trackerFilter--list {
-    @apply flex flex-row justify-evenly items-center
+  @apply flex flex-row justify-evenly items-center
     bg-br-green drop-shadow-xl
-    h-20 w-3/5
+    h-20 w-4/5
     ml-1/8 mt-14
-    rounded-full
+    rounded-full;
 }
 
 .trackerFilter--button {
-    @apply flex justify-center items-center 
+  @apply flex justify-center items-center 
     bg-inherit w-28 h-12 rounded-full
     transition ease-in duration-200
     hover:border-2 hover:opacity-75 hover:bg-stone-100 hover:drop-shadow-lg 
     active:border-2 active:opacity-75 active:bg-white active:drop-shadow-lg 
-    focus:border-2 focus:bg-opacity-75 focus:bg-white focus:drop-shadow-lg
+    focus:border-2 focus:bg-opacity-75 focus:bg-white focus:drop-shadow-lg;
 }
 
 .favorite-icon {
-    @apply h-10 w-10
+  @apply h-10 w-10;
 }
