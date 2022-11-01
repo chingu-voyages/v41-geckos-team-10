@@ -32,24 +32,18 @@ const NavBar = ()=> {
                     <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>
                     <Link to={'/tracker'} className="navbar navbar--text">Tracker</Link>
                 </li>
-<<<<<<< HEAD
-                <li className="navbar--button--div">
-                    <button 
-                        className="navbar navbar--button"
-                        onClick={() => navigate('/tracker')}
-                        >
-                        Add Task +
-                    </button>
-=======
                 <li className="navbar navbar--list_item">
                     <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
                     <Link to={'/profile-page'} className="navbar navbar--text">Profile</Link>
                 </li>
                 <li className="navbar">
                     <div className="navbar--button--div">
-                        <button className="navbar navbar--button"><p>Add Task +</p></button>
+                        <button className="navbar navbar--button"
+                            onClick={() => navigate('/tracker')}
+                        >
+                            <p>Add Task +</p>
+                        </button>
                     </div>
->>>>>>> 4baf2baadd3e1f2a4bbc95149e27b95f4b14886f
                 </li>
                 <li className="navbar navbar--logout">
                     <div className={"div--logout"}>
