@@ -11,10 +11,8 @@ const AddJob = (props) => {
   const now = new Date();
   const trackerStatusArr = [
     "Applied",
-    "Contacted",
-    "Interview Scheduled",
-    "Interview Held",
-    "Offer Made",
+    "Upcoming Interview",
+    "Interviewed",
     "Archived",
   ];
   const resumeUploadedArr = ["coding_resume", "pm_resume", "somm_resume"];
