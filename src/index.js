@@ -6,7 +6,6 @@ import { NavBar } from './components/NavBar';
 import Dashboard from './components/Dashboard/Dashboard';
 import Landing from './components/Landing';
 import ProfilePage from "./components/ProfilePage/ProfilePage";
-import Tracker from './components/Tracker/Tracker'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

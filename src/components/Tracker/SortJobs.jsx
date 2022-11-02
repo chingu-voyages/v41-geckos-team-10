@@ -31,7 +31,7 @@ const SortJobs = (props) => {
     }
 
     return (
-        <div className='tracker-page__sort-container'>
+        <div className='tracker_sort-jobs'>
            <label for="sort-jobs">Sort by:</label>
             <select className="tracker-page__sort-menu" name="sortList" id="sort-jobs" onChange={updateSortSelection}>
                 <option value="newest">Newest first</option>

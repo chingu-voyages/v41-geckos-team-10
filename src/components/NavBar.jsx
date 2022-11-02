@@ -24,7 +24,12 @@ const NavBar = () => {
   };
 
 
-  return (
+
+<<<<<<<<< Temporary merge branch 1
+    const navigate = useNavigate();
+=========
+>>>>>>>>> Temporary merge branch 2
+ return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
             <ul className="navbar navbar--list">
@@ -50,7 +55,11 @@ const NavBar = () => {
                 </li>
                 <li className="navbar">
                     <div className="navbar--button--div">
-                        <button className="navbar navbar--button"><p>Add Task +</p></button>
+                        <button className="navbar navbar--button"
+                            onClick={() => navigate('/tracker')}
+                        >
+                            <p>Add Task +</p>
+                        </button>
                     </div>
                 </li>
                 <li className="navbar navbar--logout">
