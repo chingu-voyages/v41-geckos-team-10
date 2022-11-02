@@ -1,5 +1,13 @@
 .tracker-div {
+<<<<<<< HEAD
     width: 90%;
+=======
+    width: 70%;
+    @apply m-auto p-7 
+    lg:ml-80
+    xl:ml-96
+    2xl:ml-96
+>>>>>>> 065a93a6075edee63e230cde31ba950135c34a67
     @apply m-auto flex;
 }
 
