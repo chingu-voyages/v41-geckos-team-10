@@ -6,6 +6,7 @@ import { JOBS } from "../../dummycardata";
 import { useState, useReducer } from "react";
 import EditJobPanel from "./EditJobPanel";
 import TrackerFilter from "./TrackerFilter";
+import AddJob from "../AddJob/AddJob";
 import JobList from "./JobList";
 
 const initialState = JOBS.map((data) => {
@@ -57,6 +58,7 @@ const Tracker = () => {
   const [jobs, setJobs] = useState(state);
   const [filter, setFilter] = useState("all");
   const [focusId, setFocusId] = useState(0);
+  const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
   const [openEditTrackerDrawer, setOpenEditTrackerDrawer] = useState({
     isClosed: true,
   });
@@ -108,12 +110,17 @@ const Tracker = () => {
     }
   }, [state]);
 
+  const handleOpenTrackerDrawer = () => {
+    openTrackerDrawer === "hidden"
+      ? setOpenTrackerDrawer("visible")
+      : setOpenTrackerDrawer("hidden");
+  };
+
   const handleOpenEditTrackerDrawer = () => {
-    console.log(openEditTrackerDrawer);
     setOpenEditTrackerDrawer({ isClosed: !openEditTrackerDrawer.isClosed });
   };
 
-  const style = {
+  const editStyle = {
     visibility: openEditTrackerDrawer.isClosed ? "hidden" : "visible",
   };
 
@@ -132,21 +139,37 @@ const Tracker = () => {
     <div className="tracker-page">
       <NavBar />
       <div className="tracker-div">
-        <TrackerFilter filterHandler={filterHandler} />
-        <SortJobs
-          jobs={jobs}
-          setData={setJobs}
-          sortSelection={sortSelection}
-          setSortSelection={setSortSelection}
-        />
-        <JobList jobs={jobs} handleClick={handleClick} />
-        <div style={style}>
+        <div className="tracker-content">
+          <TrackerFilter
+            filterHandler={filterHandler}
+            openEditTrackerDrawer={openEditTrackerDrawer}
+            setOpenEditTrackerDrawer={setOpenEditTrackerDrawer}
+          />
+          <div className="tracker-control">
+            <SortJobs
+              jobs={jobs}
+              setData={setJobs}
+              sortSelection={sortSelection}
+              setSortSelection={setSortSelection}
+            />
+            <button
+              className="tracker-button"
+              onClick={handleOpenTrackerDrawer}
+            >
+              Create Tracker
+            </button>
+          </div>
+          <JobList jobs={jobs} handleClick={handleClick} />
+        </div>
+        <div className={`tracker_drawer ${openTrackerDrawer}`}>
+          <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
+        </div>
+        <div style={editStyle}>
           <EditJobPanel
             state={jobs}
             setJobs={setJobs}
             dispatch={dispatch}
             focusId={focusId}
-            setFocusId={setFocusId}
             sortSelection={sortSelection}
             handleOpenTrackerDrawer={handleOpenEditTrackerDrawer}
           />

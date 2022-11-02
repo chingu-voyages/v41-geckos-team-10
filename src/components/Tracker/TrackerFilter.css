@@ -3,6 +3,7 @@
 }
 
 .trackerFilter--list {
+  min-width: 525px;
   @apply flex flex-row justify-evenly items-center
     bg-br-green drop-shadow-xl
     h-20 w-4/5
