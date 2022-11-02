@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import "./Tracker.css";
 import { NavBar } from "../NavBar";
-import SortJobs from "./SortJobs";
 import { JOBS } from "../../dummycardata";
+import SortJobs from "./SortJobs";
 import TrackerFilter from "./TrackerFilter";
 import JobList from "./JobList";
 import AddJob from "../AddJob/AddJob";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { displayJobs } from "../../redux/Slices/jobSlice";
 
 const Tracker = () => {
-  const [data, setData] = useState(JOBS);
   const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/jobs", { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data); // array of jobs from db for seeing data while developing
+          dispatch(displayJobs(res.data));
+        } else {
+          console.log("Error");
+        }
+      });
+  }, []);
 
   const filterHandler = (selected) => {
     if (selected.toLowerCase() === "all") {
@@ -22,7 +39,7 @@ const Tracker = () => {
         )
       );
     }
-  };
+  }; 
 
   const handleOpenTrackerDrawer = () => {
     openTrackerDrawer === "hidden"
@@ -41,14 +58,14 @@ const Tracker = () => {
       <div className="tracker-content">
         <TrackerFilter filterHandler={filterHandler} />
         <div className="tracker-control">
-          <SortJobs jobs={data} setData={setData} />
+          <SortJobs  setData={setData} />
           <button className="tracker-button" onClick={handleOpenTrackerDrawer}>
             {" "}
             Create Tracker{" "}
           </button>
         </div>
         <div>
-          <JobList jobs={data} />
+          <JobList />
         </div>
       </div>
 
