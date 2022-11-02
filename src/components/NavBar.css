@@ -42,7 +42,7 @@
     @apply flex flex-row justify-center p-4
     sm:p-2
     md:p-2 
-    drop-shadow-xl-d 
+    drop-shadow-xl
     transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300
     ;
 }
