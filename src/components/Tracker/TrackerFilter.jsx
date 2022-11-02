@@ -2,9 +2,16 @@ import React from "react";
 import "./TrackerFilter.css";
 import favoritestar from "../../assets/favoritestar.svg";
 
-const TrackerFilter = ({ filterHandler }) => {
+const TrackerFilter = ({
+  filterHandler,
+  openEditTrackerDrawer,
+  setOpenEditTrackerDrawer,
+}) => {
   const handleClick = (value) => {
     filterHandler(value);
+    if (!openEditTrackerDrawer.isClosed) {
+      setOpenEditTrackerDrawer({ isClosed: true });
+    }
   };
 
   return (

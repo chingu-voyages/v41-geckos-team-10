@@ -6,6 +6,10 @@
   @apply w-8;
 }
 
+.edit-job-panel_error-message {
+  @apply text-center mb-7 text-red-600;
+}
+
 .edit-job-panel_info,
 .edit-job-panel_info--edit {
   @apply self-center space-y-32 flex flex-col items-center;
