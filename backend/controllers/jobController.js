@@ -5,6 +5,7 @@ const User = require("../models/userModel");
 //@route GET /jobs
 //@access Private
 const getJobs = async (req, res) => {
+  console.log(req.user);
   try {
     const jobs = await Job.find({ user: req.user._id });
     res.status(200).send(jobs);
@@ -29,9 +30,6 @@ const getJobById = async (req, res) => {
 //@route POST /jobs
 //@access Private
 const createJob = async (req, res) => {
-
-  console.log(req.user)
-
   const {
     companyName,
     jobTitle,
@@ -83,11 +81,11 @@ const updateJob = async (req, res) => {
 
     const user = await User.findById(req.user._id);
 
-    if(!user){
+    if (!user) {
       res.status(401).json({ message: "User not found" });
-    } 
+    }
 
-    if(Job.user.toString() !== req.user._id.toString()){
+    if (Job.user.toString() !== req.user._id.toString()) {
       res.status(401).json({ message: "Not authorized" });
     }
 
