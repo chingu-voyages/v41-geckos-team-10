@@ -31,9 +31,9 @@ const Tracker = () => {
     return(
         <div className="tracker-div">
             <NavBar />
-            
+            <TrackerFilter filterHandler={filterHandler}/>
             <div className='tracker-content'>
-                <TrackerFilter filterHandler={filterHandler}/>
+                
                 <div className='tracker-control'>
                     <SortJobs 
                         jobs={data}
