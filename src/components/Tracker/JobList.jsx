@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import JobCard from './JobCard';
+import { useSelector } from 'react-redux';
 
 const JobList = () => {
-    const [jobList, setJobList] = useState([]);
-
-    useEffect(() => {
-        axios.get('http://localhost:4000/jobs', {withCredentials: true})
-        .then((res) => {
-            if (res.status === 200) {
-                console.log(res.data);
-                setJobList(res.data);
-            } else {
-                console.log('Error');
-            }
-        })
-    }, []);
+    const jobs = useSelector((state) => state.jobs.value);
     
+    console.log(jobs);
+
+    if(jobs.length !== 0) {
     return (
         <>
-        {jobList.map((data) =>  
+        {jobs.map((data) =>  
             <JobCard 
                 className="tracker-page__card" 
                 jobDetails={data} 
@@ -29,6 +20,11 @@ const JobList = () => {
         </>
     )
     
-} 
+}  else {
+    return (
+        <div>No Jobs Being Tracked</div>
+    )
+}
+}
 
 export default JobList 
