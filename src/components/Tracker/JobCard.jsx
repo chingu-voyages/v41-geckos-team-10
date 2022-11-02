@@ -1,5 +1,5 @@
-import React from 'react';
-import './JobCard.css';
+import React from "react";
+import "./JobCard.css";
 
 const JobCard = (props) => {
     const statusColor = findStatusColor();
@@ -26,20 +26,20 @@ const JobCard = (props) => {
             </div>
 
             <div className="card-container__section">
-            <p className={`${statusColor} card-container__status-pill`}>{props.jobDetails.trackerStatus}</p>
+                <p className={`${statusColor} card-container__status-pill`}>{props.jobDetails.trackerStatus}</p>
             </div>
             
             <div className="card-container__section">
-            <p>{props.jobDetails.companyLocation}</p>
+                <p>{props.jobDetails.companyLocation}</p>
             </div>
             
             <div className="card-container__section">
-            <p className="card-container__light-detail">{props.jobDetails.dateApplied}</p>
+                <p className="card-container__light-detail">{props.jobDetails.dateApplied}</p>
             </div>
-            
-        
+           
         </div>
     )
 }
+
 
 export default JobCard;

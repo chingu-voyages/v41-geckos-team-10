@@ -1,15 +1,15 @@
 .tracker-div {
-    @apply m-auto flex;
+  @apply w-4/6 relative left-28 m-auto flex;
 }
 
 .tracker-content {
-    @apply  basis-full;
+  @apply basis-full;
 }
 
 .tracker-control {
-    @apply flex justify-between mx-5;
+  @apply flex justify-between mx-5;
 }
 
 .tracker-button {
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
 }

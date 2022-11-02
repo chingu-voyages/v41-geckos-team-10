@@ -1,45 +1,43 @@
 .navbar {
-    @apply top-0 box-border h-full;
+  @apply top-0 box-border h-full;
 }
 
 .navbar--div {
-    @apply absolute w-80 h-screen text-gray-500 bg-white flex flex-col
+  @apply absolute w-80 h-screen text-gray-500 bg-white flex flex-col
     sm:w-20
     md:w-32 md:text-xs
-    lg:w-60
+    lg:w-60;
 }
 
 .navbar--list {
-    @apply flex flex-col gap-12
+  @apply flex flex-col gap-12
     sm:gap-2 p-0
-    md:p-2
+    md:p-2;
 }
 
 .navbar--logo {
-    @apply flex justify-center
+  @apply flex justify-center;
 }
 
 .logo {
-    @apply 
-        -mt-5
-        sm:-mt-0
+  @apply -mt-5
+        sm:-mt-0;
 }
 
 .profile--picture--div {
-    @apply flex justify-center 
+  @apply flex justify-center;
 }
 
 .navbar--profile_picture {
-    @apply 
-    h-48 w-48 border-4 rounded-full
+  @apply h-48 w-48 border-4 rounded-full
     drop-shadow-xl
     sm:h-10 sm:w-10    
     md:h-20 md:w-20
-    lg:h-32 lg:w-32
+    lg:h-32 lg:w-32;
 }
 
 .navbar--list_item {
-    @apply flex flex-row justify-center p-4
+  @apply flex flex-row justify-center p-4
     sm:p-2
     md:p-2 
     drop-shadow-xl
@@ -48,58 +46,55 @@
 }
 
 .navbar--list_item:hover {
-    @apply text-black 
+  @apply text-black;
 }
 
 .navbar--icon {
-    @apply h-6 drop-shadow-lg ;
+  @apply h-6 drop-shadow-lg;
 }
 
 .navbar--text {
-    @apply self-center px-10 hidden
-    lg:inline lg:text-lg
+  @apply self-center px-10 hidden
+    lg:inline lg:text-lg;
 }
 
 .navbar--text_logout {
-    @apply text-sm;
+  @apply text-sm;
 }
 
 .navbar--button--div {
-    @apply 
-        relative flex justify-center
+  @apply relative flex justify-center;
 }
 
 .navbar--button {
-    @apply 
-        bg-gradient-to-l from-sky-600 to-sky-500
+  @apply bg-gradient-to-l from-sky-600 to-sky-500
         text-white
         rounded-full drop-shadow-2xl
         h-10 w-32 p-2 text-base
         sm:h-10 sm:w-10
         md:h-10 md:w-10
         lg:h-10 lg:w-32
-        transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300 
-    ;
+        transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300;
 }
 
 .navbar--button p {
-    @apply hidden
-    lg:inline-block
+  @apply hidden
+    lg:inline-block;
 }
 
 .navbar--logout {
 }
 
 .div--logout {
-     @apply flex flex-row
-     justify-end p-2
+  @apply flex flex-row
+     justify-end p-2;
 }
 
 .navbar--text_logout {
-    @apply text-sm hidden
-    lg:inline-block
+  @apply text-sm hidden
+    lg:inline-block;
 }
 
 .navbar--icon_logout {
-    @apply h-4 w-4 
+  @apply h-4 w-4;
 }
