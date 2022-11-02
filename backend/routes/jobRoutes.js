@@ -6,19 +6,10 @@ const {
   updateJob,
   deleteJob,
 } = require("../controllers/jobController");
+const isAuth = require("./auth").isAuth;
 
-//Get Routes
-router.get("/jobs", getJobs);
+router.route("/jobs").get(isAuth, getJobs).post(createJob);
 
-router.get("/jobs/:id", getJobById);
-
-//post routes
-router.post("/jobs", createJob);
-
-//put routes
-router.put("/jobs/:id", updateJob);
-
-//delete routes
-router.delete("/jobs/:id", deleteJob);
+router.route("/jobs/:id").get(isAuth, getJobById).put(isAuth, updateJob).delete(isAuth, deleteJob);
 
 module.exports = router;
