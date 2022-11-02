@@ -26,9 +26,9 @@ function LoginForm() {
     });
     if (response.status === 200) {
       setSuccessMsg(response.data);
-      navigate("/dashboard");
+      navigate("/Dashboard");
     } else {
-      setErrMsg("User does not exist");
+      setErrMsg(response.data);
     }
     e.target.reset();
   };

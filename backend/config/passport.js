@@ -28,13 +28,11 @@ passport.use(strategy);
 
 //Puts the user in the session
 passport.serializeUser((user, done) => {
-    console.log(`"serializing user: " ${user}`);
     done(null, user.id); // put the user id in the session
     });
 
 //Gets the user from the session
 passport.deserializeUser((id, done) => { // get the user id from the session
-  console.log(`"deserializing user: " ${id}`);
     User.findById(id, function (err, user) { // find the user by id
         done(err, user); // return the user
     });

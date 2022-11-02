@@ -1,17 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
-import dashboard_icon from "../assets/dashboardicon.svg"
+import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
-import { useNavigate } from 'react-router-dom';
 
+const NavBar = () => {
+  const navigate = useNavigate();
 
-const NavBar = ()=> {
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/logout");
+      if (res.status === 200) {
+        alert(res.data);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const navigate = useNavigate();
-    
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
@@ -48,13 +59,13 @@ const NavBar = ()=> {
                 <li className="navbar navbar--logout">
                     <div className={"div--logout"}>
                         <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
-                        <Link className="navbar--text_logout" to=''>Logout</Link>
+                        <button className="navbar--text_logout" onClick={handleLogout}>Logout</button>
                     </div>
                 </li>
             </ul>
         </nav>
     </div>
-    )   
+  );
 };
 
 export { NavBar };

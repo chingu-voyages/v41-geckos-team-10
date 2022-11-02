@@ -1,30 +1,36 @@
-import React from "react";
-import { useEffect } from "react";
-import "./SortJobs.css";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import './SortJobs.css';
 
-const SortJobs = (props) => {
-  let jobsList = [...props.jobs];
-  let sortSelection = props.sortSelection;
-  let setSortSelection = props.setSortSelection;
+const SortJobs = () => {
+    const jobs = useSelector((state) => state.jobs.value); //jobs is an array of objects from the redux store
+    const [sortSelection, setSortSelection] = useState("blank")
+    let jobsList = [...jobs];
 
-  useEffect(() => {
-    // Sorts according to which option was selected.
-    if (sortSelection === "jobTitleAZ") {
-      jobsList.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortSelection === "companyAZ") {
-      jobsList.sort((a, b) => a.company.localeCompare(b.company));
-    } else if (sortSelection === "locationAZ") {
-      jobsList.sort((a, b) => a.location.localeCompare(b.location));
-    } else if (sortSelection === "newest") {
-      jobsList.sort((a, b) => a.dateApplied.localeCompare(b.dateApplied));
+    useEffect(() => {
+        // Sorts according to which option was selected.
+        if (sortSelection === "jobTitleAZ") {
+            jobsList.sort((a, b) =>
+                a.jobTitle.localeCompare(b.jobTitle)
+            )
+        } else if (sortSelection === "companyAZ") {
+            jobsList.sort((a, b) =>
+                a.companyName.localeCompare(b.companyName)
+            )
+        } else if (sortSelection === "locationAZ") {
+            jobsList.sort((a, b) =>
+                a.companyLocation.localeCompare(b.companyLocation)
+            )
+        }
+        //setData(jobsList)
+
+    }, [sortSelection])
+
+    function updateSortSelection(e) {
+        // Updates the sortSelection state to the selected sort option
+        setSortSelection(e.target.value); 
     }
-    props.setData(jobsList);
-  }, [sortSelection]);
-
-  function updateSortSelection(e) {
-    // Updates the sortSelection state to the selected sort option
-    setSortSelection(e.target.value);
-  }
 
   return (
     <div className="tracker_sort-jobs">

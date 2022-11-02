@@ -1,20 +1,30 @@
-import React from "react";
-import JobCard from "./JobCard";
+import React from 'react';
+import JobCard from './JobCard';
+import { useSelector } from 'react-redux';
 
-const JobList = ({ jobs, handleClick }) => {
-  return (
-    <>
-      {jobs.map((data, idx) => (
-        <div onClick={() => handleClick(idx)}>
-          <JobCard
-            className="tracker-page__card"
-            jobDetails={data}
-            key={data.id}
-          />
-        </div>
-      ))}
-    </>
-  );
-};
+const JobList = () => {
+    const jobs = useSelector((state) => state.jobs.value);
+    
+    console.log(jobs);
+
+    if(jobs.length !== 0) {
+    return (
+        <>
+        {jobs.map((data) =>  
+            <JobCard 
+                className="tracker-page__card" 
+                jobDetails={data} 
+                key={data._id}
+            /> 
+        )} 
+        </>
+    )
+    
+}  else {
+    return (
+        <div>No Jobs Being Tracked</div>
+    )
+}
+}
 
 export default JobList;
