@@ -12,7 +12,6 @@ const EditJobPanel = ({
   state,
   dispatch,
   focusId,
-  setFocusId,
   sortSelection,
   handleOpenTrackerDrawer,
 }) => {
@@ -31,7 +30,8 @@ const EditJobPanel = ({
   } =
     state.length !== 0
       ? state[focusId]
-      : {
+      : //arbitrary data for empty sections
+        {
           id: 0,
           //dummy data
           dateApplied: "2022-10-31",
@@ -53,6 +53,8 @@ const EditJobPanel = ({
   let [contactInfoValue, setContactInfoValue] = useState(contactInfo);
   let [resumeValue, setResumeValue] = useState(resume);
   let [salaryValue, setSalaryValue] = useState(salary);
+
+  let [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     setTitleValue(title);
@@ -76,30 +78,43 @@ const EditJobPanel = ({
     setInEditMode(true);
   };
 
+  //currently onClick as onSubmit will result in hard refreshing the page
   const handleEdit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "EDIT",
-      id: id,
-      payload: {
-        title: titleValue,
-        company: companyValue,
-        status: statusValue,
-        dateApplied: dateAppliedValue,
-        followUpSent: followUpSentValue,
-        jobListing: jobListingValue,
-        location: locationValue,
-        contactInfo: contactInfoValue,
-        resume: resumeValue,
-        salary: salaryValue,
-      },
-      sortSelection: sortSelection,
-    });
-    if (focusId === state.length - 1) {
-      setFocusId(focusId - 1);
+    if (
+      titleValue === "" ||
+      companyValue === "" ||
+      statusValue === "" ||
+      statusValue === "" ||
+      dateAppliedValue === "" ||
+      followUpSent === "" ||
+      jobListingValue === "" ||
+      salary === ""
+    ) {
+      setErrorMessage("Please fill out all fields.");
+    } else {
+      setErrorMessage("");
+      dispatch({
+        type: "EDIT",
+        id: id,
+        payload: {
+          title: titleValue,
+          company: companyValue,
+          status: statusValue,
+          dateApplied: dateAppliedValue,
+          followUpSent: followUpSentValue,
+          jobListing: jobListingValue,
+          location: locationValue,
+          contactInfo: contactInfoValue,
+          resume: resumeValue,
+          salary: salaryValue,
+        },
+        sortSelection: sortSelection,
+      });
+
+      handleOpenTrackerDrawer({ isClosed: true });
+      setInEditMode(false);
     }
-    handleOpenTrackerDrawer({ isClosed: true });
-    setInEditMode(false);
   };
 
   const handleCancel = (e) => {
@@ -116,6 +131,9 @@ const EditJobPanel = ({
           onClick={handleOpenTrackerDrawer}
         />
       </button>
+      {inEditMode && errorMessage && (
+        <span className="edit-job-panel_error-message">{errorMessage}</span>
+      )}
       {inEditMode ? (
         <form className="edit-job-panel_info--edit">
           <div className="edit-job-panel_info--main--edit">
@@ -128,6 +146,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setTitleValue(e.currentTarget.value);
                 }}
+                required
               />
             </div>
             <div className="edit-job-panel_info--main--edit_item">
@@ -139,6 +158,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setCompanyValue(e.currentTarget.value);
                 }}
+                required
               />
             </div>
             <div className="edit-job-panel_info--main--edit_item">
@@ -149,6 +169,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setStatusValue(e.currentTarget.value);
                 }}
+                required
               >
                 <option value="Applied">Applied</option>
                 <option value="Upcoming">Upcoming Interview</option>
@@ -175,6 +196,7 @@ const EditJobPanel = ({
                 onClick={(e) => {
                   setFollowUpSentValue(!followUpSentValue);
                 }}
+                required
               />
               <label htmlFor="follow-up">Follow up sent</label>
             </div>
@@ -189,6 +211,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setJobListingValue(e.currentTarget.value);
                 }}
+                required
               />
             </div>
             <div className="edit-job-panel_info--other_item--edit">
@@ -200,6 +223,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setLocationValue(e.currentTarget.value);
                 }}
+                required
               />
             </div>
             <div className="edit-job-panel_info--other_item--edit">
@@ -233,6 +257,7 @@ const EditJobPanel = ({
                 onChange={(e) => {
                   setSalaryValue(e.currentTarget.value);
                 }}
+                required
               />
             </div>
           </div>
