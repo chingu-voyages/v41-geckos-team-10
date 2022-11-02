@@ -23,12 +23,6 @@ const NavBar = () => {
     }
   };
 
-
-
-<<<<<<<<< Temporary merge branch 1
-    const navigate = useNavigate();
-=========
->>>>>>>>> Temporary merge branch 2
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
