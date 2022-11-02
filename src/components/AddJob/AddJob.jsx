@@ -25,8 +25,6 @@ const AddJob = (props) => {
     setAddJobTracker((values) => ({ ...values, [name]: value }));
   };
 
-  console.log(addJobTracker);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:4000/jobs", addJobTracker , { withCredentials: true }).then((res) => {
