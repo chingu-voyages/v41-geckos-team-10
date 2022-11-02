@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
@@ -55,7 +56,7 @@ const NavBar = () => {
                 <li className="navbar navbar--logout">
                     <div className={"div--logout"}>
                         <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
-                        <Link className="navbar--text_logout" to=''>Logout</Link>
+                        <button className="navbar--text_logout" onClick={handleLogout}>Logout</button>
                     </div>
                 </li>
             </ul>
