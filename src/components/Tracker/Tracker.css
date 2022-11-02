@@ -4,4 +4,17 @@
     lg:ml-80
     xl:ml-96
     2xl:ml-96
+    @apply m-auto flex;
+}
+
+.tracker-content {
+    @apply  basis-full;
+}
+
+.tracker-control {
+    @apply flex justify-between mx-5;
+}
+
+.tracker-button {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
 }

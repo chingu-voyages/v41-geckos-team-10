@@ -18,9 +18,9 @@ function WeeklyAppGraph() {
     ];
 
     return (
-        <div className='graph'>
-            <div className='graph_container'>
-                <div className='graph_text_container '>
+        <div className='graph bg-white text-black w-full h-full rounded-3xl'>
+            <div className='graph_container relative w-full h-full '>
+                <div className='graph_text_container absolute w-full h-1/8 bottom-0 bg-lt-green rounded-b-3xl'>
                     {graphBarArr.map(bar => {
                         return (
                         <p className={`graph_text left-${bar.spacing}`}>

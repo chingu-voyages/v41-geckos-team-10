@@ -5,9 +5,13 @@ import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
+import { useNavigate } from 'react-router-dom';
+
 
 const NavBar = ()=> {
 
+    const navigate = useNavigate();
+    
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
@@ -34,7 +38,11 @@ const NavBar = ()=> {
                 </li>
                 <li className="navbar">
                     <div className="navbar--button--div">
-                        <button className="navbar navbar--button"><p>Add Task +</p></button>
+                        <button className="navbar navbar--button"
+                            onClick={() => navigate('/tracker')}
+                        >
+                            <p>Add Task +</p>
+                        </button>
                     </div>
                 </li>
                 <li className="navbar navbar--logout">
