@@ -3,37 +3,38 @@ import './JobCard.css';
 
 const JobCard = (props) => {
     const statusColor = findStatusColor();
-
+    //console.log(props.jobDetails); //uncomment if you want to see the properties of the jobDetails object
     function findStatusColor() {
-        if(props.jobDetails.status === "Applied") {
+        if(props.jobDetails.trackerStatus === "Applied") {
             return "applied"
-        } else if (props.jobDetails.status === "Upcoming") {
+        } else if (props.jobDetails.trackerStatus === "Upcoming Interview") {
             return "upcoming"
-        } else if (props.jobDetails.status === "Interviewed") {
+        } else if (props.jobDetails.trackerStatus === "Interviewed") {
             return "interviewed"
-        } else if (props.jobDetails.status === "Archived") {
+        } else if (props.jobDetails.trackerStatus === "Archived") {
             return "archived"
+        } else if(props.jobDetails.trackerStatus === "Offer Made") {
+            return "offered"
         }
     }
-    
 
     return (
         <div className="tracker-page__card-container">
             <div className="card-container__title">
-                <p>{props.jobDetails.title}</p>
-                <p className="card-container__light-detail">{props.jobDetails.company}</p>
+                <p>{props.jobDetails.jobTitle}</p>
+                <p className="card-container__light-detail">{props.jobDetails.companyName}</p>
             </div>
 
             <div className="card-container__section">
-            <p className={`${statusColor} card-container__status-pill`}>{props.jobDetails.status}</p>
+            <p className={`${statusColor} card-container__status-pill`}>{props.jobDetails.trackerStatus}</p>
             </div>
             
             <div className="card-container__section">
-            <p>{props.jobDetails.location}</p>
+            <p>{props.jobDetails.companyLocation}</p>
             </div>
             
             <div className="card-container__section">
-            <p className="card-container__light-detail">mm/dd/yyyy</p>
+            <p className="card-container__light-detail">{props.jobDetails.dateApplied}</p>
             </div>
             
         
