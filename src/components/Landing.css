@@ -12,10 +12,10 @@ body {
     bg-no-repeat
     bg-[url('../assets/m-adventurer.png'),_url('../assets/f-adventurer.png'),_url('../assets/layered-peaks-haikei.svg')] 
     bg-[position:left_bottom,_right_bottom,_center_bottom] 
-    bg-[length:180px,_170px,_cover] 
-    sm:bg-[length:300px,_290px,_cover] 
-    md:bg-[length:380px,_360px,_cover]
-    lg:bg-[length:450px,_430px,_cover]
+    bg-[length:38%,_36%,_cover]
+    md:bg-[length:35%,_33%,_cover]
+    lg:bg-[length:27%,_25%,_cover]
+    2xl:bg-[length:23%,_22%,_cover]
     overflow-hidden 
     flex 
     flex-col 
@@ -50,5 +50,5 @@ body {
     inset-x-0 
     bottom-10 
     font-light 
-    text-xs
+    text-xs;
 }
