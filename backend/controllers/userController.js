@@ -43,7 +43,7 @@ const loginUser = (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
+        res.send({ email: user.email, id: user._id });
       });
     }
   })(req, res, next);
