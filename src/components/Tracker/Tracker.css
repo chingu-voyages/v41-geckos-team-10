@@ -1,7 +1,6 @@
 .tracker-div {
     @apply m-0 p-7
     
-
 }
 
 .tracker-filter-div {
@@ -21,9 +20,9 @@
 }
 
 .tracker-control {
-    @apply flex justify-between mx-5;
+  @apply flex justify-between mx-5;
 }
 
 .tracker-button {
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
 }

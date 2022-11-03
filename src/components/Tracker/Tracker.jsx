@@ -1,32 +1,55 @@
-import React from 'react';
-import './Tracker.css'
-import { NavBar } from '../NavBar';
-import SortJobs from './SortJobs';
-import { JOBS } from '../../dummycardata';
-import TrackerFilter from './TrackerFilter'
-import JobList from './JobList'
-import AddJob from '../AddJob/AddJob';
-import { useState } from 'react';
+import React, { useEffect } from "react";
+import axios from "axios";
+import "./Tracker.css";
+import { NavBar } from "../NavBar";
+import { JOBS } from "../../dummycardata";
+import SortJobs from "./SortJobs";
+import TrackerFilter from "./TrackerFilter";
+import JobList from "./JobList";
+import AddJob from "../AddJob/AddJob";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { displayJobs } from "../../redux/Slices/jobSlice";
 
 const Tracker = () => {
-    
-    const [ data, setData ] = useState(JOBS)
+  const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
-    const filterHandler = (selected) => {
-        if(selected.toLowerCase() === "all") {
-            setData(JOBS)
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/jobs", { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data); // array of jobs from db for seeing data while developing
+          dispatch(displayJobs(res.data));
         } else {
-            setData(JOBS.filter(job => job.status.toLowerCase() === selected.toLowerCase()))
+          console.log("Error");
         }
-    }
-    
-    const [openTrackerDrawer, setOpenTrackerDrawer ] = useState('hidden');
+      });
+  }, []);
 
-    const handleOpenTrackerDrawer = () => {
-       ( openTrackerDrawer === 'hidden') ? setOpenTrackerDrawer('visible') : setOpenTrackerDrawer('hidden')
+  const filterHandler = (selected) => {
+    if (selected.toLowerCase() === "all") {
+      setData(JOBS);
+    } else {
+      setData(
+        JOBS.filter(
+          (job) => job.status.toLowerCase() === selected.toLowerCase()
+        )
+      );
     }
+  }; 
 
-    const style = {visibility: openTrackerDrawer.isClosed ? 'hidden' : 'visible'};
+  const handleOpenTrackerDrawer = () => {
+    openTrackerDrawer === "hidden"
+      ? setOpenTrackerDrawer("visible")
+      : setOpenTrackerDrawer("hidden");
+  };
+
+  const style = {
+    visibility: openTrackerDrawer.isClosed ? "hidden" : "visible",
+  };
 
     return(
         <div className='tracker-div'>
@@ -56,4 +79,4 @@ const Tracker = () => {
     );
 };
 
-export default Tracker
+export default Tracker;

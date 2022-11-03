@@ -2,6 +2,8 @@ const passwordUtil = require("../lib/passwordUtil");
 const passport = require("passport");
 const User = require("../models/userModel");
 
+const CLIENT_URL = "http://localhost:3000/";
+
 //@desc Register a user
 //@route Post /register
 //@access Public
@@ -26,8 +28,7 @@ const registerUser = (req, res) => {
         .then((user) => console.log(user))
         .catch((err) => console.log(err))
 
-      // res.send("Success! Please login");
-      // res.redirect("/login");
+      res.send("Success! Please login");
     }
   });
 };
@@ -36,42 +37,41 @@ const registerUser = (req, res) => {
 //@route POST /login
 //@access Public
 const loginUser = (req, res, next) => {
-  passport.authenticate("local", {
-    failureRedirect: "/login-failure",
-    successRedirect: "/login-success",
+  passport.authenticate("local", (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.status(401).send("No user exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send("Successfully Authenticated");
+      });
+    }
   })(req, res, next);
 };
 
-//@desc successful login
-//@route GET /login-success
+//@desc dashboard data
+//@route GET /dashboard
 //@access Private
-const loginSuccess = (req, res) => {
-  res.status(200).send(`You have successfully logged in as ${req.user.email}`);
-};
-
-//@desc failed login
-//@route GET /login-failure
-//@access Public
-const loginFailure = (req, res) => {
-  res.sendStatus(401).send("Login failed");
+const dashboard = (req, res) => {
+  const reqUser = req.user;
+  res.send(reqUser);
 };
 
 //@desc Logout
 //@route GET /logout
 //@access Public
-const logout = (req, res) => {
+const logoutUser = (req, res, next) => {
   req.logout(function (err) {
     if (err) {
       return (err);
     }
-    res.redirect("/");
+    res.send("Successfully logged out");
   });
 };
 
 module.exports = {
   registerUser,
   loginUser,
-  loginSuccess,
-  loginFailure,
-  logout,
+  logoutUser,
+  dashboard,
 };

@@ -1,20 +1,30 @@
 import React from 'react';
 import JobCard from './JobCard';
+import { useSelector } from 'react-redux';
 
-const JobList = ({jobs}) => {
+const JobList = () => {
+    const jobs = useSelector((state) => state.jobs.value);
     
+    console.log(jobs);
+
+    if(jobs.length !== 0) {
     return (
         <>
         {jobs.map((data) =>  
             <JobCard 
                 className="tracker-page__card" 
                 jobDetails={data} 
-                key={data.id}
+                key={data._id}
             /> 
         )} 
         </>
     )
     
-} 
+}  else {
+    return (
+        <div>No Jobs Being Tracked</div>
+    )
+}
+}
 
-export default JobList 
+export default JobList;

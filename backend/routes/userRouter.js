@@ -2,9 +2,8 @@ const router = require("express").Router();
 const {
   registerUser,
   loginUser,
-  loginSuccess,
-  loginFailure,
-  logout,
+  dashboard,
+  logoutUser,
 } = require("../controllers/userController");
 const isAuth = require("./auth").isAuth;
 
@@ -14,10 +13,8 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 //GET Routes
-router.get("/login-success", isAuth, loginSuccess);
+router.get("/dashboard", isAuth, dashboard);
 
-router.get("/login-failure", loginFailure);
-
-router.get("/logout", logout);
+router.get("/logout", logoutUser);
 
 module.exports = router;
