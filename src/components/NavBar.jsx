@@ -23,6 +23,8 @@ const NavBar = () => {
     }
   };
 
+  
+
  return (
     <div className="navbar navbar--div">
         <nav className="navbar navbar--nav">
@@ -50,7 +52,9 @@ const NavBar = () => {
                 <li className="navbar">
                     <div className="navbar--button--div">
                         <button className="navbar navbar--button"
-                            onClick={() => navigate('/tracker')}
+                            onClick={() => navigate('/tracker')
+                    
+                                }
                         >
                             <p>Add Task +</p>
                         </button>
@@ -58,8 +62,9 @@ const NavBar = () => {
                 </li>
                 <li className="navbar navbar--logout">
                     <div className={"div--logout"}>
-                        <button className="navbar--text_logout" onClick={handleLogout}>Logout</button>
-                        <Link className="navbar--text_logout" to=''>Logout</Link>
+                        <Link to=""><img src={logout_icon} className= "navbar--icon_logout" alt="logout"/></Link>
+                        <Link className="navbar--text_logout" to=''><button className="navbar--text_logout" onClick={handleLogout}>Logout</button></Link>
+                        
                         
                     </div>
                 </li>
