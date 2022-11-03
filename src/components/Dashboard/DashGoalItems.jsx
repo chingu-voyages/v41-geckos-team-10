@@ -10,13 +10,11 @@ const DashGoalItems = () => {
     const [dashGoalItem, setDashGoalItem] = useState([
         {item: "Login Streak"},
         {
-            item: "Weekly Goals", 
+            item: "Weekly Application Goal", 
             component: 
                 <WeeklyAppGoal 
                 size={100}
                 strokeWidth={10}
-             
-                
                 />
         },
         ]);
