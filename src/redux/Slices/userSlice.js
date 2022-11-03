@@ -15,13 +15,14 @@ export const userSlice = createSlice({
       state.value.isLoggedIn = true;
       state.value.user = action.payload;
     },
-    logoutUser: (state, action) => {
+    loggedOutUser: (state) => {
       state.value.isLoggedIn = false;
+      state.value.user = {};
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loggedUser } = userSlice.actions;
+export const { loggedUser, loggedOutUser } = userSlice.actions;
 
 export default userSlice.reducer;
