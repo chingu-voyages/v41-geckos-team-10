@@ -5,31 +5,39 @@ import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileText
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
 import { NavBar } from "../NavBar";
+import { useSelector } from "react-redux";
+import IsLoggedIn from "../IsLoggedIn";
 
 const ProfilePage = () => {
-  return (
-    <div className="profile-page">
-      <NavBar />
-      <div className='profile-page--div'>
-      <form className="profile-page__form">
-        <div className="profile-page__name-inputs">
-          <ProfileTextInput name="first-name" />
-          <ProfileTextInput name="last-name" />
+  const user = useSelector((state) => state.user.value);
+
+  if (user.isLoggedIn) {
+    return (
+      <div className="profile-page">
+        <NavBar />
+        <div className="profile-page--div">
+          <form className="profile-page__form">
+            <div className="profile-page__name-inputs">
+              <ProfileTextInput name="first-name" />
+              <ProfileTextInput name="last-name" />
+            </div>
+            <ProfileTextInput name="email" type="email" />
+            <ProfileTextInput name="weekly-goal" />
+            <ProfileLocationSelect />
+            <ProfileImageUpload />
+            <ProfileTextInput name="change-password" type="password" />
+            <ProfileResumeUpload />
+            <div className="profile-page__button-group">
+              <ProfilePageButton buttonText="Cancel" />
+              <ProfilePageButton buttonText="Save" />
+            </div>
+          </form>
         </div>
-        <ProfileTextInput name="email" type="email" />
-        <ProfileTextInput name="weekly-goal" />
-        <ProfileLocationSelect />
-        <ProfileImageUpload />
-        <ProfileTextInput name="change-password" type="password" />
-        <ProfileResumeUpload />
-        <div className="profile-page__button-group">
-          <ProfilePageButton buttonText="Cancel" />
-          <ProfilePageButton buttonText="Save" />
-        </div>
-      </form>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <IsLoggedIn />;
+  }
 };
 
 export default ProfilePage;
