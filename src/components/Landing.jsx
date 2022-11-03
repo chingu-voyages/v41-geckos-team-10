@@ -45,6 +45,12 @@ function Landing() {
       {showModalSignup && (
         <SignupModal setShowModalSignup={setShowModalSignup} />
       )}
+      <div className="landing--footer">
+        <p>Icons by <a href="https://www.flaticon.com/free-icons/journey" title="journey icons">max.icons</a>
+        <br />
+        Background by <a href="https://haikei.app/" title="haikei">haikei</a>
+        </p>
+      </div>
     </div>
   );
 }
