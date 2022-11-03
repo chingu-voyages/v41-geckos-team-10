@@ -70,7 +70,7 @@
 .navbar--button--div {
     @apply 
         relative flex justify-center 
-        sm:p-6
+        
         lg:p-4
 }
 
