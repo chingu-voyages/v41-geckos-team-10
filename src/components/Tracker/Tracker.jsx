@@ -24,7 +24,7 @@ const Tracker = () => {
       .get("http://localhost:4000/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data); // array of jobs from db for seeing data while developing
+          //console.log(res.data); // array of jobs from db for seeing data while developing
           dispatch(displayJobs(res.data));
         } else {
           console.log("Error");
