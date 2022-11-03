@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import "./Tracker.css";
-import { NavBar } from "../NavBar";
 import { JOBS } from "../../dummycardata";
 import SortJobs from "./SortJobs";
 import TrackerFilter from "./TrackerFilter";
@@ -57,8 +56,6 @@ const Tracker = () => {
   if (user.isLoggedIn) {
     return (
       <div className="tracker-div">
-        <NavBar />
-
         <div className="tracker-content">
           <TrackerFilter filterHandler={filterHandler} />
           <div className="tracker-control">
@@ -82,9 +79,7 @@ const Tracker = () => {
       </div>
     );
   } else {
-    return (
-      <IsLoggedIn />
-    );
+    return <IsLoggedIn />;
   }
 };
 export default Tracker;
