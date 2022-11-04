@@ -9,12 +9,14 @@ const statusClass = {
 };
 
 const EditJobPanel = ({
-  state,
+  selectedJob,
   dispatch,
   focusId,
   sortSelection,
   handleOpenTrackerDrawer,
 }) => {
+
+  /*
   let {
     id,
     title,
@@ -41,22 +43,23 @@ const EditJobPanel = ({
           resume: "Resume.pdf",
           salary: "50,000 USD",
         };
+        */
 
   let [inEditMode, setInEditMode] = useState(false);
-  let [titleValue, setTitleValue] = useState(title);
-  let [companyValue, setCompanyValue] = useState(company);
-  let [statusValue, setStatusValue] = useState(status);
-  let [dateAppliedValue, setDateAppliedValue] = useState(dateApplied);
-  let [followUpSentValue, setFollowUpSentValue] = useState(followUpSent);
-  let [jobListingValue, setJobListingValue] = useState(jobListing);
-  let [locationValue, setLocationValue] = useState(location);
-  let [contactInfoValue, setContactInfoValue] = useState(contactInfo);
-  let [resumeValue, setResumeValue] = useState(resume);
-  let [salaryValue, setSalaryValue] = useState(salary);
+  let [titleValue, setTitleValue] = useState(selectedJob.jobTitle);
+  let [companyValue, setCompanyValue] = useState(selectedJob.companyName);
+  let [statusValue, setStatusValue] = useState(selectedJob.trackerStatus);
+  let [dateAppliedValue, setDateAppliedValue] = useState(selectedJob.dateApplied);
+  let [followUpSentValue, setFollowUpSentValue] = useState(selectedJob.followUpSent);
+  let [jobListingValue, setJobListingValue] = useState(selectedJob.listingLink);
+  let [locationValue, setLocationValue] = useState(selectedJob.companyLocation);
+  let [contactInfoValue, setContactInfoValue] = useState(selectedJob.Name);
+  let [resumeValue, setResumeValue] = useState(selectedJob.trackerResume);
+  let [salaryValue, setSalaryValue] = useState(selectedJob.salary);
 
   let [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
+  /* useEffect(() => {
     setTitleValue(title);
     setCompanyValue(company);
     setStatusValue(status);
@@ -66,7 +69,7 @@ const EditJobPanel = ({
     setContactInfoValue(contactInfo);
     setResumeValue(resume);
     setSalaryValue(salary);
-  }, [focusId, state]);
+  }, [focusId, state]); */
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -87,16 +90,16 @@ const EditJobPanel = ({
       statusValue === "" ||
       statusValue === "" ||
       dateAppliedValue === "" ||
-      followUpSent === "" ||
+      followUpSentValue === "" ||
       jobListingValue === "" ||
-      salary === ""
+      salaryValue === ""
     ) {
       setErrorMessage("Please fill out all fields.");
     } else {
       setErrorMessage("");
       dispatch({
         type: "EDIT",
-        id: id,
+        id: selectedJob._id,
         payload: {
           title: titleValue,
           company: companyValue,
@@ -279,22 +282,22 @@ const EditJobPanel = ({
       ) : (
         <form className="edit-job-panel_info">
           <div className="edit-job-panel_info--main">
-            <h2 className="edit-job-panel_info--main_job-title">{title}</h2>
-            <h3 className="edit-job-panel_info--main_company">{company}</h3>
+            <h2 className="edit-job-panel_info--main_job-title">{selectedJob.jobTitle}</h2>
+            <h3 className="edit-job-panel_info--main_company">{selectedJob.companyName}</h3>
             <span
-              className={`edit-job-panel_info--main_status edit-job-panel_info--main_status--${statusClass[status]}`}
+              className={`edit-job-panel_info--main_status edit-job-panel_info--main_status--${statusClass[selectedJob.trackerStatus]}`}
             >
-              {status}
+              {selectedJob.trackerStatus}
             </span>
             <span className="edit-job-panel_info--main_date-applied">
-              {dateApplied}
+              {selectedJob.dateApplied}
             </span>
             <div className="edit-job-panel_info--main_follow-up">
               <input
                 type="checkbox"
                 name="follow-up"
                 disabled
-                checked={followUpSent}
+                checked={selectedJob.followUpSent}
               />
               <label htmlFor="follow-up">Follow up sent</label>
             </div>
@@ -302,24 +305,24 @@ const EditJobPanel = ({
           <div className="edit-job-panel_info--other">
             <div className="edit-job-panel_info--other_item">
               <label htmlFor="job-listing">Job Listing</label>
-              <span>{jobListing}</span>
+              <span>{selectedJob.listingLink}</span>
             </div>
             <div className="edit-job-panel_info--other_item">
               <label htmlFor="location">Location</label>
 
-              <span>{location}</span>
+              <span>{selectedJob.companyLocation}</span>
             </div>
             <div className="edit-job-panel_info--other_item">
               <label htmlFor="contact-info">Contact Info</label>
-              <span>{contactInfo}</span>
+              <span>{selectedJob.contactName}</span>
             </div>
             <div className="edit-job-panel_info--other_item">
               <label htmlFor="resume">Resume</label>
-              <span>{resume}</span>
+              <span>{selectedJob.trackerResume}</span>
             </div>
             <div className="edit-job-panel_info--other_item">
               <label htmlFor="salary">Salary</label>
-              <span>{salary}</span>
+              <span>{selectedJob.salary}</span>
             </div>
           </div>
         </form>
