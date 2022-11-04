@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "./components/Landing";
 import Tracker from "./components/Tracker/Tracker";
 import Dashboard from "./components/Dashboard/Dashboard";
