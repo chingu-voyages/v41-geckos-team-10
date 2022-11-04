@@ -22,3 +22,7 @@
 .profile-page__button-group {
   @apply space-x-2 md:space-x-5;
 }
+
+.profile-page__weekly-goal-text {
+  @apply px-5 mb-4
+}

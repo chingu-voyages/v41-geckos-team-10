@@ -6,6 +6,7 @@ import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
 import { NavBar } from "../NavBar";
 
+//https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 const ProfilePage = () => {
   return (
     <div className="profile-page">
