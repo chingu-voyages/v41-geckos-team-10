@@ -11,48 +11,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { displayJobs } from "../../redux/Slices/jobSlice";
 import IsLoggedIn from "../IsLoggedIn";
 
-/*
-function reducer(state, action) {
-  switch (action.type) {
-    case "EDIT":
-      let newState = state.map((item) => {
-        if (item.id === action.id) {
-          return { ...item, ...action.payload };
-        } else {
-          return item;
-        }
-      });
-      if (action.sortSelection !== "blank") {
-        if (action.sortSelection === "jobTitleAZ") {
-          return newState.sort((a, b) => a.jobtitle.localeCompare(b.jobTitle));
-        } else if (action.sortSelection === "companyAZ") {
-          return newState.sort((a, b) => a.companyName.localeCompare(b.companyName));
-        } else if (action.sortSelection === "locationAZ") {
-          return newState.sort((a, b) => a.companyLocation.localeCompare(b.companyLocation));
-        } else if (action.sortSelection === "newest") {
-          return newState.sort((a, b) =>
-            a.dateApplied.localeCompare(b.dateApplied)
-          );
-        }
-      }
-      return newState;
-    default:
-      return state;
-  }
-}
-*/
-
 const Tracker = () => {
   const user = useSelector((state) => state.user.value);
   const jobs = useSelector((state) => state.jobs.value);
   const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
+  const [filter, setFilter] = useState("all");
   const [sortSelection, setSortSelection] = useState("blank");
   const [openEditTrackerDrawer, setOpenEditTrackerDrawer] = useState({
     isClosed: true,
   });
   const [selectedJob, setSelectedJob] = useState({});
-  const [filter, setFilter] = useState("all");
-  const [focusId, setFocusId] = useState(0);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,7 +29,7 @@ const Tracker = () => {
       .get("http://localhost:4000/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
-          //console.log(res.data); // array of jobs from db for seeing data while developing
+          console.log(res.data); // array of jobs from db for seeing data while developing
           dispatch(displayJobs(res.data));
         } else {
           console.log("Error");
@@ -68,55 +37,9 @@ const Tracker = () => {
       });
   }, []);
 
-  /*
-  const filterHandler = (selected) => {
-    if (selected.toLowerCase() === "all") {
-      if (sortSelection === "jobTitleAZ") {
-        jobs.sort((a, b) => a.jobTitle.localeCompare(b.jobTitle));
-      } else if (sortSelection === "companyAZ") {
-        jobs.sort((a, b) => a.companyName.localeCompare(b.companyName));
-      } else if (sortSelection === "locationAZ") {
-        jobs.sort((a, b) => a.companyLocation.localeCompare(b.companyLocation));
-      } else if (sortSelection === "newest") {
-        jobs.sort((a, b) => a.dateApplied.localeCompare(b.dateApplied));
-      }
-      setJobs(state);
-      setFocusId(0);
-    } else {
-      const filtered = state.filter(
-        (job) => job.status.toLowerCase() === selected.toLowerCase()
-      );
-      if (sortSelection === "jobTitleAZ") {
-        filtered.sort((a, b) => a.jobTitle.localeCompare(b.jobTitle));
-      } else if (sortSelection === "companyAZ") {
-        filtered.sort((a, b) => a.companyName.localeCompare(b.companyName));
-      } else if (sortSelection === "locationAZ") {
-        filtered.sort((a, b) => a.companyLocation.localeCompare(b.companyLocation));
-      } else if (sortSelection === "newest") {
-        filtered.sort((a, b) => a.dateApplied.localeCompare(b.dateApplied));
-      }
-      if (filtered.length !== 0) {
-        setJobs(filtered);
-        setFocusId(0);
-      } else {
-        setJobs([]);
-      }
-    }
-
-    setFilter(selected.toLowerCase());
-  }; */
-
-  /*
-  useEffect(() => {
-    if (filter === "all") {
-      setFilteredJobs(state);
-    } else {
-      setJobs(
-        state.filter((job) => job.trackerStatus.toLowerCase() === filter.toLowerCase())
-      );
-    }
-  }, [state]);
-  */
+  const filterHandler = (value) => {
+    setFilter(value);
+  };
 
   const handleOpenTrackerDrawer = () => {
     openTrackerDrawer === "hidden"
@@ -132,14 +55,11 @@ const Tracker = () => {
     visibility: openEditTrackerDrawer.isClosed ? "hidden" : "visible",
   };
 
-  /*const handleToggle = (id) => {
-    setFocusId(id);
-  };*/
-
   const handleClick = (job) => {
-    setSelectedJob(job); 
-    //handleToggle(idx);
-    handleOpenEditTrackerDrawer();
+    setSelectedJob(job);
+    if (openEditTrackerDrawer.isClosed) {
+      handleOpenEditTrackerDrawer();
+    }
   };
 
   if (user.isLoggedIn) {
@@ -148,15 +68,18 @@ const Tracker = () => {
         <div className="tracker-div">
           <div className="tracker-content">
             <TrackerFilter
-              /* filterHandler={filterHandler} */
+              filterHandler={filterHandler}
               openEditTrackerDrawer={openEditTrackerDrawer}
               setOpenEditTrackerDrawer={setOpenEditTrackerDrawer}
+              dispatch={dispatch}
+              sortSelection={sortSelection}
             />
             <div className="tracker-control">
               <SortJobs
                 jobs={jobs}
                 sortSelection={sortSelection}
                 setSortSelection={setSortSelection}
+                dispatch={dispatch}
               />
               <button
                 className="tracker-button"
@@ -165,7 +88,7 @@ const Tracker = () => {
                 Create Tracker
               </button>
             </div>
-            <JobList jobs={jobs} handleClick={handleClick}/>
+            <JobList jobs={jobs} handleClick={handleClick} />
           </div>
           <div className={`tracker_drawer ${openTrackerDrawer}`}>
             <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
@@ -173,10 +96,10 @@ const Tracker = () => {
           <div style={editStyle}>
             <EditJobPanel
               dispatch={dispatch}
-              focusId={focusId}
               sortSelection={sortSelection}
               handleOpenTrackerDrawer={handleOpenEditTrackerDrawer}
               selectedJob={selectedJob}
+              filter={filter}
             />
           </div>
         </div>
