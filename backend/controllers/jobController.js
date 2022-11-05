@@ -85,14 +85,14 @@ const updateJob = async (req, res) => {
       res.status(401).json({ message: "User not found" });
     }
 
-    if (Job.user.toString() !== req.user._id.toString()) {
-      res.status(401).json({ message: "Not authorized" });
-    }
+    // if (Job.user.toString() !== req.user._id.toString()) {
+    //   res.status(401).json({ message: "Not authorized" });
+    // }
 
     const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    res.status(200).send(`Job ${updatedJob.title} has been updated`);
+    res.status(200).send(`Job ${updatedJob.jobTitle} has been updated`);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
