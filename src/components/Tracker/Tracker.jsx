@@ -10,9 +10,12 @@ import AddJob from "../AddJob/AddJob";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { displayJobs } from "../../redux/Slices/jobSlice";
+import { useSelector } from "react-redux";
+import IsLoggedIn from "../IsLoggedIn";
 
 const Tracker = () => {
   const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
+  const user = useSelector((state) => state.user.value);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
@@ -21,7 +24,7 @@ const Tracker = () => {
       .get("http://localhost:4000/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data); // array of jobs from db for seeing data while developing
+          //console.log(res.data); // array of jobs from db for seeing data while developing
           dispatch(displayJobs(res.data));
         } else {
           console.log("Error");
@@ -39,7 +42,7 @@ const Tracker = () => {
         )
       );
     }
-  }; 
+  };
 
   const handleOpenTrackerDrawer = () => {
     openTrackerDrawer === "hidden"
@@ -51,29 +54,37 @@ const Tracker = () => {
     visibility: openTrackerDrawer.isClosed ? "hidden" : "visible",
   };
 
-  return (
-    <div className="tracker-div">
-      <NavBar />
+  if (user.isLoggedIn) {
+    return (
+      <div className="tracker-div">
+        <NavBar />
 
-      <div className="tracker-content">
-        <TrackerFilter filterHandler={filterHandler} />
-        <div className="tracker-control">
-          <SortJobs  setData={setData} />
-          <button className="tracker-button" onClick={handleOpenTrackerDrawer}>
-            {" "}
-            Create Tracker{" "}
-          </button>
+        <div className="tracker-content">
+          <TrackerFilter filterHandler={filterHandler} />
+          <div className="tracker-control">
+            <SortJobs setData={setData} />
+            <button
+              className="tracker-button"
+              onClick={handleOpenTrackerDrawer}
+            >
+              {" "}
+              Create Tracker{" "}
+            </button>
+          </div>
+          <div>
+            <JobList />
+          </div>
         </div>
-        <div>
-          <JobList />
+
+        <div className={`tracker_drawer ${openTrackerDrawer}`}>
+          <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
         </div>
       </div>
-
-      <div className={`tracker_drawer ${openTrackerDrawer}`}>
-        <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <IsLoggedIn />
+    );
+  }
 };
-
 export default Tracker;
