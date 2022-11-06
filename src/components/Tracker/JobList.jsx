@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 
 const JobList = () => {
     const jobs = useSelector((state) => state.jobs.value);
-    
-    console.log(jobs);
 
     if(jobs.length !== 0) {
     return (
