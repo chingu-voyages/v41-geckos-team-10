@@ -54,37 +54,31 @@ const Tracker = () => {
     visibility: openTrackerDrawer.isClosed ? "hidden" : "visible",
   };
 
-  if (user.isLoggedIn) {
-    return (
-      <div className="tracker-div">
-        <NavBar />
+    return(
+        <div className='tracker-div'>
+            <NavBar />
+            <div className='tracker-filter-div'>
+                <TrackerFilter filterHandler={filterHandler}/>
 
-        <div className="tracker-content">
-          <TrackerFilter filterHandler={filterHandler} />
-          <div className="tracker-control">
-            <SortJobs setData={setData} />
-            <button
-              className="tracker-button"
-              onClick={handleOpenTrackerDrawer}
-            >
-              {" "}
-              Create Tracker{" "}
-            </button>
-          </div>
-          <div>
-            <JobList />
-          </div>
-        </div>
-
-        <div className={`tracker_drawer ${openTrackerDrawer}`}>
-          <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
-        </div>
-      </div>
+                <div className='tracker-content'>
+                    <div className='tracker-control'>
+                        <SortJobs 
+                            jobs={data}
+                            setData={setData}
+                        />
+                        <button
+                            className='tracker-button' 
+                            onClick={handleOpenTrackerDrawer}> Create Tracker </button>
+                    </div>
+                    <div>
+                        <JobList jobs={data}/>
+                    </div>
+                </div>
+            </div>
+            <div className={`tracker_drawer ${openTrackerDrawer}`}>
+                <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer}/>
+            </div>
+        </div> 
     );
-  } else {
-    return (
-      <IsLoggedIn />
-    );
-  }
 };
 export default Tracker;
