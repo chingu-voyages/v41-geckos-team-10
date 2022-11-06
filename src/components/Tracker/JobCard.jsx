@@ -19,7 +19,7 @@ const JobCard = (props) => {
     }
 
     return (
-        <div className="tracker-page__card-container">
+        <div className="tracker-page__card-container" onClick={() => props.handleClick(props.jobDetails)}>
             <div className="card-container__title">
                 <p>{props.jobDetails.jobTitle}</p>
                 <p className="card-container__light-detail">{props.jobDetails.companyName}</p>

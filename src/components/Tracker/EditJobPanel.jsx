@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "./EditJobPanel.css";
+import {
+  editJobs,
+  displayJobs,
+  sortJobs,
+  filterJobs,
+} from "../../redux/Slices/jobSlice";
 
 const statusClass = {
   Applied: "applied",
-  Upcoming: "upcoming-interview",
+  "Upcoming Interview": "upcoming-interview",
   Archived: "archived",
   Interviewed: "interviewed",
 };
@@ -11,65 +18,42 @@ const statusClass = {
 const EditJobPanel = ({
   selectedJob,
   dispatch,
-  focusId,
-  sortSelection,
   handleOpenTrackerDrawer,
+  filter,
+  sortSelection,
 }) => {
-
-  /*
-  let {
-    id,
-    title,
-    company,
-    status,
-    dateApplied,
-    followUpSent,
-    jobListing,
-    location,
-    contactInfo,
-    resume,
-    salary,
-  } =
-    state.length !== 0
-      ? state[focusId]
-      : //arbitrary data for empty sections
-        {
-          id: 0,
-          //dummy data
-          dateApplied: "2022-10-31",
-          followUpSent: true,
-          jobListing: "LinkedIn",
-          contactInfo: "0123456789",
-          resume: "Resume.pdf",
-          salary: "50,000 USD",
-        };
-        */
-
   let [inEditMode, setInEditMode] = useState(false);
   let [titleValue, setTitleValue] = useState(selectedJob.jobTitle);
   let [companyValue, setCompanyValue] = useState(selectedJob.companyName);
   let [statusValue, setStatusValue] = useState(selectedJob.trackerStatus);
-  let [dateAppliedValue, setDateAppliedValue] = useState(selectedJob.dateApplied);
-  let [followUpSentValue, setFollowUpSentValue] = useState(selectedJob.followUpSent);
+  let [dateAppliedValue, setDateAppliedValue] = useState(
+    selectedJob.dateApplied
+  );
+  let [followUpSentValue, setFollowUpSentValue] = useState(
+    selectedJob.followUp
+  );
   let [jobListingValue, setJobListingValue] = useState(selectedJob.listingLink);
   let [locationValue, setLocationValue] = useState(selectedJob.companyLocation);
-  let [contactInfoValue, setContactInfoValue] = useState(selectedJob.Name);
+  let [contactInfoValue, setContactInfoValue] = useState(
+    selectedJob.contactName
+  );
   let [resumeValue, setResumeValue] = useState(selectedJob.trackerResume);
   let [salaryValue, setSalaryValue] = useState(selectedJob.salary);
 
   let [errorMessage, setErrorMessage] = useState("");
 
-  /* useEffect(() => {
-    setTitleValue(title);
-    setCompanyValue(company);
-    setStatusValue(status);
-    setDateAppliedValue(dateApplied);
-    setJobListingValue(jobListing);
-    setLocationValue(location);
-    setContactInfoValue(contactInfo);
-    setResumeValue(resume);
-    setSalaryValue(salary);
-  }, [focusId, state]); */
+  // fills up the values with the selectJob info
+  useEffect(() => {
+    setTitleValue(selectedJob.jobTitle);
+    setCompanyValue(selectedJob.companyName);
+    setStatusValue(selectedJob.trackerStatus);
+    setDateAppliedValue(selectedJob.dateApplied);
+    setJobListingValue(selectedJob.listingLink);
+    setLocationValue(selectedJob.companyLocation);
+    setContactInfoValue(selectedJob.contactName);
+    setResumeValue(selectedJob.trackerResume);
+    setSalaryValue(selectedJob.salary);
+  }, [selectedJob]);
 
   const handleClose = (e) => {
     e.preventDefault();
@@ -81,9 +65,21 @@ const EditJobPanel = ({
     setInEditMode(true);
   };
 
-  //currently onClick as onSubmit will result in hard refreshing the page
-  const handleEdit = (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
+    let updatedJob = {
+      ...selectedJob,
+      jobTitle: titleValue,
+      companyName: companyValue,
+      trackerStatus: statusValue,
+      dateApplied: dateAppliedValue,
+      followUp: followUpSentValue,
+      listingLink: jobListingValue,
+      companyLocation: locationValue,
+      contactName: contactInfoValue,
+      trackerResume: resumeValue,
+      salary: salaryValue,
+    };
     if (
       titleValue === "" ||
       companyValue === "" ||
@@ -97,23 +93,35 @@ const EditJobPanel = ({
       setErrorMessage("Please fill out all fields.");
     } else {
       setErrorMessage("");
-      dispatch({
-        type: "EDIT",
-        id: selectedJob._id,
-        payload: {
-          title: titleValue,
-          company: companyValue,
-          status: statusValue,
-          dateApplied: dateAppliedValue,
-          followUpSent: followUpSentValue,
-          jobListing: jobListingValue,
-          location: locationValue,
-          contactInfo: contactInfoValue,
-          resume: resumeValue,
-          salary: salaryValue,
-        },
-        sortSelection: sortSelection,
-      });
+      const update = await axios
+        .put(`http://localhost:4000/jobs/${selectedJob._id}`, updatedJob, {
+          withCredentials: true,
+        })
+        .then(dispatch(editJobs({ _id: selectedJob._id, updatedJob })))
+        .then((res) => {
+          if (res.status === 200) {
+            console.log("Job successfully edited");
+          } else {
+            console.log("Job not edited");
+          }
+        });
+
+      const getJobs = await axios
+        .get("http://localhost:4000/jobs", { withCredentials: true })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res.data); // array of jobs from db for seeing data while developing
+            dispatch(displayJobs(res.data));
+            if (filter !== "all") {
+              dispatch(filterJobs(filter));
+            }
+            if (sortSelection !== "blank") {
+              dispatch(sortJobs(sortSelection));
+            }
+          } else {
+            console.log("Error");
+          }
+        });
 
       handleOpenTrackerDrawer({ isClosed: true });
       setInEditMode(false);
@@ -282,10 +290,16 @@ const EditJobPanel = ({
       ) : (
         <form className="edit-job-panel_info">
           <div className="edit-job-panel_info--main">
-            <h2 className="edit-job-panel_info--main_job-title">{selectedJob.jobTitle}</h2>
-            <h3 className="edit-job-panel_info--main_company">{selectedJob.companyName}</h3>
+            <h2 className="edit-job-panel_info--main_job-title">
+              {selectedJob.jobTitle}
+            </h2>
+            <h3 className="edit-job-panel_info--main_company">
+              {selectedJob.companyName}
+            </h3>
             <span
-              className={`edit-job-panel_info--main_status edit-job-panel_info--main_status--${statusClass[selectedJob.trackerStatus]}`}
+              className={`edit-job-panel_info--main_status edit-job-panel_info--main_status--${
+                statusClass[selectedJob.trackerStatus]
+              }`}
             >
               {selectedJob.trackerStatus}
             </span>

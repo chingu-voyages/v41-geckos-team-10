@@ -5,18 +5,14 @@ import DashGoalItems from "./DashGoalItems";
 import DashHeader from "./DashHeader";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
-
-import { NavBar } from "../NavBar";
 import IsLoggedIn from "../IsLoggedIn";
 
 const Dashboard = () => {
   const user = useSelector((state) => state.user.value);
-  console.log(user);
 
   if (user.isLoggedIn) {
     return (
       <div className="dashboard ">
-        <NavBar />
         <div className="dashboard--div">
           <DashHeader />
           <div className="objectives-div">
@@ -45,9 +41,7 @@ const Dashboard = () => {
       </div>
     );
   } else {
-    return (
-     <IsLoggedIn />
-    );
+    return <IsLoggedIn />;
   }
 };
 
