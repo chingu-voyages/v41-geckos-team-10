@@ -28,7 +28,7 @@ function LoginForm() {
     });
     if (response.status === 200) {
       dispatch(loggedUser(response.data));
-      navigate("/Dashboard");
+      navigate("/dashboard");
     } else {
       setErrMsg(response.data);
     }

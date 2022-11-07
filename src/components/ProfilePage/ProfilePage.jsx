@@ -4,7 +4,6 @@ import ProfileResumeUpload from "./Profile Form Inputs/ProfileResumeUpload/Profi
 import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileTextInput";
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
-import { NavBar } from "../NavBar";
 import { useSelector } from "react-redux";
 import IsLoggedIn from "../IsLoggedIn";
 
@@ -14,7 +13,6 @@ const ProfilePage = () => {
   if (user.isLoggedIn) {
     return (
       <div className="profile-page">
-        <NavBar />
         <div className="profile-page--div">
           <form className="profile-page__form">
             <div className="profile-page__name-inputs">
