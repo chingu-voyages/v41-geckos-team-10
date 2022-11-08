@@ -19,10 +19,12 @@ const AddJob = (props) => {
 
   const [addJobTracker, setAddJobTracker] = useState({});
 
+  console.log(addJobTracker);
+
   const handleAddJobTracker = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAddJobTracker((values) => ({ ...values, [name]: value }));
+    setAddJobTracker((values) => ({ ...values, [name]: value, trackerTimestamp: now }));
   };
 
   const handleSubmit = (e) => {
