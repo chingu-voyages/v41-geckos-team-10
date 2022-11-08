@@ -10,7 +10,6 @@ import IsLoggedIn from "../IsLoggedIn";
 const ProfilePage = () => {
   const user = useSelector((state) => state.user.value);
 
-  if (user.isLoggedIn) {
     return (
       <div className="profile-page">
         <div className="profile-page--div">
@@ -33,9 +32,6 @@ const ProfilePage = () => {
         </div>
       </div>
     );
-  } else {
-    return <IsLoggedIn />;
-  }
 };
 
 export default ProfilePage;
