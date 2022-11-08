@@ -1,36 +1,14 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import './SortJobs.css';
+import React from "react";
+import { sortJobs } from "../../redux/Slices/jobSlice";
 
-const SortJobs = () => {
-    const jobs = useSelector((state) => state.jobs.value); //jobs is an array of objects from the redux store
-    const [sortSelection, setSortSelection] = useState("blank")
-    let jobsList = [...jobs];
+import "./SortJobs.css";
 
-    useEffect(() => {
-        // Sorts according to which option was selected.
-        if (sortSelection === "jobTitleAZ") {
-            jobsList.sort((a, b) =>
-                a.jobTitle.localeCompare(b.jobTitle)
-            )
-        } else if (sortSelection === "companyAZ") {
-            jobsList.sort((a, b) =>
-                a.companyName.localeCompare(b.companyName)
-            )
-        } else if (sortSelection === "locationAZ") {
-            jobsList.sort((a, b) =>
-                a.companyLocation.localeCompare(b.companyLocation)
-            )
-        }
-        //setData(jobsList)
-
-    }, [sortSelection])
-
-    function updateSortSelection(e) {
-        // Updates the sortSelection state to the selected sort option
-        setSortSelection(e.target.value); 
-    }
+const SortJobs = ({ dispatch, sortSelection, setSortSelection }) => {
+  function updateSortSelection(e) {
+    // Updates the sortSelection state to the selected sort option
+    setSortSelection(e.target.value);
+    dispatch(sortJobs(e.target.value));
+  }
 
   return (
     <div className="tracker_sort-jobs">

@@ -1,14 +1,35 @@
 import React from "react";
+import axios from "axios";
 import "./TrackerFilter.css";
+import { displayJobs, filterJobs, sortJobs } from "../../redux/Slices/jobSlice";
 import favoritestar from "../../assets/favoritestar.svg";
 
 const TrackerFilter = ({
-  filterHandler,
   openEditTrackerDrawer,
   setOpenEditTrackerDrawer,
+  dispatch,
+  sortSelection,
+  filterHandler,
 }) => {
-  const handleClick = (value) => {
+  const handleClick = async (value) => {
     filterHandler(value);
+    const getJobs = axios
+      .get("http://localhost:4000/jobs", { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data); // array of jobs from db for seeing data while developing
+          dispatch(displayJobs(res.data));
+          if (value !== "all") {
+            dispatch(filterJobs(value));
+          }
+          if (sortSelection !== "blank") {
+            dispatch(sortJobs(sortSelection));
+          }
+        } else {
+          console.log("Error");
+        }
+      });
+
     if (!openEditTrackerDrawer.isClosed) {
       setOpenEditTrackerDrawer({ isClosed: true });
     }
@@ -36,7 +57,7 @@ const TrackerFilter = ({
         <ul className="trackerFilter--list_item">
           <button
             className="trackerFilter--button button-upcomingInterview"
-            onClick={() => handleClick("Upcoming")}
+            onClick={() => handleClick("Upcoming Interview")}
           >
             Upcoming Interview
           </button>
