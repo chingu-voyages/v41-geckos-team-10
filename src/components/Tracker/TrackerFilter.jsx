@@ -81,9 +81,10 @@ const TrackerFilter = ({
         {/* <ul className="trackerFilter--list_item">
                     <button className="trackerFilter--button button-favorite"><img src={favoritestar} alt="favorite" className='favorite-icon' /></button>
                 </ul> */}
-      </li>
-    </div>
-  );
-};
+            </li>
+        </div>
+    );
+
+}
 
 export default TrackerFilter;
