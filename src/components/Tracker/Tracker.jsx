@@ -11,10 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { displayJobs } from "../../redux/Slices/jobSlice";
 import IsLoggedIn from "../IsLoggedIn";
 
-const Tracker = () => {
+const Tracker = ({addTaskOpen, handleAddTaskOpen}) => {
   const user = useSelector((state) => state.user.value);
   const jobs = useSelector((state) => state.jobs.value);
-  const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
   const [filter, setFilter] = useState("all");
   const [sortSelection, setSortSelection] = useState("blank");
   const [openEditTrackerDrawer, setOpenEditTrackerDrawer] = useState({
@@ -39,12 +38,6 @@ const Tracker = () => {
 
   const filterHandler = (value) => {
     setFilter(value);
-  };
-
-  const handleOpenTrackerDrawer = () => {
-    openTrackerDrawer === "hidden"
-      ? setOpenTrackerDrawer("visible")
-      : setOpenTrackerDrawer("hidden");
   };
 
   const handleOpenEditTrackerDrawer = () => {
@@ -81,17 +74,12 @@ const Tracker = () => {
                 setSortSelection={setSortSelection}
                 dispatch={dispatch}
               />
-              <button
-                className="tracker-button"
-                onClick={handleOpenTrackerDrawer}
-              >
-                Create Tracker
-              </button>
+           
             </div>
             <JobList jobs={jobs} handleClick={handleClick} />
           </div>
-          <div className={`tracker_drawer ${openTrackerDrawer}`}>
-            <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
+          <div className={`tracker_drawer ${addTaskOpen}`}>
+            <AddJob handleAddTaskOpen={handleAddTaskOpen} />
           </div>
           <div style={editStyle}>
             <EditJobPanel

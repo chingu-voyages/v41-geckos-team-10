@@ -19,8 +19,6 @@ const AddJob = (props) => {
 
   const [addJobTracker, setAddJobTracker] = useState({});
 
-  console.log(addJobTracker);
-
   const handleAddJobTracker = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -33,7 +31,7 @@ const AddJob = (props) => {
       if (res.status === 200) {
         console.log("Job successfully added");
         setAddJobTracker("");
-        props.handleOpenTrackerDrawer();
+        props.handleAddTaskOpen();
       } else {
         console.log("Job not added");
       }
@@ -47,7 +45,7 @@ const AddJob = (props) => {
           <div className="add-job_header_close ">
             <button
               className="add-job_header_button"
-              onClick={props.handleOpenTrackerDrawer}
+              onClick={props.handleAddTaskOpen}
             >
               <img src={closePane} alt="Close Pane" />
               <p>Create Job Tracker</p>

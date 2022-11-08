@@ -10,9 +10,10 @@ import logout_icon from "../assets/logouticon.svg"
 import { loggedOutUser } from "../redux/Slices/userSlice";
 import { useDispatch } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({handleAddTaskOpen}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   const handleLogout = async () => {
     try {
@@ -55,9 +56,13 @@ const NavBar = () => {
                 <li className="navbar">
                     <div className="navbar--button--div">
                         <button className="navbar navbar--button"
-                            onClick={() => navigate('/tracker')
-                    
+                            onClick={() => 
+                                {
+                                    navigate('/tracker')
+                                    handleAddTaskOpen();
                                 }
+                                }
+                           
                         >
                             <p>Add Task +</p>
                         </button>
