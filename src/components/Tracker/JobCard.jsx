@@ -27,7 +27,7 @@ const JobCard = (props) => {
 
       <div className="card-container__section">
         <p className={`${statusColor} card-container__status-pill`}>
-          {props.jobDetails.status}
+          {props.jobDetails.trackerStatus}
         </p>
       </div>
 
