@@ -1,19 +1,27 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import "./Tracker.css";
-import { NavBar } from "../NavBar";
-import { JOBS } from "../../dummycardata";
 import SortJobs from "./SortJobs";
 import TrackerFilter from "./TrackerFilter";
 import JobList from "./JobList";
 import AddJob from "../AddJob/AddJob";
+import EditJobPanel from "./EditJobPanel";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { displayJobs } from "../../redux/Slices/jobSlice";
+import IsLoggedIn from "../IsLoggedIn";
 
 const Tracker = () => {
+  const user = useSelector((state) => state.user.value);
+  const jobs = useSelector((state) => state.jobs.value);
   const [openTrackerDrawer, setOpenTrackerDrawer] = useState("hidden");
-  const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("all");
+  const [sortSelection, setSortSelection] = useState("blank");
+  const [openEditTrackerDrawer, setOpenEditTrackerDrawer] = useState({
+    isClosed: true,
+  });
+  const [selectedJob, setSelectedJob] = useState({});
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,17 +37,9 @@ const Tracker = () => {
       });
   }, []);
 
-  const filterHandler = (selected) => {
-    if (selected.toLowerCase() === "all") {
-      setData(JOBS);
-    } else {
-      setData(
-        JOBS.filter(
-          (job) => job.status.toLowerCase() === selected.toLowerCase()
-        )
-      );
-    }
-  }; 
+  const filterHandler = (value) => {
+    setFilter(value);
+  };
 
   const handleOpenTrackerDrawer = () => {
     openTrackerDrawer === "hidden"
@@ -47,36 +47,66 @@ const Tracker = () => {
       : setOpenTrackerDrawer("hidden");
   };
 
-  const style = {
-    visibility: openTrackerDrawer.isClosed ? "hidden" : "visible",
+  const handleOpenEditTrackerDrawer = () => {
+    setOpenEditTrackerDrawer({ isClosed: !openEditTrackerDrawer.isClosed });
   };
 
-    return(
-        <div className='tracker-div'>
-            <NavBar />
-            <div className='tracker-filter-div'>
-                <TrackerFilter filterHandler={filterHandler}/>
+  const editStyle = {
+    visibility: openEditTrackerDrawer.isClosed ? "hidden" : "visible",
+  };
 
-                <div className='tracker-content'>
-                    <div className='tracker-control'>
-                        <SortJobs 
-                            jobs={data}
-                            setData={setData}
-                        />
-                        <button
-                            className='tracker-button' 
-                            onClick={handleOpenTrackerDrawer}> Create Tracker </button>
-                    </div>
-                    <div>
-                        <JobList jobs={data}/>
-                    </div>
-                </div>
+  const handleClick = (job) => {
+    setSelectedJob(job);
+    if (openEditTrackerDrawer.isClosed) {
+      handleOpenEditTrackerDrawer();
+    }
+  };
+
+  if (user.isLoggedIn) {
+    return (
+      <div className="tracker-page">
+        <div className="tracker-div">
+          <div className="tracker-content">
+            <TrackerFilter
+              filterHandler={filterHandler}
+              openEditTrackerDrawer={openEditTrackerDrawer}
+              setOpenEditTrackerDrawer={setOpenEditTrackerDrawer}
+              dispatch={dispatch}
+              sortSelection={sortSelection}
+            />
+            <div className="tracker-control">
+              <SortJobs
+                jobs={jobs}
+                sortSelection={sortSelection}
+                setSortSelection={setSortSelection}
+                dispatch={dispatch}
+              />
+              <button
+                className="tracker-button"
+                onClick={handleOpenTrackerDrawer}
+              >
+                Create Tracker
+              </button>
             </div>
-            <div className={`tracker_drawer ${openTrackerDrawer}`}>
-                <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer}/>
-            </div>
-        </div> 
+            <JobList jobs={jobs} handleClick={handleClick} />
+          </div>
+          <div className={`tracker_drawer ${openTrackerDrawer}`}>
+            <AddJob handleOpenTrackerDrawer={handleOpenTrackerDrawer} />
+          </div>
+          <div style={editStyle}>
+            <EditJobPanel
+              dispatch={dispatch}
+              sortSelection={sortSelection}
+              handleOpenTrackerDrawer={handleOpenEditTrackerDrawer}
+              selectedJob={selectedJob}
+              filter={filter}
+            />
+          </div>
+        </div>
+      </div>
     );
+  } else {
+    return <IsLoggedIn />;
+  }
 };
-
 export default Tracker;

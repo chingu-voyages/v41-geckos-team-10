@@ -7,15 +7,18 @@ import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
 import logout_icon from "../assets/logouticon.svg"
+import { loggedOutUser } from "../redux/Slices/userSlice";
+import { useDispatch } from "react-redux";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
       const res = await axios.get("http://localhost:4000/logout");
       if (res.status === 200) {
-        alert(res.data);
+        dispatch(loggedOutUser());
         navigate("/");
       }
     } catch (error) {
@@ -74,4 +77,4 @@ const NavBar = () => {
   );
 };
 
-export { NavBar };
+export default NavBar;
