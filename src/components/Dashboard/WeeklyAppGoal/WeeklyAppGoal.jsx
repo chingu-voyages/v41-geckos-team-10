@@ -4,7 +4,7 @@ import { useState } from 'react';
 //https://blog.logrocket.com/build-svg-circular-progress-component-react-hooks/
 
 const WeeklyAppGoal = ({size, strokeWidth, goalValue, weeklyApps}) => {
-   const percentage = goalValue/weeklyApps;
+   const percentage = (weeklyApps/goalValue) * 100;
    const dailyGoal = goalValue;
    const goalMet=weeklyApps
    const radius = 40
@@ -43,7 +43,7 @@ const WeeklyAppGoal = ({size, strokeWidth, goalValue, weeklyApps}) => {
                     strokeLinecap='round'
                     />
                 </svg>
-                <span className='absolute text-xl text-tailwind-grey font-bold'>{goalMet}/{dailyGoal}</span>
+                <span className='absolute text-xl text-tailwind-grey font-bold'>{goalMet}/{dailyGoal} </span>
         </div>
     )
 }
