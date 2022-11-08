@@ -1,13 +1,15 @@
 import React from "react";
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WeeklyAppGoal from './WeeklyAppGoal/WeeklyAppGoal'
 import './DashGoalItems.css'
 
 
 const DashGoalItems = () => {
 
+    const dispatch = useDispatch;
+    
     const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
     const [dashGoalItem, setDashGoalItem] = useState([

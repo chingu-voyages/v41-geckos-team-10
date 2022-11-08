@@ -8,6 +8,9 @@ export const jobsSlice = createSlice({
   name: "jobs",
   initialState,
   reducers: {
+    appsThisWeek: (state, action) => {
+      console.log(state.value)
+    },
     displayJobs: (state, action) => {
       state.value = action.payload;
     },
@@ -56,7 +59,7 @@ export const jobsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { displayJobs, editJobs, filterJobs, sortJobs } =
+export const { displayJobs, editJobs, filterJobs, sortJobs, appsThisWeek } =
   jobsSlice.actions;
 
 export default jobsSlice.reducer;
