@@ -2,19 +2,22 @@ import React from "react";
 import JobCard from "./JobCard";
 
 const JobList = ({ jobs, handleClick }) => {
-  return (
-    <>
-      {jobs.map((data, idx) => (
-        <div onClick={() => handleClick(idx)}>
+  if (jobs.length !== 0) {
+    return (
+      <>
+        {jobs.map((data) => (
           <JobCard
             className="tracker-page__card"
             jobDetails={data}
-            key={data.id}
+            key={data._id}
+            handleClick={handleClick}
           />
-        </div>
-      ))}
-    </>
-  );
+        ))}
+      </>
+    );
+  } else {
+    return <div>No Jobs Being Tracked</div>;
+  }
 };
 
 export default JobList;

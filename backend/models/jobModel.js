@@ -2,48 +2,61 @@
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
-  title: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId, //create a reference to the user
+    required: true, //make sure the user is logged in
+    ref: "User", //reference the user model
+  },
+  companyName: {
     type: String,
     required: true,
   },
-  company: {
+  jobTitle: {
     type: String,
-    required: true,
-  },
-  status: {
-    type: String,
-    required: true,
-  },
-  dateApplied: {
-    type: Date,
-  },
-  followUp: {
-    type: Boolean,
-    required: true,
-  },
-  jobLink: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  contact: {
-    type: String,
-    required: true,
-  },
-  resumeSent: {
-    type: Boolean, //<=======Not sure of the value type
     required: true,
   },
   salary: {
     type: Number,
+    default: "none",
+  },
+  listingLink: {
+    type: String,
+    required: true,
+    default: "none",
+  },
+  companyLocation: {
+    type: String,
     required: true,
   },
-  timestamp: {
-    type: Date,
-    default: Date.now,
+  contactName: {
+    type: String,
+    default: "none",
+  },
+  contactEmail: {
+    type: String,
+    default: "none",
+  },
+  contactPhone: {
+    type: String,
+    default: "none",
+  },
+  trackerStatus: {
+    type: String,
+    required: true,
+  },
+  dateApplied: {
+    type: String,
+  },
+  trackerResume: {
+    type: String,
+    default: "none",
+  },
+  trackerTimestamp: {
+    type: String,
+  },
+  followUp: {
+    type: Boolean,
+    default: false,
   },
   favorite: { // for displaying and sorting favorite jobs
     type: Boolean,

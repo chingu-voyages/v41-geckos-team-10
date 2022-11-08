@@ -1,29 +1,13 @@
 import React from "react";
-import { useEffect } from "react";
+import { sortJobs } from "../../redux/Slices/jobSlice";
+
 import "./SortJobs.css";
 
-const SortJobs = (props) => {
-  let jobsList = [...props.jobs];
-  let sortSelection = props.sortSelection;
-  let setSortSelection = props.setSortSelection;
-
-  useEffect(() => {
-    // Sorts according to which option was selected.
-    if (sortSelection === "jobTitleAZ") {
-      jobsList.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortSelection === "companyAZ") {
-      jobsList.sort((a, b) => a.company.localeCompare(b.company));
-    } else if (sortSelection === "locationAZ") {
-      jobsList.sort((a, b) => a.location.localeCompare(b.location));
-    } else if (sortSelection === "newest") {
-      jobsList.sort((a, b) => a.dateApplied.localeCompare(b.dateApplied));
-    }
-    props.setData(jobsList);
-  }, [sortSelection]);
-
+const SortJobs = ({ dispatch, sortSelection, setSortSelection }) => {
   function updateSortSelection(e) {
     // Updates the sortSelection state to the selected sort option
     setSortSelection(e.target.value);
+    dispatch(sortJobs(e.target.value));
   }
 
   return (
