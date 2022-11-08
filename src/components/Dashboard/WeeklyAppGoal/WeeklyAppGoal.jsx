@@ -3,9 +3,9 @@ import { useState } from 'react';
 
 //https://blog.logrocket.com/build-svg-circular-progress-component-react-hooks/
 
-const WeeklyAppGoal = ({size, strokeWidth, weeklyGoal}) => {
+const WeeklyAppGoal = ({size, strokeWidth, goalValue}) => {
    const percentage = 50;
-   const dailyGoal=50
+   const dailyGoal = goalValue;
    const goalMet=dailyGoal*(percentage/100)
    const radius = 40
    //  const [percentage, setPercentage] = useState(30);

@@ -1,11 +1,14 @@
 import React from "react";
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 import WeeklyAppGoal from './WeeklyAppGoal/WeeklyAppGoal'
 import './DashGoalItems.css'
 
 
 const DashGoalItems = () => {
+
+    const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
     const [dashGoalItem, setDashGoalItem] = useState([
         {item: "Login Streak"},
@@ -15,6 +18,7 @@ const DashGoalItems = () => {
                 <WeeklyAppGoal 
                 size={100}
                 strokeWidth={10}
+                goalValue={wAG}
                 />
         },
         ]);
