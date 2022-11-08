@@ -11,11 +11,12 @@ import IsLoggedIn from "../IsLoggedIn";
 //https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 const ProfilePage = () => {
   const user = useSelector((state) => state.user.value);
+  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
   const [firstName, setFirstName] = useState("Pat");
   const [lastName, setLastName] = useState("d'User");
   const [email, setEmail] = useState("pat@gmail.com");
-  const [weeklyAppGoal, setWeeklyAppGoal] = useState(20);
+  const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
 
 
   if (user.isLoggedIn) {
