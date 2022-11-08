@@ -3,14 +3,13 @@ import { useState } from 'react';
 
 //https://blog.logrocket.com/build-svg-circular-progress-component-react-hooks/
 
-const WeeklyAppGoal = ({size, strokeWidth, goalValue}) => {
-   const percentage = 50;
+const WeeklyAppGoal = ({size, strokeWidth, goalValue, weeklyApps}) => {
+   const percentage = goalValue/weeklyApps;
    const dailyGoal = goalValue;
-   const goalMet=dailyGoal*(percentage/100)
+   const goalMet=weeklyApps
    const radius = 40
-   //  const [percentage, setPercentage] = useState(30);
    const circumference = 2 * Math.PI * radius;
-    const dash = ((100-percentage) * circumference)/100;
+   const dash = ((100-percentage) * circumference)/100;
 
     return (
         <div className='weeklyAppGoal_progressCircle relative inline-flex items-center justify-center overflow-hidden rounded-full bottom-0 left-0'
@@ -27,7 +26,6 @@ const WeeklyAppGoal = ({size, strokeWidth, goalValue}) => {
                     strokeWidth={strokeWidth}
                     stroke={'#ccc'}
                     strokeDasharray={circumference}
-                    //strokeLinecap='round'
                     />
                
                     <circle

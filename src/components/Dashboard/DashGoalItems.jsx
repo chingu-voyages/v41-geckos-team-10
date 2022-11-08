@@ -1,18 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import WeeklyAppGoal from './WeeklyAppGoal/WeeklyAppGoal'
+import WeeklyAppGoal from './WeeklyAppGoal/WeeklyAppGoal';
+import axios from "axios";
+import { displayJobs } from "../../redux/Slices/jobSlice";
 import './DashGoalItems.css'
 
 
 const DashGoalItems = () => {
 
-    const dispatch = useDispatch;
-    
+    const dispatch = useDispatch();
+    const jobs = useSelector((state) => state.jobs.value);
+  
+    useEffect(() => {
+        axios
+          .get("http://localhost:4000/jobs", { withCredentials: true })
+          .then((res) => {
+            if (res.status === 200) {
+              dispatch(displayJobs(res.data));
+            } else {
+              console.log("Error");
+            }
+          });
+      }, []);
+
+    const getSunday = () =>  {
+        const d = new Date();
+        const day = d.getDay()
+        const date = d.getDate() - day
+        return date
+    } 
+
+    const getSaturday = () =>  {
+        const d = new Date();
+        const day = d.getDay()
+        const date = d.getDate() + (6 - day)
+        return date
+    } 
+
+    const thisWeeksApps = jobs.filter((item) => {
+    if ( item.dateApplied.toString().slice(-2) >= getSunday() && item.dateApplied.toString().slice(-2) <= getSaturday()  ) {
+
+        return item
+    }
+    })
+
+    const weeklyApps = thisWeeksApps.length
+
     const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
-    const [dashGoalItem, setDashGoalItem] = useState([
+    const dashGoalItem = [
         {item: "Login Streak"},
         {
             item: "Weekly Application Goal", 
@@ -21,11 +58,12 @@ const DashGoalItems = () => {
                 size={100}
                 strokeWidth={10}
                 goalValue={wAG}
+                weeklyApps={weeklyApps}
                 />
         },
-        ]);
+    ]
+     
 
-   
     return (
         <div className='dashboard_tracker_container'>
             {dashGoalItem.map((track) => (
