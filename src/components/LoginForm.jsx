@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
 import { useNavigate } from "react-router-dom";
+import { loggedUser } from "../redux/Slices/userSlice";
+import { useDispatch } from "react-redux";
 
 //https://stackoverflow.com/questions/64627649/express-session-is-not-setting-cookies-in-browser
 // help with setting cookies
 
 function LoginForm() {
   const [errMsg, setErrMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -25,10 +27,10 @@ function LoginForm() {
       withCredentials: true, //with credentials is set to true to allow cookies to be set in the browser client side
     });
     if (response.status === 200) {
-      setSuccessMsg(response.data);
-      navigate("/profile-page");
+      dispatch(loggedUser(response.data));
+      navigate("/dashboard");
     } else {
-      setErrMsg("User does not exist");
+      setErrMsg(response.data);
     }
     e.target.reset();
   };
@@ -50,12 +52,11 @@ function LoginForm() {
       </label>
 
       <div className="submit">
-        <button type="submit" className="form--button">
+        <button  type="submit" className="form--button">
           Log in
         </button>
       </div>
       {errMsg && <span className="error">{errMsg}</span>}
-      {successMsg && <span className="success">{successMsg}</span>}
     </form>
   );
 }

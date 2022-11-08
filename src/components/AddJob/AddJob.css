@@ -1,0 +1,43 @@
+.add-job {
+  background-color: #b1d199;
+  border: solid 2px #ff7561;
+  @apply w-96 p-3 flex h-full fixed right-0 top-0 overflow-y-auto;
+}
+
+.add-job_opportunity-detail_form {
+  @apply flex flex-col flex-1;
+}
+
+.add-job_header {
+  @apply flex flex-col;
+}
+
+.add-job_header_button {
+  @apply hover:bg-slate-50 flex items-center text-lg font-bold content-between;
+}
+
+.add-job_container {
+  @apply flex flex-col flex-1 place-content-around;
+}
+
+.add-job_opportunity-detail_input {
+  margin-left: 1rem;
+  border: solid 2px #ff7561;
+}
+
+.add-job_opportunity-detail_label {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.add-job__field {
+  padding: 0.2rem;
+}
+
+.add-job_status-detail {
+  @apply flex flex-col gap-5 m-5;
+}
+
+.add-job_footer_button {
+  @apply hover:bg-slate-50 flex items-center;
+}

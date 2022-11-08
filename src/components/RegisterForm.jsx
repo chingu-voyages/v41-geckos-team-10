@@ -41,7 +41,7 @@ function RegisterForm() {
       password: e.currentTarget.password.value,
     };
 
-    const response = await axios.post("http://localhost:4000/register", body);
+    const response = await axios.post("http://localhost:4000/register", body, {withCredentials: true});
 
     if (response.status === 200) {
       setSuccessMsg(response.data);

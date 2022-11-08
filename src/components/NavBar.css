@@ -1,128 +1,100 @@
 .navbar {
-    text-align: left;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
-    /* @apply top-0 box-border h-full  */
-    ;
-    
+  @apply top-0 box-border h-full;
 }
 
 .navbar--div {
-    padding: 2px;
-    width: fit-content;
-    height: 100vh;
-    position: absolute;
-    background-color: white;
-    /* @apply absolute h-full w-80 text-gray-500 bg-white flex flex-col items-center 
-    bg-gradient-to-r from-cyan-500 to-blue-50  */
-    ;
-
+  @apply absolute w-80 h-screen text-gray-500 bg-white flex flex-col
+    sm:w-20
+    md:w-32 md:text-xs
+    lg:w-60;
 }
 
 .navbar--list {
-    font-size: 0.75rem;
-    color: #C8BFBF;
-    /* @apply flex flex-col gap-32  */
+  @apply flex flex-col gap-12
+    sm:gap-2 p-0
+    md:p-2;
 }
 
 .navbar--logo {
-    display: flex;
-    justify-content: center;
-    padding: 8px;
-    /* @apply -mb-96 */
+  @apply flex justify-center;
+}
+
+.logo {
+  @apply -mt-5
+        sm:-mt-0;
+}
+
+.profile--picture--div {
+  @apply flex justify-center;
 }
 
 .navbar--profile_picture {
-    display: flex;
-    justify-content: center;
-    padding: 50px 0;
-    height: 190px;
-    width: 190px;
-    border-radius: 50%;
-    border: 5px solid #C8BFBF;
-    box-shadow: 0 5px 5px;
-    /* @apply box-border h-48 w-48 border-4 rounded-full drop-shadow-xl mb-10; */
-    
+  @apply h-48 w-48 border-4 rounded-full
+    drop-shadow-xl
+    sm:h-10 sm:w-10    
+    md:h-20 md:w-20
+    lg:h-32 lg:w-32;
 }
 
 .navbar--list_item {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    transition: 0.5s;
-    /* @apply flex flex-row pt-5 drop-shadow-xl mb-96; */
-    
+  @apply flex flex-row justify-center p-4
+    sm:p-2
+    md:p-2 
+    drop-shadow-xl
+    transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300
+    ;
 }
 
 .navbar--list_item:hover {
-    color: #424B54;
-    font-size: .9rem;
-    
+  @apply text-black;
 }
 
 .navbar--icon {
-    height: 2rem;
-    padding-right: 25px;
-    /* @apply 
-    h-8
-    drop-shadow-lg */
-    ;
+  @apply h-6 drop-shadow-lg;
 }
 
-/* .navbar--text {
-    @apply self-center px-10 text-lg 
+.navbar--text {
+  @apply self-center px-10 hidden
+    lg:inline lg:text-lg;
 }
 
 .navbar--text_logout {
-    @apply text-sm;
+  @apply text-sm;
 }
 
 .navbar--button--div {
-    @apply 
-        relative flex mt-20 ml-10
-
-} */
-
-.navbar--button {
-    position: absolute;
-    bottom: 10%;
-    left: 25%;
-    display: flex;
-    background-color: #63B4FF;
-    filter: drop-shadow(0px 6px 4px #63B4FF);
-    color: white;
-    height: 40px;
-    width: 120px;
-    border-radius: 35px;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-    /* @apply 
-        bg-gradient-to-l from-sky-600 to-sky-500
-        text-white
-        rounded-full drop-shadow-2xl
-        h-10 w-32 p-2 text-base */
-    ;
+  @apply relative flex justify-center;
 }
 
-.navbar--button:hover {
-    height: 50px;
-    width: 130px;
+.navbar--button {
+  @apply bg-gradient-to-l from-sky-600 to-sky-500
+        text-white
+        rounded-full drop-shadow-2xl
+        h-10 w-32 p-2 text-base
+        sm:h-10 sm:w-10
+        md:h-10 md:w-10
+        lg:h-10 lg:w-32
+        transition ease-in-out delay-75 hover:-translate-y-1 hover:scale-110 duration-300;
+}
+
+.navbar--button p {
+  @apply hidden
+    lg:inline-block;
 }
 
 .navbar--logout {
-    position: absolute;
-    bottom: 0%;
-    /* @apply
-        h-4 w-4 flex mt-20
-        shadow-xl justify-self-end mb-20
-        ; */
 }
 
-/* .navbar--text_logout {
-    @apply text-sm;
-} */
+.div--logout {
+  @apply flex flex-row
+     justify-end p-2;
+}
+
+.navbar--text_logout {
+  @apply text-sm hidden
+    lg:inline-block;
+}
 
 .navbar--icon_logout {
-    height: 1.2rem;
-    margin: 7px 12px;
+  @apply h-4 w-4;
 }
