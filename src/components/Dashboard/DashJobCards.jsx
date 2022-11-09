@@ -55,52 +55,219 @@ const DashJobCards = () => {
 
     dashJobCardOb();
 
-    const [frontView, setFrontView] = useState("visible")
-    const [backView, setBackView] = useState("hidden")
-
-    const handleCardFlip = () => {
+    const [frontView0, setFrontView0] = useState("visible")
+    const [backView0, setBackView0] = useState("hidden")
+    const [frontView1, setFrontView1] = useState("visible")
+    const [backView1, setBackView1] = useState("hidden")
+    const [frontView2, setFrontView2] = useState("visible")
+    const [backView2, setBackView2] = useState("hidden")
+    const handleCardFlip0 = () => {
        
-        if (frontView === "visible"){
-            setFrontView("hidden")
-            setBackView("visible")
-            console.log("in if", "frontView", frontView, "backView", backView)
-          (console.log("in If"))
-          return frontView, backView;
+        if (frontView0 === "visible"){
+            setFrontView0("hidden");
+            setBackView0("visible");
+         
           } else {
-            setFrontView("visible")
-            setBackView("hidden"); 
-            console.log("in else", "frontView", frontView, "backView", backView)
+            setFrontView0("visible");
+            setBackView0("hidden"); 
           }
     }
-
+    const handleCardFlip1 = () => {
+       
+      if (frontView1 === "visible"){
+          setFrontView1("hidden");
+          setBackView1("visible");
+      
+        } else {
+          setFrontView1("visible");
+          setBackView1("hidden"); 
+        }
+  }
+  const handleCardFlip2 = () => {
+       
+    if (frontView2 === "visible"){
+        setFrontView2("hidden");
+        setBackView2("visible");
+     
+      } else {
+        setFrontView2("visible");
+        setBackView2("hidden"); 
+      }
+}
 
     return (
     <div className='dashboard_job-card_container flex justify-center' >
-        {dashJobCards.map((job, i) => (
+      
             <div 
-                className='dashboard_job-card_item block rounded-lg shodow-lg bg-white max-w-sm text-center' 
+                className='dashboard_job-card_item ' 
                 key={nanoid()}
-                onClick={handleCardFlip}
-                
-                
+                onClick={handleCardFlip0}
             >
-              <div className={`dashboard_job-card_front ${frontView}`}>
-                <div className="py-3 px-3 border-b border-gray-300">
-                  <p className='dashboard_job-card_text '>{`${job.companyName}`}</p>
-                  <p className='dashboard_job-card_text'>{`${job.jobTitle}`}</p>
+              <div className={`dashboard_job-card_front ${frontView0}`}>
+                <div className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Company: </p>
+                    <p className='dashboard_job-card_text '>{`${dashJobCards[0].companyName}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Title: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].jobTitle}`}</p>
+                  </div>
                 </div>
-                  
-                  
-                  <p className='dashboard_job-card_text'>{`${job.companyLocation}`}</p> 
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Location: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].companyLocation}`}</p> 
+                  </div>
+                </div>
               </div>
-              <div className={`dashboard_job-card_back ${backView}`}>
-                <p className='dashboard_job-card_text'>{`${job.dateApplied}`}</p>
-                <p className='dashboard_job-card_text'>{`${job.trackerStatus}`}</p>
-                <p className='dashboard_job-card_text'>{`${job.salary}`}</p>
+
+              <div className={`dashboard_job-card_back ${backView0}`}>
+                <div  className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Date Applied: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].dateApplied}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Application Status: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].trackerStatus}`}</p>
+                  </div>
+                </div>
+                
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Salary: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].salary}`}</p>
+                  </div>
+                  
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Name: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].contactName}`}</p>
+                  </div>
+
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Email: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[0].contactEmail}`}</p>
+                  </div>
+                </div>
               </div>
                 
             </div>
-        ))}
+
+            <div 
+                className='dashboard_job-card_item ' 
+                key={nanoid()}
+                onClick={handleCardFlip1}
+            >
+              <div className={`dashboard_job-card_front ${frontView1}`}>
+                <div className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Company: </p>
+                    <p className='dashboard_job-card_text '>{`${dashJobCards[1].companyName}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Title: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].jobTitle}`}</p>
+                  </div>
+                </div>
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Location: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].companyLocation}`}</p> 
+                  </div>
+                </div>
+              </div>
+
+              <div className={`dashboard_job-card_back ${backView1}`}>
+                <div  className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Date Applied: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].dateApplied}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Application Status: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].trackerStatus}`}</p>
+                  </div>
+                </div>
+                
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Salary: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].salary}`}</p>
+                  </div>
+                  
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Name: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].contactName}`}</p>
+                  </div>
+
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Email: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[1].contactEmail}`}</p>
+                  </div>
+                </div>
+              </div>
+                
+            </div>
+
+
+            <div 
+                className='dashboard_job-card_item ' 
+                key={nanoid()}
+                onClick={handleCardFlip2}
+            >
+              <div className={`dashboard_job-card_front ${frontView2}`}>
+                <div className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Company: </p>
+                    <p className='dashboard_job-card_text '>{`${dashJobCards[2].companyName}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Title: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].jobTitle}`}</p>
+                  </div>
+                </div>
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Location: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].companyLocation}`}</p> 
+                  </div>
+                </div>
+              </div>
+
+              <div className={`dashboard_job-card_back ${backView2}`}>
+                <div  className="dashboard_job-card_top">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Date Applied: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].dateApplied}`}</p>
+                  </div>
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Application Status: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].trackerStatus}`}</p>
+                  </div>
+                </div>
+                
+                <div className="dashboard_job-card_bottom">
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Salary: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].salary}`}</p>
+                  </div>
+                  
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Name: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].contactName}`}</p>
+                  </div>
+
+                  <div className="dashboard_job-card_inner">
+                    <p className="dashboard_job-card_text job-card_label">Contact Email: </p>
+                    <p className='dashboard_job-card_text'>{`${dashJobCards[2].contactEmail}`}</p>
+                  </div>
+                </div>
+              </div>
+                
+            </div>
+
+    
     </div>)
 }
 
