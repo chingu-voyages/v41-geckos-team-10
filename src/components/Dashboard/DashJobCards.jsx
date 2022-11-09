@@ -26,12 +26,6 @@ const DashJobCards = () => {
       }, []);
 
     const d = new Date();
-   console.log("jobs", jobs)
-
-    const string = "Tue Nov 08 2022 13:07:24"
-   // const date = new Date(string + "Z")
-
-   // Math.abs(d.getTime() - date.getTime() )
     
     const mostActiveArr = jobs.map((job) => {
         const string = job.trackerTimestamp.toString() 

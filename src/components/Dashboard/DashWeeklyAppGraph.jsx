@@ -8,26 +8,50 @@ function WeeklyAppGraph() {
 
     const graphLineSpacingArr = ['0', '1/8', '1/4', '3/8', '1/2', '5/8', '3/4', '7/8'];
     const graphBarArr = [
-        {spacing: '0', day: 'Mon', percent: 54}, 
-        {spacing: '1/7', day: 'Tues', percent: 24}, 
-        {spacing: '2/7', day: 'Wed', percent: 20},
-        {spacing: '3/7', day: 'Thur', percent: 34},
-        {spacing: '4/7', day: 'Fri', percent: 32},
-        {spacing: '5/7', day: 'Sat', percent: 44}, 
-        {spacing: '6/7', day: 'Sun', percent: 58}
+        {spacing: '0', day: 'Sun', percent: 12}, 
+        {spacing: '1/7', day: 'Mon', percent: 8}, 
+        {spacing: '2/7', day: 'Tues', percent: 20},
+        {spacing: '3/7', day: 'Wed', percent: 12},
+        {spacing: '4/7', day: 'Thurs', percent: 8},
+        {spacing: '5/7', day: 'Fri', percent: 20}, 
+        {spacing: '6/7', day: 'Sat', percent: 20}
     ];
 
+    const d = new Date();
+    const baseDay = d.getDate();
+    const dayNum = d.getDay()
+    const month = d.getMonth()
+    const year = d.getYear()
+    const getDaysInMonth = (year, month) => {
+        return new Date(year, month, 0).getDate();
+    }
+    const daysInMonth = (m) => {
+        return getDaysInMonth(year, m + 1, 0)
+    }
+    
+    
+
+    console.log("hello", d.getDay())
     return (
+        
         <div className='graph'>
             <div className='graph_container'>
                 <div className='graph_text_container '>
-                    {graphBarArr.map(bar => {
+                    {graphBarArr.map((bar, i) => {
+
+                        const dayOfWeek = () => {
+                            if (d.getDay === i){
+                            return baseDay
+                        } else {
+                            return dayNum
+                        }
+                        }
+
                         return (
                         <p className={`graph_text left-${bar.spacing}`}>
-                            {bar.day}
+                            {bar.day} {dayOfWeek()} {i}
                         </p>
-                        )
-                    })}
+                        )})}
                   
                 </div>
                 <div className='graph_line_container'>
