@@ -2,7 +2,7 @@ const router = require("express").Router();
 const {
   registerUser,
   loginUser,
-  dashboard,
+  getUser,
   logoutUser,
 } = require("../controllers/userController");
 const isAuth = require("./auth").isAuth;
@@ -13,7 +13,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 //GET Routes
-router.get("/dashboard", isAuth, dashboard);
+router.get("/login-success", isAuth, getUser);
 
 router.get("/logout", logoutUser);
 

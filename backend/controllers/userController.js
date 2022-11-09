@@ -26,7 +26,7 @@ const registerUser = (req, res) => {
       newUser
         .save()
         .then((user) => console.log(user))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
       res.send("Success! Please login");
     }
@@ -52,8 +52,8 @@ const loginUser = (req, res, next) => {
 //@desc dashboard data
 //@route GET /dashboard
 //@access Private
-const dashboard = (req, res) => {
-  const reqUser = req.user;
+const getUser = (req, res) => {
+  const reqUser = { email: req.user.email, id: req.user._id };
   res.send(reqUser);
 };
 
@@ -61,11 +61,11 @@ const dashboard = (req, res) => {
 //@route GET /logout
 //@access Public
 const logoutUser = (req, res, next) => {
-  req.logout(function (err) {
+  req.session.destroy((err) => {
     if (err) {
-      return (err);
+      return next(err);
     }
-    res.send("Successfully logged out");
+    res.clearCookie("connect.sid", { path: "/" }).status(200).send("Ok.");
   });
 };
 
@@ -73,5 +73,5 @@ module.exports = {
   registerUser,
   loginUser,
   logoutUser,
-  dashboard,
+  getUser,
 };

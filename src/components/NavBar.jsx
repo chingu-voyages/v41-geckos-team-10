@@ -17,7 +17,7 @@ const NavBar = ({handleAddTaskOpen}) => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/logout");
+      const res = await axios.get("http://localhost:4000/logout", {withCredentials: true});
       if (res.status === 200) {
         dispatch(loggedOutUser());
         navigate("/");

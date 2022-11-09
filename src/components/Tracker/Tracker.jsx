@@ -55,7 +55,6 @@ const Tracker = ({addTaskOpen, handleAddTaskOpen}) => {
     }
   };
 
-  if (user.isLoggedIn) {
     return (
       <div className="tracker-page">
         <div className="tracker-div">
@@ -93,8 +92,5 @@ const Tracker = ({addTaskOpen, handleAddTaskOpen}) => {
         </div>
       </div>
     );
-  } else {
-    return <IsLoggedIn />;
-  }
 };
 export default Tracker;
