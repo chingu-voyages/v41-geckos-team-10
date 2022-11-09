@@ -25,7 +25,7 @@ const Dashboard = () => {
               <DashGoalItems />
             </div>
             <div className="dashboard_job-card">
-              <p className="dashboard_job-card_text">
+              <p className="dashboard_job-card_header-text">
                 Most Recent Applications
               </p>
               <DashJobCards />

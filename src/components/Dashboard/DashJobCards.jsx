@@ -55,31 +55,34 @@ const DashJobCards = () => {
 
     dashJobCardOb();
 
-    let frontView = "visible"
-    let backView = "hidden"
+    const [frontView, setFrontView] = useState("visible")
+    const [backView, setBackView] = useState("hidden")
 
-    const handleCardFlip = (frontView, backView) => {
-        
-        if (frontView === "visible" ){
-          let frontView = "hidden"
-          let backView = "visible"
+    const handleCardFlip = () => {
+       
+        if (frontView === "visible"){
+            setFrontView("hidden")
+            setBackView("visible")
+            console.log("in if", "frontView", frontView, "backView", backView)
           (console.log("in If"))
           return frontView, backView;
           } else {
-            frontView = "visible";
-             backView = "hidden";
-             console.log("in Else")
+            setFrontView("visible")
+            setBackView("hidden"); 
+            console.log("in else", "frontView", frontView, "backView", backView)
           }
     }
 
 
     return (
-    <div className='dashboard_job-card_container flex justify-center'>
-        {dashJobCards.map((job) => (
+    <div className='dashboard_job-card_container flex justify-center' >
+        {dashJobCards.map((job, i) => (
             <div 
                 className='dashboard_job-card_item block rounded-lg shodow-lg bg-white max-w-sm text-center' 
                 key={nanoid()}
                 onClick={handleCardFlip}
+                
+                
             >
               <div className={`dashboard_job-card_front ${frontView}`}>
                 <div className="py-3 px-3 border-b border-gray-300">

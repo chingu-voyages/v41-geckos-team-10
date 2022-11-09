@@ -44,8 +44,11 @@
 .dashboard_job-tracker_text {
     @apply flex  text-xl 
     md:justify-start
-    
     ;
+}
+
+.dashboard_job-card_header-text {
+    @apply text-white
 }
 
 .dashboard_job-tracker_graph {
