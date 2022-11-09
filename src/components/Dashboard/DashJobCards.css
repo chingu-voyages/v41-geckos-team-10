@@ -10,4 +10,21 @@
 }
 
 .dashboard_job-card_text {
+    @apply text-gray-900 text-base text-sm ;
+}
+
+.dashboard_job-card {
+    /* @apply flex flex-col items-end
+    md:w-60 
+    lg:text-end
+    xl:w-4/5
+    2xl:w-4/5 */
+}
+
+.dashboard_job-card_text {
+   /* @apply 
+    md:ml-4
+    lg:text-end lg:text-base
+    xl:text-end xl:text-lg
+    2xl:text-end 2xl:mr-4 2xl:text-xl */
 }
