@@ -1,25 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 import './DashGoalItems.css'
 
 
 const DashGoalItems = () => {
 
-    const [dashGoalItem, setDashGoalItem] = useState([
+    const dashGoalItem = [
         {item: "Login Streak"},
-        {item: "Weekly Goals"},
-        {item: "Latest Achievement"}
-        ]);
-
-   
+        {item: "Weekly Application Goal"},
+    ]
+     
     return (
         <div className='dashboard_tracker_container'>
             {dashGoalItem.map((track) => (
                 <div 
                     className='dashboard_tracker_item' 
                     key={nanoid()}
-                >
+                >   {track.component}
                     <p className='dashboard_tracker_item_text'>{track.item}</p>
                 </div>  
             ))}
