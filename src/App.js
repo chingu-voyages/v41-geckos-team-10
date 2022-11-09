@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useEffect } from "react";
 import axios from "axios";
->>>>>>> 20a52bf5f634ad3c793171a85858e6e6aaa6f36d
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "./components/Landing";
@@ -17,29 +13,6 @@ import { loggedUser } from "./redux/Slices/userSlice";
 
 export default function App() {
   const location = useLocation();
-<<<<<<< HEAD
-  const [addTaskOpen, setAddTaskOpen ] = useState("hidden")
-
-  const handleAddTaskOpen = () => {
-    addTaskOpen === "hidden"
-      ? setAddTaskOpen("visible")
-      : setAddTaskOpen("hidden");
-  }
-
-  return (
-    <div className="App">
-      {location.pathname === "/" ? null : <NavBar handleAddTaskOpen={handleAddTaskOpen}/>}
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route 
-          path="/tracker" 
-          element={
-            <Tracker addTaskOpen={addTaskOpen} handleAddTaskOpen={handleAddTaskOpen}/>
-            } 
-          />
-        <Route path="profile-page" element={<ProfilePage />} />
-=======
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
@@ -61,7 +34,6 @@ export default function App() {
         <Route path="dashboard" element={user.isLoggedIn ? <Dashboard /> : <IsLoggedIn />} />
         <Route path="/tracker" element={user.isLoggedIn ? <Tracker /> : <IsLoggedIn />} />
         <Route path="profile-page" element={user.isLoggedIn ? <ProfilePage /> : <IsLoggedIn />} />
->>>>>>> 20a52bf5f634ad3c793171a85858e6e6aaa6f36d
       </Routes>
     </div>
   );
