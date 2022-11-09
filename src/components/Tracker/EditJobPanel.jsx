@@ -41,6 +41,7 @@ const EditJobPanel = ({
   let [salaryValue, setSalaryValue] = useState(selectedJob.salary);
 
   let [errorMessage, setErrorMessage] = useState("");
+  const now = new Date();
 
   // fills up the values with the selectJob info
   useEffect(() => {
@@ -79,6 +80,7 @@ const EditJobPanel = ({
       contactName: contactInfoValue,
       trackerResume: resumeValue,
       salary: salaryValue,
+      trackerTimestamp: now.toString(),
     };
     if (
       titleValue === "" ||

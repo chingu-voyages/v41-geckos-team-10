@@ -3,10 +3,11 @@
 }
 
 .navbar_div {
-  @apply absolute w-80 h-screen text-gray-500 bg-white flex flex-col
+  @apply absolute w-20 h-screen text-gray-500 bg-white flex flex-col
     sm:w-20
     md:w-32 md:text-xs
-    lg:w-60;
+    lg:w-60
+    xl:w-80;
 }
 
 .navbar_list {
@@ -29,14 +30,16 @@
 }
 
 .navbar_profile_picture {
-  @apply h-48 w-48 border-4 rounded-full
+  @apply border-4 rounded-full
     drop-shadow-xl
+    h-8 w-8
     sm:h-10 sm:w-10    
     md:h-20 md:w-20
-    lg:h-32 lg:w-32;
+    lg:h-32 lg:w-32
+    xl:h-48 xl:w-48;
 }
 
-.navbar_list_item {
+.navbar_list-item {
   @apply flex flex-row justify-center p-4
     sm:p-2
     md:p-2 
@@ -63,13 +66,14 @@
 
 .navbar_button_div {
   @apply relative flex justify-center;
+  lg: p-4;
 }
 
 .navbar_button {
   @apply bg-gradient-to-l from-sky-600 to-sky-500
         text-white
         rounded-full drop-shadow-2xl
-        h-10 w-32 p-2 text-base
+        h-10 w-10 p-2 text-base
         sm:h-10 sm:w-10
         md:h-10 md:w-10
         lg:h-10 lg:w-32

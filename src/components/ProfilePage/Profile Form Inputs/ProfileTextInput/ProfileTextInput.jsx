@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./ProfileTextInput.css";
 
-const ProfileTextInput = ({ name, value = "", type = "text" }) => {
-  const [inputValue, setInputValue] = useState(value);
+const ProfileTextInput = ({ name, value = "", type = "text"}) => {
+ const [inputValue, setInputValue] = useState(value);
 
   const labelText = (label) => {
     const parsedText = label.split("-").join(" ");

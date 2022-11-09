@@ -16,7 +16,9 @@ const NavBar = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/logout");
+      const res = await axios.get("http://localhost:4000/logout", {
+        withCredentials: true,
+      });
       if (res.status === 200) {
         dispatch(loggedOutUser());
         navigate("/");
@@ -33,7 +35,7 @@ const NavBar = () => {
           <li className='navbar navbar_logo'>
             <img className='logo' alt='app logo' />
           </li>
-          <li className='navbar navbar_list_item'>
+          <li className='navbar navbar_list-item'>
             <div className='profile_picture-div'>
               <img
                 src={profile_picture_holder}
@@ -42,32 +44,38 @@ const NavBar = () => {
               />
             </div>
           </li>
-          <li className='navbar navbar_list_item'>
-            <img
-              src={dashboard_icon}
-              className='navbar navbar_icon'
-              alt='dashboard page'
-            />
+          <li className='navbar navbar_list-item'>
+            <Link to={"/dashboard"}>
+              <img
+                src={dashboard_icon}
+                className='navbar navbar_icon'
+                alt='dashboard page'
+              />
+            </Link>
             <Link to={"/dashboard"} className='navbar navbar_text'>
               Dashboard
             </Link>
           </li>
-          <li className='navbar navbar_list_item'>
-            <img
-              src={tracker_icon}
-              className='navbar navbar_icon'
-              alt='tracker page'
-            />
+          <li className='navbar navbar_list-item'>
+            <Link to={"/tracker"}>
+              <img
+                src={tracker_icon}
+                className='navbar navbar_icon'
+                alt='tracker page'
+              />
+            </Link>
             <Link to={"/tracker"} className='navbar navbar_text'>
               Tracker
             </Link>
           </li>
-          <li className='navbar navbar_list_item'>
-            <img
-              src={profile_icon}
-              className='navbar navbar_icon'
-              alt='profile page'
-            />
+          <li className='navbar navbar_list-item'>
+            <Link to={"/profile-page"}>
+              <img
+                src={profile_icon}
+                className='navbar navbar_icon'
+                alt='profile page'
+              />
+            </Link>
             <Link to={"/profile-page"} className='navbar navbar_text'>
               Profile
             </Link>
@@ -84,14 +92,18 @@ const NavBar = () => {
           </li>
           <li className='navbar navbar_logout'>
             <div className={"div_logout"}>
-              <img
-                src={logout_icon}
-                className='navbar_icon_logout'
-                alt='logout'
-              />
-              <button className='navbar_text_logout' onClick={handleLogout}>
-                Logout
-              </button>
+              <Link to=''>
+                <img
+                  src={logout_icon}
+                  className='navbar_icon_logout'
+                  alt='logout'
+                />
+              </Link>
+              <Link className='navbar_text_logout' to=''>
+                <button className='navbar_text_logout' onClick={handleLogout}>
+                  Logout
+                </button>
+              </Link>
             </div>
           </li>
         </ul>

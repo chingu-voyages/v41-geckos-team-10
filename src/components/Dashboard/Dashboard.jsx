@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashWeeklyAppGraph from "./DashWeeklyAppGraph";
 import DashJobCards from "./DashJobCards";
 import DashGoalItems from "./DashGoalItems";
 import DashHeader from "./DashHeader";
+import axios from "axios";
+import { appsThisWeek, displayJobs } from "../../redux/Slices/jobSlice";
 import "./Dashboard.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import IsLoggedIn from "../IsLoggedIn";
 
 const Dashboard = () => {

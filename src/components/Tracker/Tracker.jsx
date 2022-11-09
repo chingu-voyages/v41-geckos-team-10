@@ -62,7 +62,6 @@ const Tracker = () => {
     }
   };
 
-  if (user.isLoggedIn) {
     return (
       <div className='tracker-page'>
         <div className='tracker-div'>
@@ -105,8 +104,5 @@ const Tracker = () => {
         </div>
       </div>
     );
-  } else {
-    return <IsLoggedIn />;
-  }
 };
 export default Tracker;

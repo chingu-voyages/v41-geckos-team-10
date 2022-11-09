@@ -10,6 +10,7 @@ module.exports = {
         'br-green': '#B1D199',
         'lt-purple':'#AA9AFF',
         'lt-blue': '#63B4FF',
+        'tailwind-grey':'#424b54'
         
       },
       spacing: {
