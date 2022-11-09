@@ -29,10 +29,14 @@
     background-color: #58765E;
     border-radius: 12px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
-    color: white;
+    color: #484D52;
     font-size: 1.25rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+.form--label {
+    color: #383b3f;
 }
 
 .form--button:hover {
