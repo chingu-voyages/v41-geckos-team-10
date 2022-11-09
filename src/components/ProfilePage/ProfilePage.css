@@ -15,10 +15,18 @@
   @apply w-10/12 p-5 md:p-10 ml-64;
 }
 
+.profile-page__profile {
+  @apply w-10/12 p-5 md:p-10 ml-64;
+}
+
 .profile-page__name-inputs {
   @apply flex space-x-10;
 }
 
 .profile-page__button-group {
   @apply space-x-2 md:space-x-5;
+}
+
+.profile-page__weekly-goal-text {
+  @apply px-5 mb-4
 }

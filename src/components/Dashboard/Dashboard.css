@@ -57,7 +57,7 @@
 }
 
 .dashboard_job-tracker_text {
-    @apply flex  text-xl
+    @apply flex  text-xl 
     md:justify-start
     
     ;
