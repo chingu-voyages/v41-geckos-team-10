@@ -12,28 +12,28 @@ const Dashboard = () => {
 
   if (user.isLoggedIn) {
     return (
-      <div className="dashboard ">
-        <div className="dashboard--div">
+      <div className='dashboard'>
+        <div className='dashboard_div'>
           <DashHeader />
-          <div className="objectives-div">
-            <div className="dashboard_tracker">
-              <p className="dashboard_tracker_text">
+          <div className='objectives_div'>
+            <div className='dashboard_tracker'>
+              <p className='dashboard_tracker_text'>
                 Most Active Goals and Achievments
               </p>
               <DashGoalItems />
             </div>
-            <div className="dashboard_job-card">
-              <p className="dashboard_job-card_text">
+            <div className='dashboard_job-card'>
+              <p className='dashboard_job-card_text'>
                 Most Recent Applications
               </p>
               <DashJobCards />
             </div>
           </div>
-          <div className="dashboard_job-tracker">
-            <p className="dashboard_job-tracker_text">
+          <div className='dashboard_job-tracker'>
+            <p className='dashboard_job-tracker_text'>
               Weekly Job Application Tracker
             </p>
-            <div className="dashboard_job-tracker_graph">
+            <div className='dashboard_job-tracker_graph'>
               <DashWeeklyAppGraph />
             </div>
           </div>

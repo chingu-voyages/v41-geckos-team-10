@@ -2,6 +2,6 @@
   @apply font-display flex flex-col mb-5;
 }
 
-.profile-text-input__textbox {
+.profile-text-input_textbox {
   @apply rounded-lg px-2 w-36 md:w-72;
 }

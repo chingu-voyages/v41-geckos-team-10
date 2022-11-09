@@ -64,9 +64,9 @@ const Tracker = () => {
 
   if (user.isLoggedIn) {
     return (
-      <div className="tracker-page">
-        <div className="tracker-div">
-          <div className="tracker-content">
+      <div className='tracker-page'>
+        <div className='tracker-div'>
+          <div className='tracker-content'>
             <TrackerFilter
               filterHandler={filterHandler}
               openEditTrackerDrawer={openEditTrackerDrawer}
@@ -74,7 +74,7 @@ const Tracker = () => {
               dispatch={dispatch}
               sortSelection={sortSelection}
             />
-            <div className="tracker-control">
+            <div className='tracker-control'>
               <SortJobs
                 jobs={jobs}
                 sortSelection={sortSelection}
@@ -82,7 +82,7 @@ const Tracker = () => {
                 dispatch={dispatch}
               />
               <button
-                className="tracker-button"
+                className='tracker-button'
                 onClick={handleOpenTrackerDrawer}
               >
                 Create Tracker

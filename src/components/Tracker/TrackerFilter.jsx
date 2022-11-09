@@ -36,50 +36,50 @@ const TrackerFilter = ({
   };
 
   return (
-    <div className="trackerFilter--div">
-      <li className="trackerFilter--list">
-        <ul className="trackerFilter--list_item">
+    <div className='trackerFilter_div'>
+      <li className='trackerFilter_list'>
+        <ul className='trackerFilter_list-item'>
           <button
-            className="trackerFilter--button button-all"
+            className='trackerFilter_button button-all'
             onClick={() => handleClick("all")}
           >
             All
           </button>
         </ul>
-        <ul className="trackerFilter--list_item">
+        <ul className='trackerFilter_list-item'>
           <button
-            className="trackerFilter--button button-applied"
+            className='trackerFilter_button button-applied'
             onClick={() => handleClick("Applied")}
           >
             Applied
           </button>
         </ul>
-        <ul className="trackerFilter--list_item">
+        <ul className='trackerFilter_list-item'>
           <button
-            className="trackerFilter--button button-upcomingInterview"
+            className='trackerFilter_button button-upcomingInterview'
             onClick={() => handleClick("Upcoming Interview")}
           >
             Upcoming Interview
           </button>
         </ul>
-        <ul className="trackerFilter--list_item">
+        <ul className='trackerFilter_list-item'>
           <button
-            className="trackerFilter--button button-interviewed"
+            className='trackerFilter_button button-interviewed'
             onClick={() => handleClick("Interviewed")}
           >
             Interviewed
           </button>
         </ul>
-        <ul className="trackerFilter--list_item">
+        <ul className='trackerFilter_list-item'>
           <button
-            className="trackerFilter--button button-archived"
+            className='trackerFilter_button button-archived'
             onClick={() => handleClick("Archived")}
           >
             Archived
           </button>
         </ul>
-        {/* <ul className="trackerFilter--list_item">
-                    <button className="trackerFilter--button button-favorite"><img src={favoritestar} alt="favorite" className='favorite-icon' /></button>
+        {/* <ul className="trackerFilter_list-item">
+                    <button className="trackerFilter_button button-favorite"><img src={favoritestar} alt="favorite" className='favorite-icon' /></button>
                 </ul> */}
       </li>
     </div>

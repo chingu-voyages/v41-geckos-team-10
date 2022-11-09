@@ -36,27 +36,27 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={(e) => loginUser(e)} className="form-container">
+    <form onSubmit={(e) => loginUser(e)} className='form-container'>
       <label>
-        <span className="form--span">Email</span>
-        <input type="text" name="email" className="form--input" required />
+        <span className='form_span'>Email</span>
+        <input type='text' name='email' className='form_input' required />
       </label>
       <label>
-        <span className="form--span">Password</span>
+        <span className='form_span'>Password</span>
         <input
-          type="password"
-          name="password"
-          className="form--input"
+          type='password'
+          name='password'
+          className='form_input'
           required
         />
       </label>
 
-      <div className="submit">
-        <button  type="submit" className="form--button">
+      <div className='submit'>
+        <button type='submit' className='form_button'>
           Log in
         </button>
       </div>
-      {errMsg && <span className="error">{errMsg}</span>}
+      {errMsg && <span className='error'>{errMsg}</span>}
     </form>
   );
 }

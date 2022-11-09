@@ -2,23 +2,23 @@
   @apply bg-gray-100 h-full;
 }
 
-.profile-page--div {
+.profile-page_div {
   @apply grid justify-center items-center 
     h-90/100 pt-6
     sm:w-4/5 sm:ml-24
     md:w-4/5 md:ml-40
     lg:w-4/5 lg:ml-64
-    xl:w-11/12 xl:ml-48
+    xl:w-11/12 xl:ml-48;
 }
 
-.profile-page__form {
+.profile-page_form {
   @apply w-10/12 p-5 md:p-10 ml-64;
 }
 
-.profile-page__name-inputs {
+.profile-page_name-inputs {
   @apply flex space-x-10;
 }
 
-.profile-page__button-group {
+.profile-page_button-group {
   @apply space-x-2 md:space-x-5;
 }

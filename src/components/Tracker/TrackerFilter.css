@@ -1,8 +1,8 @@
-.trackerFilter--div {
+.trackerFilter_div {
   @apply mb-10;
 }
 
-.trackerFilter--list {
+.trackerFilter_list {
   min-width: 525px;
   @apply flex flex-row justify-evenly items-center
     bg-br-green drop-shadow-xl
@@ -11,7 +11,7 @@
     rounded-full;
 }
 
-.trackerFilter--button {
+.trackerFilter_button {
   @apply flex justify-center items-center 
     bg-inherit w-28 h-12 rounded-full
     transition ease-in duration-200
