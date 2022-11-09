@@ -78,15 +78,15 @@ const DashJobCards = () => {
     <div className='dashboard_job-card_container'>
         {dashJobCards.map((job) => (
             <div 
-                className='dashboard_job-card_item' 
+                className='dashboard_job-card_item ' 
                 key={nanoid()}
             >
-                <p className='dashboard_job-card_text'>{`Company Name: ${job.companyName}`}</p>
-                <p className='dashboard_job-card_text'>{`Job Title: ${job.jobTitle}`}</p>
-                <p className='dashboard_job-card_text'>{`Date Applied: ${job.dateApplied}`}</p>
-                <p className='dashboard_job-card_text'>{`Company Location: ${job.companyLocation}`}</p>
-                <p className='dashboard_job-card_text'>{`Status: ${job.trackerStatus}`}</p>
-                <p className='dashboard_job-card_text'>{`Salary: ${job.salary}`}</p>
+                <p className='dashboard_job-card_text text-center'>{`${job.companyName}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.jobTitle}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.dateApplied}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.companyLocation}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.trackerStatus}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.salary}`}</p>
             </div>
         ))}
     </div>)
