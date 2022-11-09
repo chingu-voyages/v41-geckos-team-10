@@ -81,12 +81,12 @@ const DashJobCards = () => {
                 className='dashboard_job-card_item ' 
                 key={nanoid()}
             >
-                <p className='dashboard_job-card_text text-center'>{`${job.companyName}`}</p>
+                {/* <p className='dashboard_job-card_text text-center'>{`${job.companyName}`}</p>
                 <p className='dashboard_job-card_text'>{`${job.jobTitle}`}</p>
                 <p className='dashboard_job-card_text'>{`${job.dateApplied}`}</p>
                 <p className='dashboard_job-card_text'>{`${job.companyLocation}`}</p>
                 <p className='dashboard_job-card_text'>{`${job.trackerStatus}`}</p>
-                <p className='dashboard_job-card_text'>{`${job.salary}`}</p>
+                <p className='dashboard_job-card_text'>{`${job.salary}`}</p> */}
             </div>
         ))}
     </div>)

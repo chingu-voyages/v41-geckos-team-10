@@ -1,3 +1,5 @@
+@tailwind components;
+
 .dashboard_tracker_container {
     @apply flex flex-row w-full
     md:w-2/5
@@ -5,15 +7,21 @@
 }
 
 .dashboard_tracker_item {
-    @apply bg-br-green basis-2/6 border-2 m-4 rounded-3xl
-    md:p-4 md:w-32
+    @apply bg-br-green flex flex-nowrap flex-col border-2 m-4 rounded-3xl
+    md:p-4 
     lg:p-8
     xl:p-10
 }
 
 .dashboard_tracker_item_text {
-    @apply flex justify-center items-center
+    @apply text-xl font-semibold text-tailwind-grey
     md:text-sm
-    lg:text-lg
+    lg:text-lg;
     
+}
+
+@layer components {
+    .dashboard_tracker_item_text {
+        text: tailwind-grey;
+    }
 }
