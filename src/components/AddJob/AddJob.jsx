@@ -19,12 +19,14 @@ const AddJob = (props) => {
 
   const [addJobTracker, setAddJobTracker] = useState({});
 
-  console.log(addJobTracker);
-
   const handleAddJobTracker = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setAddJobTracker((values) => ({ ...values, [name]: value, trackerTimestamp: now }));
+    setAddJobTracker((values) => ({
+      ...values,
+      [name]: value,
+      trackerTimestamp: now,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -37,7 +39,7 @@ const AddJob = (props) => {
         if (res.status === 200) {
           console.log("Job successfully added");
           setAddJobTracker("");
-          props.handleOpenTrackerDrawer();
+          props.handleAddTaskOpen();
         } else {
           console.log("Job not added");
         }
@@ -45,13 +47,13 @@ const AddJob = (props) => {
   };
 
   return (
-    <div className='add-job '>
+    <div className='add-job'>
       <form className='add-job_opportunity-detail_form' onSubmit={handleSubmit}>
         <div className='add-job_header'>
           <div className='add-job_header_close '>
             <button
               className='add-job_header_button'
-              onClick={props.handleOpenTrackerDrawer}
+              onClick={props.handleAddTaskOpen}
             >
               <img src={closePane} alt='Close Pane' />
               <p>Create Job Tracker</p>
@@ -61,7 +63,7 @@ const AddJob = (props) => {
         <div className='add-job_container'>
           <p>* Required Fields</p>
           <div className='add-job_opportunity-detail'>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Company Name
                 <input
@@ -74,7 +76,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Job Opening Title
                 <input
@@ -87,7 +89,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 Salary Offered
                 <input
@@ -99,7 +101,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Job Listing Link
                 <input
@@ -112,7 +114,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Company Location
                 <input
@@ -125,7 +127,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 Contact Name
                 <input
@@ -137,7 +139,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 Contact Email
                 <input
@@ -149,7 +151,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 Contact Phone #
                 <input
@@ -163,7 +165,7 @@ const AddJob = (props) => {
             </div>
           </div>
           <div className='add-job_status-detail'>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Opportunity Status
                 <select
@@ -185,7 +187,7 @@ const AddJob = (props) => {
                 </select>
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 * Date Application Submited
                 <input
@@ -198,7 +200,7 @@ const AddJob = (props) => {
                 />
               </label>
             </div>
-            <div className='add-job__field'>
+            <div className='add-job_field'>
               <label className='add-job_opportunity-detail_label'>
                 Resume Applied With
                 <select
