@@ -9,10 +9,10 @@ function WeeklyAppGraph() {
     const graphLineSpacingArr = ['0', '1/8', '1/4', '3/8', '1/2', '5/8', '3/4', '7/8'];
     const graphBarArr = [
         {spacing: '0', day: 'Sun', percent: 12}, 
-        {spacing: '1/7', day: 'Mon', percent: 8}, 
+        {spacing: '1/7', day: 'Mon', percent: 6}, 
         {spacing: '2/7', day: 'Tues', percent: 20},
         {spacing: '3/7', day: 'Wed', percent: 12},
-        {spacing: '4/7', day: 'Thurs', percent: 8},
+        {spacing: '4/7', day: 'Thurs', percent: 6},
         {spacing: '5/7', day: 'Fri', percent: 20}, 
         {spacing: '6/7', day: 'Sat', percent: 20}
     ];
@@ -42,19 +42,31 @@ function WeeklyAppGraph() {
             <div className='graph_container'>
                 <div className='graph_text_container '>
                     {graphBarArr.map((bar, i) => {
-                      console.log("dayNum-i", dayNum - i)
                       const dayOfWeek = () => {
+                 
                         if (dayNum === i){
-                        return baseDay
-                
-                    } else if (i > dayNum){
-                        const forwardDay = baseDay + (i - dayNum)
-                        return forwardDay
-                    } else if ( i < dayNum){
-                        const backDay = baseDay - (dayNum - i)
-                        return backDay
-                    
-                    }}
+                            if(dayNum > daysInMonth(month)) {
+                                dayNum -= daysInMonth(month)
+                            }
+                            return baseDay
+                        } else if (i > dayNum){
+                            let forwardDay = baseDay + (i - dayNum)
+                            if (forwardDay > daysInMonth(month)) { //At the end of the month when the days ahead of today are in the next month
+                                forwardDay = forwardDay - daysInMonth(month) //the month is accurate
+                                console.log("forwardDay", forwardDay)
+                                return forwardDay
+                            }
+                            return forwardDay
+                        } else if ( i < dayNum){
+                            let backDay = baseDay - (dayNum - i)
+                            if (backDay <= 0) { //At the beginning of the month when the days behind today are in the last month 
+                                backDay += daysInMonth(month-1) //the month is accurate so last month is -1
+                                console.log("backDay", backDay)
+                                return backDay
+                            }
+                            return backDay
+                        
+                        }}
                         return (
                         <p className={`graph_text left-${bar.spacing}`}>
                             {bar.day} {dayOfWeek()} 
