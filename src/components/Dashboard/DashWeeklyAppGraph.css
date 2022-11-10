@@ -3,7 +3,7 @@
 }
 
 .graph_container {
-  @apply h-96 w-full flex flex-row justify-center;
+  @apply h-fit w-full flex flex-row justify-start;
 }
 
 .graph_text-container {

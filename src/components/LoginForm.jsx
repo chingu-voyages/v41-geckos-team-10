@@ -37,11 +37,11 @@ function LoginForm() {
 
   return (
     <form onSubmit={(e) => loginUser(e)} className='form-container'>
-      <label>
+      <label className='form_label'>
         <span className='form_span'>Email</span>
         <input type='text' name='email' className='form_input' required />
       </label>
-      <label>
+      <label className='form_label'>
         <span className='form_span'>Password</span>
         <input
           type='password'

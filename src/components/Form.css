@@ -12,11 +12,25 @@
 }
 
 .form_button {
-  @apply text-black w-24 m-2 rounded-lg font-display text-lg font-medium cursor-pointer;
+  height: 2rem;
+  width: 6rem;
+  margin: 0.5rem;
+  background-color: #58765e;
+  border-radius: 12px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #484d52;
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form_label {
+  color: #383b3f;
 }
 
 .form_button:hover {
-  @apply bg-slate-600 text-white;
+  background-color: #484d52;
+  color: white;
 }
 
 .error {
