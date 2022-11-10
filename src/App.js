@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -16,6 +16,14 @@ export default function App() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
 
+  const [addTaskOpen, setAddTaskOpen ] = useState("hidden")
+
+  const handleAddTaskOpen = () => {
+    addTaskOpen === "hidden"
+      ? setAddTaskOpen("visible")
+      : setAddTaskOpen("hidden");
+  }
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/login-success", { withCredentials: true })
@@ -28,11 +36,11 @@ export default function App() {
 
   return (
     <div className="App">
-      {location.pathname !== "/" && user.isLoggedIn ? <NavBar /> : null}
+      {location.pathname !== "/" && user.isLoggedIn ? <NavBar handleAddTaskOpen={handleAddTaskOpen}/> : null}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="dashboard" element={user.isLoggedIn ? <Dashboard /> : <IsLoggedIn />} />
-        <Route path="/tracker" element={user.isLoggedIn ? <Tracker /> : <IsLoggedIn />} />
+        <Route path="/tracker" element={user.isLoggedIn ? <Tracker  handleAddTaskOpen={handleAddTaskOpen} addTaskOpen={addTaskOpen}/> : <IsLoggedIn />} />
         <Route path="profile-page" element={user.isLoggedIn ? <ProfilePage /> : <IsLoggedIn />} />
       </Routes>
     </div>
