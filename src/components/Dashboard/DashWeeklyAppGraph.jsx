@@ -17,6 +17,8 @@ function WeeklyAppGraph() {
         {spacing: '6/7', day: 'Sat', percent: 20}
     ];
 
+    const weekDayArr = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+
     const d = new Date();
     const baseDay = d.getDate();
     const dayNum = d.getDay()
@@ -25,31 +27,37 @@ function WeeklyAppGraph() {
     const getDaysInMonth = (year, month) => {
         return new Date(year, month, 0).getDate();
     }
+
     const daysInMonth = (m) => {
         return getDaysInMonth(year, m + 1, 0)
     }
     
-    
+  
+   
 
-    console.log("hello", d.getDay())
+    console.log("hello", d.getDay(), "baseDay", baseDay, "dayNum", dayNum, "indexOf", )
     return (
         
         <div className='graph'>
             <div className='graph_container'>
                 <div className='graph_text_container '>
                     {graphBarArr.map((bar, i) => {
-
-                        const dayOfWeek = () => {
-                            if (d.getDay === i){
-                            return baseDay
-                        } else {
-                            return dayNum
-                        }
-                        }
-
+                      console.log("dayNum-i", dayNum - i)
+                      const dayOfWeek = () => {
+                        if (dayNum === i){
+                        return baseDay
+                
+                    } else if (i > dayNum){
+                        const forwardDay = baseDay + (i - dayNum)
+                        return forwardDay
+                    } else if ( i < dayNum){
+                        const backDay = baseDay - (dayNum - i)
+                        return backDay
+                    
+                    }}
                         return (
                         <p className={`graph_text left-${bar.spacing}`}>
-                            {bar.day} {dayOfWeek()} {i}
+                            {bar.day} {dayOfWeek()} 
                         </p>
                         )})}
                   

@@ -1,10 +1,10 @@
 .graph {
-    @apply bg-white text-black w-full rounded-3xl
+    @apply bg-white text-black h-fit w-full rounded-3xl
     
 }
 
 .graph_container {
-   @apply  w-full flex flex-row justify-start
+   @apply h-fit w-full flex flex-row justify-center
 }
 
 .graph_text_container {
@@ -13,11 +13,11 @@
 }
 
 .graph_text {
-    @apply p-4 text-center
+    @apply text-center w-fit
 }
 
 .graph_line_container {
-    @apply  absolute w-full h-64 bg-zinc-300 rounded-t-3xl
+    @apply  absolute w-full h-7/8 bg-zinc-300 rounded-t-3xl
 }
 
 .graph_bar {
