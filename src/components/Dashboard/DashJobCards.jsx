@@ -12,18 +12,20 @@ const DashJobCards = () => {
 
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state.jobs.value);
-  
+
     useEffect(() => {
-        axios
-          .get("http://localhost:4000/jobs", { withCredentials: true })
-          .then((res) => {
-            if (res.status === 200) {
-              dispatch(displayJobs(res.data));
-            } else {
-              console.log("Error");
-            }
-          });
-      }, []);
+   
+      axios
+        .get("http://localhost:4000/jobs", { withCredentials: true })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(displayJobs(res.data));
+           
+          } else {
+            console.log("Error");
+          }
+        });
+    }, [dispatch]);
 
     const d = new Date();
     
@@ -36,14 +38,13 @@ const DashJobCards = () => {
     })
 
     const mostActiveSort = mostActiveArr.sort((a,b) => a.value - b.value).slice(0, 3)
-    
-    const dashJobCards = []
 
+    const dashJobCards = []
     const dashJobCardOb = () => {
+     
         for (let i = 0; i < 3; i++) {
-           dashJobCards.push(jobs.find( (card) => card._id === mostActiveSort[i]._id))
+           dashJobCards.unshift(jobs.find( (card) => card._id === mostActiveSort[i]._id))
         }
-       
        
     }
 
@@ -90,6 +91,7 @@ const DashJobCards = () => {
 }
 
     return (
+      (typeof dashJobCards[0] !='undefined') ?
     <div className='dashboard_job-card_container flex justify-center' >
       
             <div 
@@ -97,11 +99,17 @@ const DashJobCards = () => {
                 key={nanoid()}
                 onClick={handleCardFlip0}
             >
+              
               <div className={`dashboard_job-card_front ${frontView0}`}>
                 <div className="dashboard_job-card_top">
                   <div className="dashboard_job-card_inner">
                     <p className="dashboard_job-card_text job-card_label">Company: </p>
-                    <p className='dashboard_job-card_text '>{`${dashJobCards[0].companyName}`}</p>
+                    <p className='dashboard_job-card_text'  placeholder="N/A">
+                     {`${dashJobCards[0].companyName}`}
+                    </p>
+                    <p className='dashboard_job-card_text'  placeholder="N/A">
+                    
+                    </p>
                   </div>
                   <div className="dashboard_job-card_inner">
                     <p className="dashboard_job-card_text job-card_label">Title: </p>
@@ -115,7 +123,7 @@ const DashJobCards = () => {
                   </div>
                 </div>
               </div>
-
+              
               <div className={`dashboard_job-card_back ${backView0}`}>
                 <div  className="dashboard_job-card_top">
                   <div className="dashboard_job-card_inner">
@@ -147,7 +155,7 @@ const DashJobCards = () => {
               </div>
                 
             </div>
-
+            
             <div 
                 className='dashboard_job-card_item ' 
                 key={nanoid()}
@@ -261,8 +269,8 @@ const DashJobCards = () => {
                 
             </div>
 
-    
-    </div>)
+    </div>
+            :<div>loading....</div>)
 }
 
 export default DashJobCards
