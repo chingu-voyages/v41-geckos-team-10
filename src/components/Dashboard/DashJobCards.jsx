@@ -7,7 +7,6 @@ import '../../index.css'
 
 const DashJobCards = () => {
 
-<<<<<<< HEAD
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state.jobs.value);
 
@@ -92,17 +91,6 @@ const DashJobCards = () => {
       (typeof dashJobCards[0] !='undefined') ?
     <div className='dashboard_job-card_container flex justify-center' >
       
-=======
-    const [dashJobCards, setDashJobCards] = useState([
-        {item: "Job Card #1"},
-        {item: "Job Card #2"},
-        {item: "Job Card #3"}
-        ]);
-
-    return (
-    <div className='dashboard_job-card_container'>
-        {dashJobCards.map((job) => (
->>>>>>> f27bfccf48366d8d972a191f68085114eca8b609
             <div 
                 className='dashboard_job-card_item' 
                 key={nanoid()}
