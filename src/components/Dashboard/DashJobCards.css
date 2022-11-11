@@ -3,15 +3,10 @@
 }
 
 .dashboard_job-card_item {
-<<<<<<< HEAD
-    @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center h-56
-    
-=======
     @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center
     md:w-32
     lg:w-full lg:ml-10
     2xl:w-80
->>>>>>> f27bfccf48366d8d972a191f68085114eca8b609
 }
 
 .dashboard_job-card_text {
