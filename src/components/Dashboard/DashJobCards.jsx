@@ -1,15 +1,13 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import './DashJobCards.css';
 import '../../index.css'
-import { useSelector, useDispatch } from "react-redux";
-import { displayJobs } from "../../redux/Slices/jobSlice";
-import axios from "axios";
 
 
 const DashJobCards = () => {
 
+<<<<<<< HEAD
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state.jobs.value);
 
@@ -94,11 +92,22 @@ const DashJobCards = () => {
       (typeof dashJobCards[0] !='undefined') ?
     <div className='dashboard_job-card_container flex justify-center' >
       
+=======
+    const [dashJobCards, setDashJobCards] = useState([
+        {item: "Job Card #1"},
+        {item: "Job Card #2"},
+        {item: "Job Card #3"}
+        ]);
+
+    return (
+    <div className='dashboard_job-card_container'>
+        {dashJobCards.map((job) => (
+>>>>>>> f27bfccf48366d8d972a191f68085114eca8b609
             <div 
-                className='dashboard_job-card_item ' 
+                className='dashboard_job-card_item' 
                 key={nanoid()}
-                onClick={handleCardFlip0}
             >
+<<<<<<< HEAD
               
               <div className={`dashboard_job-card_front ${frontView0}`}>
                 <div className="dashboard_job-card_top">
@@ -271,6 +280,12 @@ const DashJobCards = () => {
 
     </div>
             :<div>loading....</div>)
+=======
+                <p className='dashboard_job-card_text'>{job.item}</p>
+            </div> 
+        ))}
+    </div>)
+>>>>>>> f27bfccf48366d8d972a191f68085114eca8b609
 }
 
 export default DashJobCards
