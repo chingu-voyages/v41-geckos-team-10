@@ -1,21 +1,12 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { storeProfile } from "../../../../redux/Slices/profileSlice";
 import "./ProfileTextInput.css";
 
 const ProfileTextInput = ({ name, value, type = "text", label, handleUpdateProfile}) => {
  const [inputValue, setInputValue] = useState(value);
 
-  const dispatch = useDispatch();
-
-  // const labelText = (label) => {
-  //   const parsedText = label.split("-").join(" ");
-  //   return parsedText.charAt(0).toUpperCase() + parsedText.slice(1);
-  // };
-
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    dispatch(storeProfile(inputValue))
+    handleUpdateProfile(inputValue, e)
    console.log("inputValue", inputValue)
   };
 

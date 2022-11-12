@@ -5,7 +5,8 @@ import ProfileResumeUpload from "./Profile Form Inputs/ProfileResumeUpload/Profi
 import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileTextInput";
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { storeProfile, updateFirstName } from "../../redux/Slices/profileSlice";
 import axios from "axios";
 import IsLoggedIn from "../IsLoggedIn";
 
@@ -22,31 +23,23 @@ const ProfilePage = () => {
   const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
   const [updateProfile, setUpdateProfile ] = useState({});
 
-  const handleUpdateProfile = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUpdateProfile((values) => ({ ...values, [name]: value}));
-    
-  };
 
+ 
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit")
+    setFirstName(updateProfile.firstName)
+  }
+  const handleFirstName = (val, e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(updateFirstName(val))
+    setUpdateProfile((values) => ({...values, [name]: value}))
+    console.log("val", val)
   }
 
-  console.log("updatProfile", updateProfile)
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios.post("http://localhost:4000/profiles", updateProfile , { withCredentials: true }).then((res) => {
-  //     if (res.status === 200) {
-  //       console.log("Proile successfully updated");
-  //       setUpdateProfile("");
-        
-  //     } else {
-  //       console.log("Profile not updated");
-  //     }
-  //   });
-  // };
+  console.log("updateProfile", updateProfile)
 
   return (
     <div className='profile-page'>
@@ -68,13 +61,19 @@ const ProfilePage = () => {
               name='firstName'
               label='First Name'
               value={updateProfile.firstName || ""}
-              handleUpdateProfile={handleUpdateProfile}
+              handleUpdateProfile={handleFirstName}
               />
+              {/* <label >Test Name</label>
+              <input
+                type="text"
+               
+              /> */}
+          
             <ProfileTextInput 
               name='lastName' 
               label='Last Name' 
               value={updateProfile.lastName || ""}
-              handleUpdateProfile={handleUpdateProfile}
+              handleUpdateProfile=""
               />
           </div>
           <ProfileTextInput 
@@ -82,13 +81,13 @@ const ProfilePage = () => {
             label='Email' 
             type='email' 
             value={updateProfile.email || ""}
-            handleUpdateProfile={handleUpdateProfile}
+            handleUpdateProfile=""
             />
           <ProfileTextInput 
             name='weeklyGoal' 
             label='Weekly Goal' 
             value={updateProfile.weeklyGoal || ""}
-            handleUpdateProfile={handleUpdateProfile}
+            handleUpdateProfile=""
             />
           <ProfileLocationSelect />
           <ProfileImageUpload />
