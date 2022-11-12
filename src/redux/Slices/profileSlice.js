@@ -13,13 +13,14 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    storeWeeklyAppGoal: (state, action) => {
-      state.value.weeklyAppGoal = action.payload;
+    storeProfile: (state, action) => {
+      state.value = action.payload;
+      console.log("inSlice", state.value)
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { } = profileSlice.actions;
+export const { storeProfile } = profileSlice.actions;
 
 export default profileSlice.reducer;
