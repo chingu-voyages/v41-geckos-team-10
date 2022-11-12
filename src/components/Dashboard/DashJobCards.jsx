@@ -1,9 +1,11 @@
 import React from "react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import './DashJobCards.css';
-import '../../index.css'
-
+import '../../index.css';
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { displayJobs } from "../../redux/Slices/jobSlice";
 
 const DashJobCards = () => {
 
