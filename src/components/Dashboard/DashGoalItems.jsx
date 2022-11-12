@@ -11,6 +11,7 @@ const DashGoalItems = () => {
 
     const dispatch = useDispatch();
     const jobs = useSelector((state) => state.jobs.value);
+    const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
   
     useEffect(() => {
         axios
@@ -47,8 +48,6 @@ const DashGoalItems = () => {
 
     const weeklyApps = thisWeeksApps.length
 
-    const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
-
     const dashGoalItem = [
         {item: "Login Streak"},
         {
@@ -63,7 +62,6 @@ const DashGoalItems = () => {
         },
     ]
      
-
     return (
         <div className='dashboard_tracker_container'>
             {dashGoalItem.map((track) => (
