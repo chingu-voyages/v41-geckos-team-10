@@ -19,12 +19,21 @@ export const profileSlice = createSlice({
     },
     updateFirstName: (state, action) => {
       state.value.firstName = action.payload;
-      console.log("inSlice First Name", state.value.firstName)
     },
+    updateLastName: (state, action) => {
+      state.value.lastName = action.payload;
+    },
+    updateWeeklyAppGoal: (state, action) => {
+      state.value.weeklyAppGoal = action.payload;
+    },
+    updateEmail: (state, action) => {
+      state.value.email = action.payload;
+    },
+
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { storeProfile, updateFirstName } = profileSlice.actions;
+export const { storeProfile, updateFirstName, updateLastName, updateWeeklyAppGoal, updateEmail } = profileSlice.actions;
 
 export default profileSlice.reducer;

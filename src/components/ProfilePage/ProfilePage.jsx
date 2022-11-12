@@ -6,21 +6,18 @@ import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileText
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
 import { useSelector, useDispatch } from "react-redux";
-import { storeProfile, updateFirstName } from "../../redux/Slices/profileSlice";
+import { storeProfile, updateFirstName, updateLastName, updateWeeklyAppGoal, updateEmail } from "../../redux/Slices/profileSlice";
 import axios from "axios";
 import IsLoggedIn from "../IsLoggedIn";
 
 //https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 const ProfilePage = () => {
-  const user = useSelector((state) => state.user.value);
-  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
-  const userFirstName = useSelector((state) => state.profile.value.firstName);
-  const userLastName = useSelector((state) => state.profile.value.lastName);
+
 
   const [firstName, setFirstName] = useState("Pat");
   const [lastName, setLastName] = useState("d'User");
   const [email, setEmail] = useState("pat@gmail.com");
-  const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
+  const [weeklyAppGoal, setWeeklyAppGoal] = useState("20");
   const [updateProfile, setUpdateProfile ] = useState({});
 
 
@@ -30,13 +27,33 @@ const ProfilePage = () => {
     e.preventDefault();
     console.log("Submit")
     setFirstName(updateProfile.firstName)
+    setLastName(updateProfile.lastName)
+    setWeeklyAppGoal(updateProfile.weeklyAppGoal)
+    setEmail(updateProfile.email)
   }
   const handleFirstName = (val, e) => {
     const name = e.target.name;
     const value = e.target.value;
     dispatch(updateFirstName(val))
     setUpdateProfile((values) => ({...values, [name]: value}))
-    console.log("val", val)
+  }
+  const handleLastName = (val, e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(updateLastName(val))
+    setUpdateProfile((values) => ({...values, [name]: value}))
+  }
+  const handleWeeklyAppGoal = (val, e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(updateWeeklyAppGoal(val))
+    setUpdateProfile((values) => ({...values, [name]: value}))
+  }
+  const handleEmail = (val, e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(updateEmail(val))
+    setUpdateProfile((values) => ({...values, [name]: value}))
   }
 
   console.log("updateProfile", updateProfile)
@@ -63,17 +80,11 @@ const ProfilePage = () => {
               value={updateProfile.firstName || ""}
               handleUpdateProfile={handleFirstName}
               />
-              {/* <label >Test Name</label>
-              <input
-                type="text"
-               
-              /> */}
-          
             <ProfileTextInput 
               name='lastName' 
               label='Last Name' 
               value={updateProfile.lastName || ""}
-              handleUpdateProfile=""
+              handleUpdateProfile={handleLastName}
               />
           </div>
           <ProfileTextInput 
@@ -81,13 +92,13 @@ const ProfilePage = () => {
             label='Email' 
             type='email' 
             value={updateProfile.email || ""}
-            handleUpdateProfile=""
+            handleUpdateProfile={handleEmail}
             />
           <ProfileTextInput 
-            name='weeklyGoal' 
+            name='weeklyAppGoal' 
             label='Weekly Goal' 
-            value={updateProfile.weeklyGoal || ""}
-            handleUpdateProfile=""
+            value={updateProfile.weeklyAppGoal || ""}
+            handleUpdateProfile={handleWeeklyAppGoal}
             />
           <ProfileLocationSelect />
           <ProfileImageUpload />
