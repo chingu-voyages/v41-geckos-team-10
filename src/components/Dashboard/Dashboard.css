@@ -1,5 +1,5 @@
 .dashboard {
-    @apply h-screen w-screen text-white
+    @apply h-max w-screen text-white
     bg-bg-blue 
     sm:text-xs
     md:text-sm
