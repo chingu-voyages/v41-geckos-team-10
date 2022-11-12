@@ -19,7 +19,7 @@ const Dashboard = () => {
           <DashHeader />
           <div className='objectives_div'>
             <div className='dashboard_tracker'>
-              <p className='dashboard_tracker_text relative right-44'>
+              <p className='dashboard_tracker_text'>
                 Most Active Goals and Achievments
               </p>
               <DashGoalItems />

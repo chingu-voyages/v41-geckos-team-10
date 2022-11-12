@@ -1,5 +1,5 @@
 .dashboard_user-profile {
-  @apply flex flex-row justify-start mt-3;
+  @apply flex flex-row justify-start mt-3 pl-10;
 }
 
 .dashboard_user-profile_text {

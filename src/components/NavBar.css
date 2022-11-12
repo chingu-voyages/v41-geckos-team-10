@@ -1,5 +1,5 @@
 .navbar {
-  @apply top-0 box-border h-full;
+  @apply top-0 box-border h-full z-50;
 }
 
 .navbar_div {
