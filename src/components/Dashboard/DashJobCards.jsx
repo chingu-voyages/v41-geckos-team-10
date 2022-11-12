@@ -95,7 +95,6 @@ const DashJobCards = () => {
                 className='dashboard_job-card_item' 
                 key={nanoid()}
             >
-<<<<<<< HEAD
               
               <div className={`dashboard_job-card_front ${frontView0}`}>
                 <div className="dashboard_job-card_top">
@@ -268,12 +267,6 @@ const DashJobCards = () => {
 
     </div>
             :<div>loading....</div>)
-=======
-                <p className='dashboard_job-card_text'>{job.item}</p>
-            </div> 
-        ))}
-    </div>)
->>>>>>> f27bfccf48366d8d972a191f68085114eca8b609
 }
 
 export default DashJobCards
