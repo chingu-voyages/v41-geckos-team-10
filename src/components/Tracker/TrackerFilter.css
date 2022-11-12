@@ -3,11 +3,12 @@
 }
 
 .trackerFilter_list {
-  min-width: 525px;
-  @apply flex flex-row justify-evenly items-center
+  max-width: 650px;
+  @apply flex flex-col md:flex-row justify-evenly items-center
     bg-br-green drop-shadow-xl
     ml-1/8 mt-14
-    rounded-full
+    rounded-lg
+    md:rounded-full
     lg:h-16 lg:w-3/5
     xl:h-16 xl:w-3/5 
     2xl:h-16 2xl:w-3/5;

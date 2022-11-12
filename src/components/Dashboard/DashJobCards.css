@@ -1,40 +1,6 @@
 .dashboard_job-card_item {
-  @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center
+  @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center text-bg-blue
     md:w-32
     lg:w-full lg:ml-10
     2xl:w-80;
-}
-
-.dashboard_job-card_text {
-  @apply text-gray-900 text-base text-sm;
-}
-.job-card_label {
-  @apply font-bold px-1;
-}
-
-.dashboard_job-card_top {
-  @apply flex flex-col py-3 px-3 border-b border-gray-300;
-}
-
-.dashboard_job-card_inner {
-  @apply flex flex-row p-1;
-}
-
-.dashboard_job-card_bottom {
-  @apply flex flex-col m-2;
-}
-.dashboard_job-card {
-  /* @apply flex flex-col items-end
-    md:w-60 
-    lg:text-end
-    xl:w-4/5
-    2xl:w-4/5 */
-}
-
-.dashboard_job-card_text {
-  /* @apply 
-    md:ml-4
-    lg:text-end lg:text-base
-    xl:text-end xl:text-lg
-    2xl:text-end 2xl:mr-4 2xl:text-xl */
 }

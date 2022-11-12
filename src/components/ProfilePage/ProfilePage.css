@@ -1,13 +1,11 @@
 .profile-page {
-  @apply bg-gray-100 h-full;
+  @apply bg-gray-100 h-full overflow-x-auto;
 }
 
 .profile-page_div {
-  @apply grid justify-center items-center 
-    h-90/100 pt-6
-    sm:w-4/5 sm:ml-24
-    md:w-4/5 md:ml-40
-    lg:w-4/5 lg:ml-64
+  @apply grid place-content-center
+    pt-6
+    w-4/5
     xl:w-11/12 xl:ml-48;
 }
 
@@ -27,6 +25,6 @@
   @apply space-x-2 md:space-x-5;
 }
 
-.profile-page__weekly-goal-text {
+.profile-page_weekly-goal-text {
   @apply px-5 mb-4;
 }
