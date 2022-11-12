@@ -18,42 +18,39 @@ const ProfilePage = () => {
   const [email, setEmail] = useState("pat@gmail.com");
   const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
 
-
-    return (
-      <div className="profile-page">
-        <div className="profile-page--div">
-          <div className="profile-page__profile">
-            <div className="profile-page_name">
-              <p>{`Name: ${firstName} ${lastName}` }</p>
-            </div>
-            <div className="profile-page_email">
-              <p>{`Email Address: ${email}` }</p>
-            </div>
-            <div className="profile-page_email">
-              <p>{`Current Weekly Application Goal: ${weeklyAppGoal}` }</p>
-            </div>
+  return (
+    <div className='profile-page'>
+      <div className='profile-page_div'>
+        <div className='profile-page_profile'>
+          <div className='profile-page_name'>
+            <p>{`Name: ${firstName} ${lastName}`}</p>
           </div>
-          <form className="profile-page__form">
-            <div className="profile-page__name-inputs">
-              <ProfileTextInput name="first-name" />
-              <ProfileTextInput name="last-name" />
-            </div>
-            <ProfileTextInput name="email" type="email" />
-            <ProfileTextInput 
-              name="weekly-goal" 
-            />
-            <ProfileLocationSelect />
-            <ProfileImageUpload />
-            <ProfileTextInput name="change-password" type="password" />
-            <ProfileResumeUpload />
-            <div className="profile-page__button-group">
-              <ProfilePageButton buttonText="Cancel" />
-              <ProfilePageButton buttonText="Save" />
-            </div>
-          </form>
+          <div className='profile-page_email'>
+            <p>{`Email Address: ${email}`}</p>
+          </div>
+          <div className='profile-page_email'>
+            <p>{`Current Weekly Application Goal: ${weeklyAppGoal}`}</p>
+          </div>
         </div>
+        <form className='profile-page_form'>
+          <div className='profile-page_name-inputs'>
+            <ProfileTextInput name='first-name' />
+            <ProfileTextInput name='last-name' />
+          </div>
+          <ProfileTextInput name='email' type='email' />
+          <ProfileTextInput name='weekly-goal' />
+          <ProfileLocationSelect />
+          <ProfileImageUpload />
+          <ProfileTextInput name='change-password' type='password' />
+          <ProfileResumeUpload />
+          <div className='profile-page_button-group'>
+            <ProfilePageButton buttonText='Cancel' />
+            <ProfilePageButton buttonText='Save' />
+          </div>
+        </form>
       </div>
-    );
+    </div>
+  );
 };
 
 export default ProfilePage;
