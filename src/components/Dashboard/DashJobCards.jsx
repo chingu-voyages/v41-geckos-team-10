@@ -96,6 +96,7 @@ const DashJobCards = () => {
             <div 
                 className='dashboard_job-card_item' 
                 key={nanoid()}
+                onClick={handleCardFlip0}
             >
               
               <div className={`dashboard_job-card_front ${frontView0}`}>
