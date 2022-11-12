@@ -19,13 +19,13 @@ const Dashboard = () => {
           <DashHeader />
           <div className='objectives_div'>
             <div className='dashboard_tracker'>
-              <p className='dashboard_tracker_text'>
+              <p className='dashboard_tracker_text relative right-44'>
                 Most Active Goals and Achievments
               </p>
               <DashGoalItems />
             </div>
             <div className='dashboard_job-card'>
-              <p className='dashboard_job-card_header-text'>
+              <p className='dashboard_job-card_header-text '>
                 Most Recent Applications
               </p>
               <p className='dashboard_job-card_header-text'>
