@@ -27,9 +27,14 @@
 .dashboard_tracker {
   @apply flex flex-col mt-5 items-center mr-48;
 }
+
 .dashboard_tracker_text {
   @apply lg:text-base
    2xl:text-lg;
+}
+
+.dashboard_tracker_cards {
+  @apply ml-36;
 }
 
 .dashboard_job-card {
