@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const profileSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId, //create a reference to the user
+    required: true, //make sure the user is logged in
+    ref: "User", //reference the user model
+  },
   firstName: {
     type: String,
     required: true,
@@ -14,7 +19,7 @@ const profileSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  weeklyGoal: {
+  weeklyAppGoal: {
     type: Number,
     required: true,
   },
@@ -33,3 +38,5 @@ const profileSchema = new mongoose.Schema({
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
+
+module.exports = Profile;
