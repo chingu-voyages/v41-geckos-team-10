@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileImageUpload from "./Profile Form Inputs/ProfileImageUpload/ProfileImageUpload";
 import ProfileLocationSelect from "./Profile Form Inputs/ProfileLocationSelect/ProfileLocationSelect";
 import ProfileResumeUpload from "./Profile Form Inputs/ProfileResumeUpload/ProfileResumeUpload";
@@ -20,7 +20,9 @@ const ProfilePage = () => {
   const [weeklyAppGoal, setWeeklyAppGoal] = useState("20");
   const [updateProfile, setUpdateProfile ] = useState({});
 
-
+  useEffect(() => {
+    axios.get('http://localhost:4000/profile')
+  })
  
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -30,6 +32,22 @@ const ProfilePage = () => {
     setLastName(updateProfile.lastName)
     setWeeklyAppGoal(updateProfile.weeklyAppGoal)
     setEmail(updateProfile.email)
+    axios.post('http://localhost:4000/profiles', updateProfile)
+      .then((res) => {
+        console.log(res.data)
+      }).catch((err) => {
+        console.log(err)
+      })
+    
+    }
+
+    const handleClear = (e) => {
+    e.preventDefault();
+    console.log("clear")
+    setFirstName("")
+    setLastName("")
+    setWeeklyAppGoal("")
+    setEmail("")
     }
       
   const handleFirstName = (val, e) => {
@@ -73,7 +91,10 @@ const ProfilePage = () => {
             <p>{`Current Weekly Application Goal: ${weeklyAppGoal}`}</p>
           </div>
         </div>
-        <form className='profile-page_form' onSubmit={handleSubmit}>
+        <form 
+          className='profile-page_form' 
+          onSubmit={handleSubmit}
+          >
           <div className='profile-page_name-inputs'>
             <ProfileTextInput 
               name='firstName'
@@ -106,8 +127,8 @@ const ProfilePage = () => {
           <ProfileTextInput name='changePassword' label='Change Password' type='password' />
           <ProfileResumeUpload />
           <div className='profile-page_button-group'>
-            <ProfilePageButton buttonText='Cancel' />
-            <ProfilePageButton buttonText='Save' />
+            <ProfilePageButton buttonText='Cancel' onClick={handleClear}/>
+            <ProfilePageButton buttonText='Save' onClick={handleClear}/>
           </div>
         </form>
       </div>

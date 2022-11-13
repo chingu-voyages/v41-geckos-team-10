@@ -57,6 +57,24 @@ function RegisterForm() {
   return (
     <form onSubmit={(e) => registerUser(e)} className='form-container'>
       <label>
+        <span className='form_span'>First Name</span>
+        <input
+          type='text'
+          name='firstName'
+          className='form_input'
+          required
+        />
+      </label>
+      <label>
+        <span className='form_span'>Last Name</span>
+        <input
+          type='text'
+          name='lastName'
+          className='form_input'
+          required
+        />
+      </label>
+      <label>
         <span className='form_span'>Email</span>
         <input
           type='text'
