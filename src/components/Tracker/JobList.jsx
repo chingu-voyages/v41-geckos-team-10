@@ -7,7 +7,7 @@ const JobList = ({ jobs, handleClick }) => {
       <>
         {jobs.map((data) => (
           <JobCard
-            className="tracker-page__card"
+            className='tracker-page_card'
             jobDetails={data}
             key={data._id}
             handleClick={handleClick}

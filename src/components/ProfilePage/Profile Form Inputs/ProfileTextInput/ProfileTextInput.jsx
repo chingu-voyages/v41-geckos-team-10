@@ -14,14 +14,14 @@ const ProfileTextInput = ({ name, value = "", type = "text"}) => {
   };
 
   return (
-    <div className="profile-text-input">
+    <div className='profile-text-input'>
       <label htmlFor={name}>{labelText(name)}</label>
       <input
         type={type}
         name={name}
         value={inputValue}
         onChange={handleChange}
-        className={`profile-text-input__textbox`}
+        className={`profile-text-input_textbox`}
       />
     </div>
   );

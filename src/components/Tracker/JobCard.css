@@ -1,36 +1,36 @@
-.tracker-page__card-container {
-    @apply grid grid-cols-5 my-2.5 mx-0 py-3.5 px-6 bg-white rounded-2xl font-sans text-gray-600 text-base font-normal justify-between items-center transition hover:drop-shadow-md hover:cursor-pointer hover:-translate-y-0.5 ;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+.tracker-page_card-container {
+  @apply md:grid md:grid-cols-5 sm:flex sm:flex-col sm:items-center my-2.5 mx-0 py-3.5 px-6 bg-white rounded-2xl font-sans text-gray-600 lg:text-base md:text-sm font-normal justify-between items-center transition hover:drop-shadow-md hover:cursor-pointer hover:-translate-y-0.5;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-.card-container__title {
-    @apply col-span-2;
+.card-container_title {
+  @apply col-span-2;
 }
 
-.card-container__section {
-    @apply overflow-hidden flex;
+.card-container_section {
+  @apply overflow-hidden flex;
 }
 
-.card-container__light-detail {
-    @apply text-stone-400;
+.card-container_light-detail {
+  @apply text-stone-400;
 }
 
-.card-container__status-pill {
-    @apply py-1 px-3 rounded-2xl text-white;
+.card-container_status-pill {
+  @apply py-1 px-3 rounded-2xl text-white;
 }
 
 .applied {
-    @apply bg-red-400;
+  @apply bg-red-400;
 }
 
 .upcoming {
-    @apply bg-lime-500;
+  @apply bg-lime-500;
 }
 
 .interviewed {
-    @apply bg-violet-400;
+  @apply bg-violet-400;
 }
 
 .archived {
-    @apply bg-gray-600;
+  @apply bg-gray-600;
 }

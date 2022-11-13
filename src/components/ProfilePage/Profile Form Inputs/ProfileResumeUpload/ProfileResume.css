@@ -2,10 +2,10 @@
   @apply flex flex-col items-center;
 }
 
-.profile-resume__image {
+.profile-resume_image {
   @apply w-10 h-10 md:w-20 md:h-20;
 }
 
-.profile-resume__name {
+.profile-resume_name {
   @apply text-sm;
 }

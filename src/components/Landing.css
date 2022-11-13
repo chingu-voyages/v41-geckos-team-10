@@ -1,14 +1,13 @@
 body {
-    @apply p-0 m-0 font-display;
+  @apply p-0 m-0 font-display;
 }
 
 .landing {
-    @apply text-center text-white ;
+  @apply text-center text-white;
 }
 
-.landing--div {
-    @apply 
-    h-screen 
+.landing_div {
+  @apply h-screen 
     bg-no-repeat
     bg-[url('../assets/m-adventurer.png'),_url('../assets/f-adventurer.png'),_url('../assets/layered-peaks-haikei.svg')] 
     bg-[position:left_bottom,_right_bottom,_center_bottom] 
@@ -23,13 +22,12 @@ body {
     justify-center;
 }
 
-.landing--h1 {
-    @apply text-5xl font-medium mb-4;
+.landing_h1 {
+  @apply text-5xl font-medium mb-4;
 }
 
-.button--landing {
-    @apply 
-    mt-5 
+.button_landing {
+  @apply mt-5 
     mx-2 
     h-16 
     w-52 
@@ -44,9 +42,8 @@ body {
     ease-in-out delay-100 hover:scale-105 duration-300;
 }
 
-.landing--footer {
-    @apply 
-    absolute 
+.landing_footer {
+  @apply absolute 
     inset-x-0 
     bottom-10 
     font-light 

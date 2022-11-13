@@ -1,7 +1,11 @@
 .dashboard_user-profile {
-    @apply flex flex-row justify-start mt-3
+  @apply flex flex-row justify-start mt-3 pl-10;
+}
+
+.dashboard_user-profile_text {
+  @apply self-center m-2 text-4xl;
 }
 
 .profile-pic {
-    @apply h-20 rounded-full
+  @apply h-20 rounded-full;
 }
