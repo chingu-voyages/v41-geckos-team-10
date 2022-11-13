@@ -293,7 +293,7 @@ const DashJobCards = () => {
       </div>
     </div>
   ) : (
-    <div>loading....</div>
+    <div>Add 3 Tasks to Start Tracking....</div>
   );
 };
 
