@@ -57,17 +57,20 @@ const ProfilePage = () => {
       }).catch((err) => {
         console.log(err)
       })
-    } 
-    // else {
-    //   axios.put('http://localhost:4000/profiles', updateProfile, {
-    //     withCredentials: true,
-    //   })
-    //     .then((res) => {
-    //       console.log(res.data)
-    //     }).catch((err) => {
-    //       console.log(err)
-    //     })
-    // }
+      window.location.reload(false);
+      setUpdateProfile({})
+    } else {
+      axios.put(`http://localhost:4000/profiles/${id}`, updateProfile, {
+        withCredentials: true,
+      })
+        .then((res) => {
+          console.log(res.data)
+        }).catch((err) => {
+          console.log(err)
+        })
+      window.location.reload(false);
+      setUpdateProfile({})
+    }
   }
 
     const handleClear = (e) => {
@@ -82,19 +85,19 @@ const ProfilePage = () => {
   const handleFirstName = (val, e) => {
     const name = e.target.name;
     const value = e.target.value;
-    dispatch(updateFirstName(val))
+    
     setUpdateProfile((values) => ({...values, [name]: value}))
   }
   const handleLastName = (val, e) => {
     const name = e.target.name;
     const value = e.target.value;
-    dispatch(updateLastName(val))
+ 
     setUpdateProfile((values) => ({...values, [name]: value}))
   }
   const handleWeeklyAppGoal = (val, e) => {
     const name = e.target.name;
     const value = e.target.value;
-    dispatch(updateWeeklyAppGoal(val))
+  
     setUpdateProfile((values) => ({...values, [name]: value}))
   }
   console.log("updateProfile", updateProfile)
