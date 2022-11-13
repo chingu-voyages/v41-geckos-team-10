@@ -2,9 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: {
-    firstName: "Pat",
-    lastName: "d'User",
-    email:"pat@gmail.com",
+    firstName: "New",
+    lastName: "User",
     weeklyAppGoal:20,
   },
 };
@@ -16,6 +15,8 @@ export const profileSlice = createSlice({
     storeProfile: (state, action) => {
       state.value = action.payload;
       console.log("inSlice", state.value)
+      console.log("firstanme", state.value.weeklyAppGoal)
+
     },
     updateFirstName: (state, action) => {
       state.value.firstName = action.payload;

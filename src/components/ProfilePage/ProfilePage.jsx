@@ -13,21 +13,42 @@ import IsLoggedIn from "../IsLoggedIn";
 //https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 const ProfilePage = () => {
 
-
-  const [firstName, setFirstName] = useState("Pat");
-  const [lastName, setLastName] = useState("d'User");
-  const [weeklyAppGoal, setWeeklyAppGoal] = useState("20");
+  const fname = useSelector((state) => state.profile.value.firstName);
+  const lname = useSelector((state) => state.profile.value.lastName);
+  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
+  const id = useSelector((state) => state.profile.value._id);
+  const [firstName, setFirstName] = useState(fname);
+  const [lastName, setLastName] = useState(lname);
+  const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
+  const [userID , setUserId] = useState(id); 
   const [updateProfile, setUpdateProfile ] = useState({});
 
+  const dispatch = useDispatch();
+
+ console.log("profile", id, "IFID", firstName === "New")
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/profiles", { withCredentials: true })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data); // array of jobs from db for seeing data while developing
+          dispatch(storeProfile(res.data[0]));
+          setFirstName(fname)
+          setLastName(lname)
+          setWeeklyAppGoal(wAG)
+        } else {
+          console.log("Error");
+        }
+      });
+  });
 
  
-  const dispatch = useDispatch();
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit")
-    setFirstName(updateProfile.firstName)
-    setLastName(updateProfile.lastName)
-    setWeeklyAppGoal(updateProfile.weeklyAppGoal)
+    if(firstName === "New"){
     axios.post('http://localhost:4000/profiles', updateProfile, {
       withCredentials: true,
     })
@@ -36,8 +57,18 @@ const ProfilePage = () => {
       }).catch((err) => {
         console.log(err)
       })
-    
-    }
+    } 
+    // else {
+    //   axios.put('http://localhost:4000/profiles', updateProfile, {
+    //     withCredentials: true,
+    //   })
+    //     .then((res) => {
+    //       console.log(res.data)
+    //     }).catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
+  }
 
     const handleClear = (e) => {
     e.preventDefault();
