@@ -16,27 +16,27 @@ function Landing() {
   };
 
   return (
-    <div className="landing landing--div">
+    <div className='landing landing_div'>
       <div>
-        <h1 className="landing landing--h1">Job Hunt Tracker</h1>
+        <h1 className='landing landing_h1'>Job Hunt Tracker</h1>
 
-        <p className="landing landing--p">
+        <p className='landing landing_p'>
           The rewarding way to track your job applications.
         </p>
       </div>
 
       <div>
         <button
-          className="button button--landing"
+          className='button button_landing'
           onClick={() => handleClickLogin()}
-          data-modal-toggle="authentication-modal"
+          data-modal-toggle='authentication-modal'
         >
           Log in
         </button>
         <button
-          className="button button--landing"
+          className='button button_landing'
           onClick={() => handleClickSignup()}
-          data-modal-toggle="authentication-modal"
+          data-modal-toggle='authentication-modal'
         >
           Sign up
         </button>
@@ -45,10 +45,20 @@ function Landing() {
       {showModalSignup && (
         <SignupModal setShowModalSignup={setShowModalSignup} />
       )}
-      <div className="landing--footer">
-        <p>Icons by <a href="https://www.flaticon.com/free-icons/journey" title="journey icons">max.icons</a>
-        <br />
-        Background by <a href="https://haikei.app/" title="haikei">haikei</a>
+      <div className='landing_footer'>
+        <p>
+          Icons by{" "}
+          <a
+            href='https://www.flaticon.com/free-icons/journey'
+            title='journey icons'
+          >
+            max.icons
+          </a>
+          <br />
+          Background by{" "}
+          <a href='https://haikei.app/' title='haikei'>
+            haikei
+          </a>
         </p>
       </div>
     </div>

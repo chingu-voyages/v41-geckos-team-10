@@ -2,6 +2,6 @@
   @apply font-display my-10;
 }
 
-.profile-resume-upload__list {
+.profile-resume-upload_list {
   @apply flex mt-10 space-x-10;
 }

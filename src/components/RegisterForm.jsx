@@ -41,7 +41,9 @@ function RegisterForm() {
       password: e.currentTarget.password.value,
     };
 
-    const response = await axios.post("http://localhost:4000/register", body, {withCredentials: true});
+    const response = await axios.post("http://localhost:4000/register", body, {
+      withCredentials: true,
+    });
 
     if (response.status === 200) {
       setSuccessMsg(response.data);
@@ -53,44 +55,44 @@ function RegisterForm() {
   };
 
   return (
-    <form onSubmit={(e) => registerUser(e)} className="form-container">
+    <form onSubmit={(e) => registerUser(e)} className='form-container'>
       <label>
-        <span className="form--span">Email</span>
+        <span className='form_span'>Email</span>
         <input
-          type="text"
-          name="email"
+          type='text'
+          name='email'
           onChange={validateEmail}
-          className="form--input"
+          className='form_input'
           required
         />
       </label>
       <label>
-        <span className="form--span">Password</span>
+        <span className='form_span'>Password</span>
         <input
-          type="password"
-          name="password"
-          className="form--input"
+          type='password'
+          name='password'
+          className='form_input'
           onChange={validatePassword}
           required
         />
       </label>
       <label>
-        <span className="form--span">Repeat password</span>
+        <span className='form_span'>Repeat password</span>
         <input
-          type="password"
-          name="confirmPassword"
-          className="form--input"
+          type='password'
+          name='confirmPassword'
+          className='form_input'
           required
         />
       </label>
 
-      <div className="submit">
-        <button type="submit" className="form--button">
+      <div className='submit'>
+        <button type='submit' className='form_button'>
           Sign up
         </button>
       </div>
-      {errMsg && <p className="error">{errMsg}</p>}
-      {successMsg && <p className="success">{successMsg}</p>}
+      {errMsg && <p className='error'>{errMsg}</p>}
+      {successMsg && <p className='success'>{successMsg}</p>}
     </form>
   );
 }

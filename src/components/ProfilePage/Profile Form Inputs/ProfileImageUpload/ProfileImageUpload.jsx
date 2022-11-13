@@ -10,12 +10,12 @@ const ProfileImageUpload = () => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, [files]);
   return (
-    <div className="profile-image-upload">
+    <div className='profile-image-upload'>
       {files.map((file) => (
         <img
           src={file.preview}
-          alt="profile"
-          className="profile-image-upload__image-preview"
+          alt='profile'
+          className='profile-image-upload_image-preview'
           key={uuidv4()}
           onLoad={() => {
             URL.revokeObjectURL(file.preview);
@@ -41,11 +41,11 @@ const ProfileImageUpload = () => {
           <section>
             <div {...getRootProps()}>
               <input {...getInputProps()} />
-              <div className="profile-image-upload__dropzone">
+              <div className='profile-image-upload_dropzone'>
                 <img
-                  src="/icons/upload_icon.svg"
-                  alt="upload"
-                  className="profile-image-upload__dropzone__icon"
+                  src='/icons/upload_icon.svg'
+                  alt='upload'
+                  className='profile-image-upload_dropzone_icon'
                 />
                 <p>Click to upload or drag and drop</p>
                 <p>SVG, PNG, JPG, or GIF (max 600x400px)</p>

@@ -2,10 +2,10 @@ import "./ProfileLocationSelect.css";
 
 const ProfileLocationSelect = () => {
   return (
-    <div className="profile-location-select">
-      <label htmlFor="timezone">Timezone</label>
+    <div className='profile-location-select'>
+      <label htmlFor='timezone'>Timezone</label>
       {/* placeholder data */}
-      <select name="timezone">
+      <select name='timezone'>
         <option>GMT-1 West Africa Time (WAT)</option>
         <option>GMT-2 Azores Time (AT)</option>
         <option>GMT-3 Argentina Time (ART)</option>

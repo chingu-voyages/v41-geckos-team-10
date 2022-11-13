@@ -18,7 +18,7 @@ const ProfileTextInput = ({ name, value, type = "text", label, handleUpdateProfi
         name={name}
         value={inputValue}
         onChange={handleChange}
-        className={`profile-text-input__textbox`}
+        className={`profile-text-input_textbox`}
       />
     </div>
   );
