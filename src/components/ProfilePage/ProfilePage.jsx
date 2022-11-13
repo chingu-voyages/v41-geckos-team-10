@@ -30,18 +30,8 @@ const ProfilePage = () => {
     setLastName(updateProfile.lastName)
     setWeeklyAppGoal(updateProfile.weeklyAppGoal)
     setEmail(updateProfile.email)
-    axios
-      .post("http://localhost:4000/profiles", updateProfile , { withCredentials: true })
-      .then(dispatch(storeProfile({updateProfile})))
-      .then((res) => {
-      if (res.status === 200) {
-        console.log("Profile successfully updated");
-        setUpdateProfile({});
-      } else {
-        console.log("Profile not updated");
-      }
-    });
-  }
+    }
+      
   const handleFirstName = (val, e) => {
     const name = e.target.name;
     const value = e.target.value;
