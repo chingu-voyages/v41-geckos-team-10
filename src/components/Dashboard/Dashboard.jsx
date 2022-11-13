@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import DashWeeklyAppGraph from "./DashWeeklyAppGraph";
+import React from "react";
 import DashJobCards from "./DashJobCards";
 import DashGoalItems from "./DashGoalItems";
 import DashHeader from "./DashHeader";
 import "./Dashboard.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import IsLoggedIn from "../IsLoggedIn";
 
 const Dashboard = () => {
@@ -37,14 +36,6 @@ const Dashboard = () => {
                 (Click Cards for More Information)
               </p>
               <DashJobCards />
-            </div>
-          </div>
-          <div className='dashboard_job-tracker'>
-            <p className='dashboard_job-tracker_text'>
-              Weekly Job Application Tracker
-            </p>
-            <div className='dashboard_job-tracker_graph'>
-              <DashWeeklyAppGraph />
             </div>
           </div>
         </div>
