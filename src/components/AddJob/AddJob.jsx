@@ -44,6 +44,7 @@ const AddJob = (props) => {
           console.log("Job not added");
         }
       });
+      window.location.reload(false);
   };
 
   return (
