@@ -3,8 +3,6 @@ import DashWeeklyAppGraph from "./DashWeeklyAppGraph";
 import DashJobCards from "./DashJobCards";
 import DashGoalItems from "./DashGoalItems";
 import DashHeader from "./DashHeader";
-import axios from "axios";
-import { appsThisWeek, displayJobs } from "../../redux/Slices/jobSlice";
 import "./Dashboard.css";
 import { useSelector, useDispatch } from "react-redux";
 import IsLoggedIn from "../IsLoggedIn";
