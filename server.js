@@ -5,7 +5,6 @@ const passport = require("passport");
 const cors = require("cors");
 const userRoutes = require("./backend/routes/userRouter");
 const jobRoutes = require("./backend/routes/jobRoutes");
-const profileRoutes = require("./backend/routes/profileRouter");
 const cookieParser = require("cookie-parser");
 const connectDb = require("./backend/config/database");
 const MongoStore = require("connect-mongo");
@@ -48,7 +47,6 @@ app.use(passport.session()); //use passport to manage the session
 //Routes for the application are defined in the routes folder in the index.js file
 app.use(userRoutes);
 app.use(jobRoutes);
-app.use(profileRoutes);
 
 //check to see if passport is working middleware
 app.use((req, res, next) => {
