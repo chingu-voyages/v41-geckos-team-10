@@ -16,13 +16,10 @@ const ProfilePage = () => {
 
   const [firstName, setFirstName] = useState("Pat");
   const [lastName, setLastName] = useState("d'User");
-  const [email, setEmail] = useState("pat@gmail.com");
   const [weeklyAppGoal, setWeeklyAppGoal] = useState("20");
   const [updateProfile, setUpdateProfile ] = useState({});
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/profile')
-  })
+
  
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -31,8 +28,9 @@ const ProfilePage = () => {
     setFirstName(updateProfile.firstName)
     setLastName(updateProfile.lastName)
     setWeeklyAppGoal(updateProfile.weeklyAppGoal)
-    setEmail(updateProfile.email)
-    axios.post('http://localhost:4000/profiles', updateProfile)
+    axios.post('http://localhost:4000/profiles', updateProfile, {
+      withCredentials: true,
+    })
       .then((res) => {
         console.log(res.data)
       }).catch((err) => {
@@ -47,7 +45,7 @@ const ProfilePage = () => {
     setFirstName("")
     setLastName("")
     setWeeklyAppGoal("")
-    setEmail("")
+
     }
       
   const handleFirstName = (val, e) => {
@@ -68,13 +66,6 @@ const ProfilePage = () => {
     dispatch(updateWeeklyAppGoal(val))
     setUpdateProfile((values) => ({...values, [name]: value}))
   }
-  const handleEmail = (val, e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    dispatch(updateEmail(val))
-    setUpdateProfile((values) => ({...values, [name]: value}))
-  }
-
   console.log("updateProfile", updateProfile)
 
   return (
@@ -83,9 +74,6 @@ const ProfilePage = () => {
         <div className='profile-page_profile'>
           <div className='profile-page_name'>
             <p>{`Name: ${firstName} ${lastName}`}</p>
-          </div>
-          <div className='profile-page_email'>
-            <p>{`Email Address: ${email}`}</p>
           </div>
           <div className='profile-page_email'>
             <p>{`Current Weekly Application Goal: ${weeklyAppGoal}`}</p>
@@ -109,13 +97,6 @@ const ProfilePage = () => {
               handleUpdateProfile={handleLastName}
               />
           </div>
-          <ProfileTextInput 
-            name='email'
-            label='Email' 
-            type='email' 
-            value={updateProfile.email || ""}
-            handleUpdateProfile={handleEmail}
-            />
           <ProfileTextInput 
             name='weeklyAppGoal' 
             label='Weekly Goal' 

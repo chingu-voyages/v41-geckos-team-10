@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const {
   registerUser,
-  profileUser,
+  createProfile,
   loginUser,
   getUser,
   getProfile,
@@ -14,7 +14,7 @@ const isAuth = require("./auth").isAuth;
 
 //POST routes
 router.post("/register", registerUser);
-router.post("/profiles", profileUser);
+router.post("/profiles", createProfile);
 router.post("/login", loginUser);
 
 //GET Routes
@@ -22,7 +22,7 @@ router.get("/login-success", isAuth, getUser);
 router.get("/logout", logoutUser);
 
 //Profile Routes
-router.route("/profiles").get(isAuth, getProfile).post(profileUser)
+router.route("/profiles").get(isAuth, getProfile).post(createProfile)
 router.route("/profiles/:id").get(isAuth, getProfileById).put(isAuth, updateProfile);
 
 

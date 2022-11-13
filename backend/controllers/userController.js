@@ -34,17 +34,17 @@ const registerUser = (req, res) => {
   });
 };
 
-const profileUser = (req, res) => {
-  const { email, firstName, lastName, weeklyAppGoal } = req.body;
+const createProfile = (req, res) => {
+  const { firstName, lastName, weeklyAppGoal } = req.body;
 
-  Profile.findOne({ email: email, firstName: firstName, lastName: lastName, weeklyAppGoal: weeklyAppGoal }, (err, profile) => {
+  Profile.findOne({ firstName: firstName, lastName: lastName, weeklyAppGoal: weeklyAppGoal }, (err, profile) => {
     if (err) {
       console.log(err);
     } else if (profile) {
       res.status(409);
     } else {
       const newProfile = new Profile({
-        email: email,
+        user: req.user._id,
         firstName: firstName,
         lastName: lastName,
         weeklyAppGoal: weeklyAppGoal
@@ -146,7 +146,7 @@ const logoutUser = (req, res, next) => {
 
 module.exports = {
   registerUser,
-  profileUser,
+  createProfile,
   loginUser,
   logoutUser,
   getUser,
