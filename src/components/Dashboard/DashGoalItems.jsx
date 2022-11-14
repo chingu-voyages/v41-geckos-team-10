@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { nanoid } from "nanoid";
 import { useSelector, useDispatch } from "react-redux";
 import WeeklyAppGoal from "./WeeklyAppGoal/WeeklyAppGoal";
+import AppStreak from './AppStreak/AppStreak';
 import axios from "axios";
 import { displayJobs } from "../../redux/Slices/jobSlice";
 import "./DashGoalItems.css";
@@ -50,7 +51,13 @@ const DashGoalItems = () => {
   const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
   const dashGoalItem = [
-    { item: "Login Streak" },
+    { item: "Application Streak", 
+      component: (
+        <AppStreak 
+          jobs={jobs} 
+        />
+      )
+    },
     {
       item: "Weekly Application Goal",
       component: (
