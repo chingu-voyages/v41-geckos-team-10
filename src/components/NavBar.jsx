@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import navlogo from "../assets/navlogo.svg";
 import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
@@ -33,7 +34,7 @@ const NavBar = ({ handleAddTaskOpen }) => {
       <nav className='navbar navbar_nav'>
         <ul className='navbar navbar_list'>
           <li className='navbar navbar_logo'>
-            <img className='logo' alt='app logo' />
+            <img className='logo' alt='app logo' src={navlogo} />
           </li>
           <li className='navbar navbar_list-item'>
             <div className='profile_picture-div'>
