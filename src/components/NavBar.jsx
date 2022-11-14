@@ -2,21 +2,24 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import navlogo from "../assets/navlogo.svg";
 import dashboard_icon from "../assets/dashboardicon.svg";
 import tracker_icon from "../assets/trackericon.svg";
 import profile_icon from "../assets/profileicon.svg";
 import profile_picture_holder from "../assets/dwight.jpg";
-import logout_icon from "../assets/logouticon.svg"
+import logout_icon from "../assets/logouticon.svg";
 import { loggedOutUser } from "../redux/Slices/userSlice";
 import { useDispatch } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({ handleAddTaskOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/logout");
+      const res = await axios.get("http://localhost:4000/logout", {
+        withCredentials: true,
+      });
       if (res.status === 200) {
         dispatch(loggedOutUser());
         navigate("/");
@@ -26,47 +29,89 @@ const NavBar = () => {
     }
   };
 
- return (
-    <div className="navbar navbar--div">
-        <nav className="navbar navbar--nav">
-            <ul className="navbar navbar--list">
-                <li className="navbar navbar--logo">
-                    <img className="logo" alt="app logo"/>
-                </li>
-                <li className="navbar navbar--list_item">
-                    <div className="profile--picture-div">
-                        <img src={profile_picture_holder} className="navbar navbar--profile_picture" alt="profile"/>
-                    </div>
-                </li>
-                <li className="navbar navbar--list_item">
-                    <img src={dashboard_icon} className="navbar navbar--icon" alt="dashboard page"/>
-                    <Link to={"/dashboard"} className="navbar navbar--text">Dashboard</Link>
-                </li>
-                <li className="navbar navbar--list_item">
-                    <img src={tracker_icon} className="navbar navbar--icon" alt="tracker page"/>
-                    <Link to={'/tracker'} className="navbar navbar--text">Tracker</Link>
-                </li>
-                <li className="navbar navbar--list_item">
-                    <img src={profile_icon} className="navbar navbar--icon" alt="profile page"/>
-                    <Link to={'/profile-page'} className="navbar navbar--text">Profile</Link>
-                </li>
-                <li className="navbar">
-                    <div className="navbar--button--div">
-                        <button className="navbar navbar--button"
-                            onClick={() => navigate('/tracker')}
-                        >
-                            <p>Add Task +</p>
-                        </button>
-                    </div>
-                </li>
-                <li className="navbar navbar--logout">
-                    <div className={"div--logout"}>
-                        <img src={logout_icon} className= "navbar--icon_logout" alt="logout"/>
-                        <button className="navbar--text_logout" onClick={handleLogout}>Logout</button>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+  return (
+    <div className='navbar navbar_div'>
+      <nav className='navbar navbar_nav'>
+        <ul className='navbar navbar_list'>
+          <li className='navbar navbar_logo'>
+            <img className='logo' alt='app logo' src={navlogo} />
+          </li>
+          <li className='navbar navbar_list-item'>
+            <div className='profile_picture-div'>
+              <img
+                src={profile_picture_holder}
+                className='navbar navbar_profile_picture'
+                alt='profile'
+              />
+            </div>
+          </li>
+          <li className='navbar navbar_list-item'>
+            <Link to={"/dashboard"}>
+              <img
+                src={dashboard_icon}
+                className='navbar navbar_icon'
+                alt='dashboard page'
+              />
+            </Link>
+            <Link to={"/dashboard"} className='navbar navbar_text'>
+              Dashboard
+            </Link>
+          </li>
+          <li className='navbar navbar_list-item'>
+            <Link to={"/tracker"}>
+              <img
+                src={tracker_icon}
+                className='navbar navbar_icon'
+                alt='tracker page'
+              />
+            </Link>
+            <Link to={"/tracker"} className='navbar navbar_text'>
+              Tracker
+            </Link>
+          </li>
+          <li className='navbar navbar_list-item'>
+            <Link to={"/profile-page"}>
+              <img
+                src={profile_icon}
+                className='navbar navbar_icon'
+                alt='profile page'
+              />
+            </Link>
+            <Link to={"/profile-page"} className='navbar navbar_text'>
+              Profile
+            </Link>
+          </li>
+          <li className='navbar'>
+            <div className='navbar_button_div'>
+              <button
+                className='navbar navbar_button'
+                onClick={() => {
+                  navigate("/tracker");
+                  handleAddTaskOpen();
+                }}
+              >
+                <p>Add Task +</p>
+              </button>
+            </div>
+          </li>
+          <li className='navbar navbar_logout'>
+            <div className={"div_logout"}>
+              <Link to=''>
+                <img
+                  src={logout_icon}
+                  className='navbar_icon_logout'
+                  alt='logout'
+                />
+              </Link>
+              <Link className='navbar_text_logout' to=''>
+                <button className='navbar_text_logout' onClick={handleLogout}>
+                  Logout
+                </button>
+              </Link>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };

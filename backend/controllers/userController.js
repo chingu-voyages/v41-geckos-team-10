@@ -1,6 +1,7 @@
 const passwordUtil = require("../lib/passwordUtil");
 const passport = require("passport");
 const User = require("../models/userModel");
+const Profile = require("../models/profileModel");
 
 const CLIENT_URL = "http://localhost:3000/";
 
@@ -26,11 +27,69 @@ const registerUser = (req, res) => {
       newUser
         .save()
         .then((user) => console.log(user))
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
       res.send("Success! Please login");
     }
   });
+};
+
+const createProfile = (req, res) => {
+  const { firstName, lastName, weeklyAppGoal } = req.body;
+
+  Profile.findOne({ firstName: firstName, lastName: lastName, weeklyAppGoal: weeklyAppGoal }, (err, profile) => {
+    if (err) {
+      console.log(err);
+    } else if (profile) {
+      res.status(409);
+    } else {
+      const newProfile = new Profile({
+        user: req.user._id,
+        firstName: firstName,
+        lastName: lastName,
+        weeklyAppGoal: weeklyAppGoal
+      });
+
+      newProfile
+        .save()
+        .then((profile) => console.log(profile))
+        .catch((err) => console.log(err));
+
+      res.send("Success! New Profile Created");
+    }
+  });
+};
+
+
+const getProfileById = async (req, res) => {
+  try {
+    const profile = await Profile.findById(req.params.id);
+    res.status(200).send(profile);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const updateProfile = async (req, res) => {
+  try {
+    const profile = await Profile.findById(req.params.id);
+    if (!profile) {
+      res.status(400).json({ message: "Profile not found" });
+    }
+
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      res.status(401).json({ message: "User not found" });
+    }
+
+    const updatedProfile = await Profile.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).send(`Profile ${updatedProfile.firstName} has been updated`);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 //@Login with passport
@@ -52,26 +111,46 @@ const loginUser = (req, res, next) => {
 //@desc dashboard data
 //@route GET /dashboard
 //@access Private
-const dashboard = (req, res) => {
-  const reqUser = req.user;
+const getUser = (req, res) => {
+  const reqUser = { email: req.user.email, id: req.user._id };
   res.send(reqUser);
 };
+
+// const getProfile = (req, res) => {
+//   const reqProfile = { email: req.profiles.email, firstName: req.firstName, lastName: req.lastName, weeklyAppGoal: req.weeklyAppGoal }; 
+//   res.send(reqProfile);
+// };
+
+const getProfile = async (req, res) => {
+  console.log(req.user);
+  try {
+    const profiles = await Profile.find({ user: req.user._id });
+    res.status(200).send(profiles);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 
 //@desc Logout
 //@route GET /logout
 //@access Public
 const logoutUser = (req, res, next) => {
-  req.logout(function (err) {
+  req.session.destroy((err) => {
     if (err) {
-      return (err);
+      return next(err);
     }
-    res.send("Successfully logged out");
+    res.clearCookie("connect.sid", { path: "/" }).status(200).send("Ok.");
   });
 };
 
 module.exports = {
   registerUser,
+  createProfile,
   loginUser,
   logoutUser,
-  dashboard,
+  getUser,
+  getProfile,
+  updateProfile,
+  getProfileById,
 };

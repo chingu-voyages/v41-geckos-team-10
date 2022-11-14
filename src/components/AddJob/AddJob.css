@@ -1,7 +1,5 @@
 .add-job {
-  background-color: #b1d199;
-  border: solid 2px #ff7561;
-  @apply w-96 p-3 flex h-full fixed right-0 top-0 overflow-y-auto;
+  @apply bg-slate-200 w-96 p-3 flex h-full fixed right-0 top-0 overflow-y-auto;
 }
 
 .add-job_opportunity-detail_form {
@@ -21,17 +19,15 @@
 }
 
 .add-job_opportunity-detail_input {
-  margin-left: 1rem;
-  border: solid 2px #ff7561;
+  @apply ml-1;
 }
 
 .add-job_opportunity-detail_label {
-  margin: 1rem;
-  padding: 1rem;
+  @apply m-1 p-1;
 }
 
-.add-job__field {
-  padding: 0.2rem;
+.add-job_field {
+  @apply p-1;
 }
 
 .add-job_status-detail {

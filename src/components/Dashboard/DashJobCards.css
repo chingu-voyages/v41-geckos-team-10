@@ -1,13 +1,22 @@
-.dashboard_job-card_container {
-    
-}
-
 .dashboard_job-card_item {
-    @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center
-    md:w-32
-    lg:w-full lg:ml-10
-    2xl:w-80
+  @apply bg-br-green basis-2/6 border-2 m-2 p-4 rounded-3xl text-center h-64;
 }
 
 .dashboard_job-card_text {
+  @apply text-gray-900 text-sm;
+}
+.job-card_label {
+  @apply font-bold px-1;
+}
+
+.dashboard_job-card_top {
+  @apply flex flex-col py-3 px-3 border-b border-gray-300;
+}
+
+.dashboard_job-card_inner {
+  @apply flex flex-row;
+}
+
+.dashboard_job-card_bottom {
+  @apply flex flex-col;
 }
