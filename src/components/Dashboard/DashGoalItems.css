@@ -6,7 +6,7 @@
 }
 
 .dashboard_tracker-item {
-  @apply bg-br-green flex flex-nowrap flex-col border-2 m-4 rounded-3xl
+  @apply bg-br-green flex flex-nowrap flex-col border-2 m-4 rounded-3xl text-center items-center justify-center align-middle
     md:p-4 
     lg:p-8
     xl:p-10;

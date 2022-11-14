@@ -1,4 +1,5 @@
 import React from 'react';
+import './AppStreak.css';
 
 const AppStreak = ({ jobs }) => {
     let arr = [...jobs];
@@ -43,7 +44,10 @@ const AppStreak = ({ jobs }) => {
     }
 
     return (
-        <p>{currentStreak()}</p>
+        <div className='dashboard__app-streak'>        
+            <p>{currentStreak()}</p>
+        </div>
+
     )
 }
 
