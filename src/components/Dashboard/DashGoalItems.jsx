@@ -7,20 +7,22 @@ import { displayJobs } from "../../redux/Slices/jobSlice";
 import "./DashGoalItems.css";
 
 const DashGoalItems = () => {
+    
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs.value);
-
+  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
+  
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/jobs", { withCredentials: true })
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch(displayJobs(res.data));
-        } else {
-          console.log("Error");
-        }
-      });
-  }, []);
+      axios
+        .get("http://localhost:4000/jobs", { withCredentials: true })
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch(displayJobs(res.data));
+          } else {
+            console.log("Error");
+          }
+        });
+    }, []);
 
   const getSunday = () => {
     const d = new Date();
@@ -46,8 +48,6 @@ const DashGoalItems = () => {
   });
 
   const weeklyApps = thisWeeksApps.length;
-
-  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
 
   const dashGoalItem = [
     { item: "Login Streak" },

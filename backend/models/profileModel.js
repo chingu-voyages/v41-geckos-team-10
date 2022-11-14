@@ -1,35 +1,22 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const profileSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  weeklyGoal: {
-    type: Number,
-    required: true,
-  },
-  timezone: {
-    type: String,
-    required: true,
-  },
-  avatar: {
-    type: String,
-    required: true,
-  },
-  resumesUploaded: {
-    type: Number,
-    required: true,
-  },
-});
+const Schema = mongoose.Schema;
+let profileSchema = new Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId, //create a reference to the user
+        required: true, //make sure the user is logged in
+        ref: "User", //reference the user model
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    weeklyAppGoal: {
+        type: Number
+    },
+})
 
-const Profile = mongoose.model("Profile", profileSchema);
+const Profile = mongoose.model('Profile', profileSchema);
+module.exports = Profile;

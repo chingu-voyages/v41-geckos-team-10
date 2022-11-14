@@ -8,6 +8,11 @@ import IsLoggedIn from "../IsLoggedIn";
 
 const Dashboard = () => {
   const user = useSelector((state) => state.user.value);
+  const fname = useSelector((state) => state.profile.value.firstName);
+  const lname = useSelector((state) => state.profile.value.lastName);
+  const wAG = useSelector((state) => state.profile.value.weeklyAppGoal);
+  
+  console.log("dash", fname)
 
   if (user.isLoggedIn) {
     return (

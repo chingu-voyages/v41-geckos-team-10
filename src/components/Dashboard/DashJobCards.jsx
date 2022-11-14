@@ -37,13 +37,17 @@ const DashJobCards = () => {
     .sort((a, b) => a.value - b.value)
     .slice(0, 3);
 
+    // const dashJobCards = [{_id: 0, companyLocation: "No Card to Load", companyName: "No Card to Load", contactEmail: "No Card to Load", contactName: "No Card to Load", dateApplied:"No Card to Load", jobTitle : "No Card to Load", trackerStatus : "No Card to Load", salary: "No Card to Load"},{_id: 1,companyLocation: "No Card to Load", companyName: "No Card to Load", contactEmail: "No Card to Load", contactName: "No Card to Load", dateApplied:"No Card to Load", jobTitle : "No Card to Load", trackerStatus : "No Card to Load", salary: "No Card to Load"},{_id: 2,companyLocation: "No Card to Load", companyName: "No Card to Load", contactEmail: "No Card to Load", contactName: "No Card to Load", dateApplied:"No Card to Load", jobTitle : "No Card to Load", trackerStatus : "No Card to Load", salary: "No Card to Load" }]
   const dashJobCards = [];
   const dashJobCardOb = () => {
+    if(jobs.length < 3) {
+      return dashJobCards
+    } else {
     for (let i = 0; i < 3; i++) {
       dashJobCards.unshift(
         jobs.find((card) => card._id === mostActiveSort[i]._id)
       );
-    }
+    }}
   };
 
   dashJobCardOb();
@@ -289,7 +293,7 @@ const DashJobCards = () => {
       </div>
     </div>
   ) : (
-    <div>loading....</div>
+    <div>Add 3 Tasks to Start Tracking....</div>
   );
 };
 
