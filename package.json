@@ -2,6 +2,7 @@
   "name": "jobtracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
     "autoprefixer": "^10.4.12",
