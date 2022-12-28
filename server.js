@@ -13,11 +13,7 @@ require("dotenv").config();
 
 connectDb();
 
-app.get("/", (req, res) => {
-  res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
-});
-
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SECRET_KEY));
@@ -54,7 +50,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/", express.static('build'));
 
-app.listen(4000, () => {
-  console.log("Server is running on port 4000");
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
