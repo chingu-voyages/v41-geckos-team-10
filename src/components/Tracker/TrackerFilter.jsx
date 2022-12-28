@@ -14,7 +14,7 @@ const TrackerFilter = ({
   const handleClick = async (value) => {
     filterHandler(value);
     const getJobs = axios
-      .get("http://localhost:4000/jobs", { withCredentials: true })
+      .get("/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data); // array of jobs from db for seeing data while developing
