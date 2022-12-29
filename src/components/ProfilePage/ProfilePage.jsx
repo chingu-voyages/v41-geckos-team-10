@@ -6,9 +6,9 @@ import ProfileTextInput from "./Profile Form Inputs/ProfileTextInput/ProfileText
 import ProfilePageButton from "./ProfilePageButton";
 import "./ProfilePage.css";
 import { useSelector, useDispatch } from "react-redux";
-import { storeProfile, updateFirstName, updateLastName, updateWeeklyAppGoal, updateEmail } from "../../redux/Slices/profileSlice";
+import { storeProfile } from "../../redux/Slices/profileSlice";
 import axios from "axios";
-import IsLoggedIn from "../IsLoggedIn";
+
 
 //https://www.freecodecamp.org/news/pass-data-between-components-in-react/
 const ProfilePage = () => {
@@ -20,7 +20,6 @@ const ProfilePage = () => {
   const [firstName, setFirstName] = useState(fname);
   const [lastName, setLastName] = useState(lname);
   const [weeklyAppGoal, setWeeklyAppGoal] = useState(wAG);
-  const [userID , setUserId] = useState(id); 
   const [updateProfile, setUpdateProfile ] = useState({});
 
   const dispatch = useDispatch();

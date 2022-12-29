@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import "./TrackerFilter.css";
 import { displayJobs, filterJobs, sortJobs } from "../../redux/Slices/jobSlice";
-import favoritestar from "../../assets/favoritestar.svg";
 
 const TrackerFilter = ({
   openEditTrackerDrawer,
@@ -13,7 +12,7 @@ const TrackerFilter = ({
 }) => {
   const handleClick = async (value) => {
     filterHandler(value);
-    const getJobs = axios
+    axios
       .get("/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
