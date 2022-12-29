@@ -23,7 +23,7 @@ function LoginForm() {
       password: e.currentTarget.password.value,
     };
 
-    const response = await axios.post("http://localhost:4000/login", body, {
+    const response = await axios.post("/login", body, {
       withCredentials: true, //with credentials is set to true to allow cookies to be set in the browser client side
     });
     if (response.status === 200) {

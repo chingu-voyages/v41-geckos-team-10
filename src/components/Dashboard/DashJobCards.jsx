@@ -13,7 +13,7 @@ const DashJobCards = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/jobs", { withCredentials: true })
+      .get("/jobs", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
           dispatch(displayJobs(res.data));

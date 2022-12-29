@@ -96,7 +96,7 @@ const EditJobPanel = ({
     } else {
       setErrorMessage("");
       const update = await axios
-        .put(`http://localhost:4000/jobs/${selectedJob._id}`, updatedJob, {
+        .put(`/jobs/${selectedJob._id}`, updatedJob, {
           withCredentials: true,
         })
         .then(dispatch(editJobs({ _id: selectedJob._id, updatedJob })))
@@ -109,7 +109,7 @@ const EditJobPanel = ({
         });
 
       const getJobs = await axios
-        .get("http://localhost:4000/jobs", { withCredentials: true })
+        .get("/jobs", { withCredentials: true })
         .then((res) => {
           if (res.status === 200) {
             console.log(res.data); // array of jobs from db for seeing data while developing

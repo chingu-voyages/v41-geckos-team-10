@@ -26,7 +26,7 @@ export default function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/login-success", { withCredentials: true })
+      .get("/login-success", { withCredentials: true })
       .then((res) => {
         dispatch(loggedUser(res.data));
         console.log(res.data);

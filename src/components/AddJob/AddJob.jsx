@@ -32,7 +32,7 @@ const AddJob = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/jobs", addJobTracker, {
+      .post("/jobs", addJobTracker, {
         withCredentials: true,
       })
       .then((res) => {

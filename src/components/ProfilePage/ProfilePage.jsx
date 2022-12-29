@@ -29,7 +29,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/profiles", { withCredentials: true })
+      .get("/profiles", { withCredentials: true })
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data); // array of jobs from db for seeing data while developing
@@ -49,7 +49,7 @@ const ProfilePage = () => {
     e.preventDefault();
     console.log("Submit")
     if(firstName === "New"){
-    axios.post('http://localhost:4000/profiles', updateProfile, {
+    axios.post('/profiles', updateProfile, {
       withCredentials: true,
     })
       .then((res) => {
@@ -60,7 +60,7 @@ const ProfilePage = () => {
       window.location.reload(false);
       setUpdateProfile({})
     } else {
-      axios.put(`http://localhost:4000/profiles/${id}`, updateProfile, {
+      axios.put(`/profiles/${id}`, updateProfile, {
         withCredentials: true,
       })
         .then((res) => {
