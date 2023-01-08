@@ -9,10 +9,8 @@ import EditJobPanel from "./EditJobPanel";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { displayJobs } from "../../redux/Slices/jobSlice";
-import IsLoggedIn from "../IsLoggedIn";
 
 const Tracker = ({ addTaskOpen, handleAddTaskOpen }) => {
-  const user = useSelector((state) => state.user.value);
   const jobs = useSelector((state) => state.jobs.value);
   const [filter, setFilter] = useState("all");
   const [sortSelection, setSortSelection] = useState("blank");

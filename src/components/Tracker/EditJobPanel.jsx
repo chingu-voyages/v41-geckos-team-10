@@ -95,7 +95,7 @@ const EditJobPanel = ({
       setErrorMessage("Please fill out all fields.");
     } else {
       setErrorMessage("");
-      const update = await axios
+      await axios
         .put(`/jobs/${selectedJob._id}`, updatedJob, {
           withCredentials: true,
         })
@@ -108,7 +108,7 @@ const EditJobPanel = ({
           }
         });
 
-      const getJobs = await axios
+      await axios
         .get("/jobs", { withCredentials: true })
         .then((res) => {
           if (res.status === 200) {

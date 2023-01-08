@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-
 //https://blog.logrocket.com/build-svg-circular-progress-component-react-hooks/
 
 const WeeklyAppGoal = ({size, strokeWidth, goalValue, weeklyApps}) => {
